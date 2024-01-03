@@ -3,12 +3,12 @@
 ---
 # `📖 목차`
 
-- [SeSAC_Assignment_1226](#❗-sesac_assignment_1226)
-- [SeSAC_Assignment_1228](#❗-sesac_assignment_1228)
-- [SeSAC_Assignment_0102](#❗-sesac_assignment_0102)
+- [SeSAC_Assignment_1226](#❗-sesac-assignment-1226)
+- [SeSAC_Assignment_1228](#❗-sesac-assignment-1228)
+- [SeSAC_Assignment_0102](#❗-sesac-assignment-0102)
 
 ---
-## `❗ SeSAC_Assignment_1226`
+## `❗ SeSAC Assignment 1226`
 > **기간**
    
 23.12.26 ~ 23.12.27
@@ -25,7 +25,7 @@ SignUpViewController의 switch 액션 이벤트에 애니메이션 반응을 추
 - SignUpViewController의 Switch를 반응에 따라 오브젝트의 transform을 애니메이션을 이용하여 반응하도록 구현하였다.
 
 ---
-## `❗ SeSAC_Assignment_1228`
+## `❗ SeSAC Assignment 1228`
 **신조어 검색기**   
 신조어와 해석을 Dictionary로 key와 value로 저장하여 신조어를 검색하였을 때, 그에 해당하는 해석이 화면에 띄워주었다.
 
@@ -56,7 +56,7 @@ UIScrollView를 활용하여 요일 선택 부분을 구현하였고, 이에 UIT
 - UITapGestureRecognizer
 
 ---
-## `❗ SeSAC_Assignment_0102`
+## `❗ SeSAC Assignment 0102`
 간단한 UIImagView와 UILabel을 AutoLayout을 설정해주었다. 각 이미지를 클릭하면 클릭 횟수한 횟수를 노출시켜준다.   
 클릭 횟수는 UIView가 기본적으로 가지고 있는 Tag기능을 이용하여 구현하였다.   
 클릭 횟수가 10회를 달성하면 Alert창으로 과제 달성 알람창을 띄워주었다.   
