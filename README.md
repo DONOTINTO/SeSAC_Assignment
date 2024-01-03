@@ -3,9 +3,9 @@
 ---
 # `📖 목차`
 
-1. [SeSAC_Assignment_1226](#❗-sesac_assignment_1226)
-2. [SeSAC_Assignment_1228](#❗-sesac_assignment_1226)
-3. [SeSAC_Assignment_0102](#❗-sesac_assignment_0102)
+- [SeSAC_Assignment_1226](#❗-sesac_assignment_1226)
+- [SeSAC_Assignment_1228](#❗-sesac_assignment_1228)
+- [SeSAC_Assignment_0102](#❗-sesac_assignment_0102)
 
 ---
 ## `❗ SeSAC_Assignment_1226`
