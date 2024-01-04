@@ -3,10 +3,10 @@
 ---
 # `📖 목차`
 
-- [SeSAC_Assignment_1226](#❗-sesac-assignment-1226)
-- [SeSAC_Assignment_1228](#❗-sesac-assignment-1228)
-- [SeSAC_Assignment_0102](#❗-sesac-assignment-0102)
-- [SeSAC_Assignment_0103](#❗-sesac-assignment-0103)
+- [SeSAC_Assignment_1226](#-sesac-assignment-1226)
+- [SeSAC_Assignment_1228](#-sesac-assignment-1228)
+- [SeSAC_Assignment_0102](#-sesac-assignment-0102)
+- [SeSAC_Assignment_0103](#-sesac-assignment-0103)
 
 ---
 ## `❗ SeSAC Assignment 1226`
