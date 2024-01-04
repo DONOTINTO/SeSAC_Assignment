@@ -28,23 +28,16 @@ class ViewController: UIViewController {
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var heightTextField: UITextField!
     @IBOutlet var weightTextField: UITextField!
-    @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var resetButton: UIButton!
     @IBOutlet var secureButton: UIButton!
     @IBOutlet var resultButton: UIButton!
-    let heightMax = 230
-    let weightMax = 300
-    let USERDEFAULTSKEY = ["LASTHEIGHT", "LASTWEIGHT", "LASTNICKNAME"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         designUI()
         
         heightTextField.tag = 0
         weightTextField.tag = 1
-        
-        resultButton.isEnabled = false
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(randomClicked(_:)))
         randomLabel.isUserInteractionEnabled = true
@@ -53,30 +46,31 @@ class ViewController: UIViewController {
         let mainViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDismissKeyboard(_:)))
         mainView.isUserInteractionEnabled = true
         mainView.addGestureRecognizer(mainViewTapGesture)
-        
+    }
+    
+    func setTextFieldText(_ textField: UITextField, text: String) {
+        textField.text = text
         changeResultButtonState(heightTextField, weightTextField)
     }
     
     func designUI() {
-        let height = UserDefaults.standard.string(forKey: USERDEFAULTSKEY[0])
-        let weight = UserDefaults.standard.string(forKey: USERDEFAULTSKEY[1])
-        let nickname = UserDefaults.standard.string(forKey: USERDEFAULTSKEY[2])
+        guard let nickname = UserDefaults.standard.string(forKey: Constant.KEY.LASTNICKNAME) else { return }
         
-        self.mainView.backgroundColor = .white
+        let height = UserDefaults.standard.string(forKey: Constant.KEY.LASTHEIGHT)
+        let weight = UserDefaults.standard.string(forKey: Constant.KEY.LASTWEIGHT)
         
-        designLabel(titleLabel, message: "BMI Calculator", fontType: .BOLD, fontSize: 30)
-        designLabel(subtitleLabel, message: "당신의 BMI 지수를 \n알려드릴게요", fontType: .REGULAR, fontSize: 16, line: 2)
-        designLabel(heightLabel, message: "키가 어떻게 되시나요?", fontType: .REGULAR, fontSize: 14)
-        designLabel(weightLabel, message: "몸무게가 어떻게 되시나요?", fontType: .REGULAR, fontSize: 14)
-        designLabel(randomLabel, message: "랜덤으로 BMI 계산하기", fontType: .REGULAR, fontSize: 11, alignment: .right, textColor: .systemRed)
+        resultButton.isEnabled = false
         
-        designTexField(heightTextField, placeholder: "cm")
-        designTexField(weightTextField, placeholder: "kg")
-        designTexField(nicknameTextField, placeholder: "닉네임을 입력해주세요.", keyboardType: .default)
+        mainView.backgroundColor = .white
         
-        heightTextField.text = height == nil ? "" : height!
-        weightTextField.text = weight == nil ? "" : weight!
-        nicknameTextField.text = nickname == nil ? "" : nickname!
+        titleLabel.designLabel(message: "BMI Calculator", fontType: .BOLD, fontSize: 30)
+        subtitleLabel.designLabel(message: "\(nickname)님의 BMI 지수를 \n알려드릴게요", fontType: .REGULAR, fontSize: 16, line: 2)
+        heightLabel.designLabel(message: "키가 어떻게 되시나요?", fontType: .REGULAR, fontSize: 14)
+        weightLabel.designLabel(message: "몸무게가 어떻게 되시나요?", fontType: .REGULAR, fontSize: 14)
+        randomLabel.designLabel(message: "랜덤으로 BMI 계산하기", fontType: .REGULAR, fontSize: 11, alignment: .right, textColor: .systemRed)
+        
+        heightTextField.designTexField(placeholder: "cm")
+        weightTextField.designTexField(placeholder: "kg")
         
         resetButton.tintColor = .black
         resetButton.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
@@ -90,37 +84,14 @@ class ViewController: UIViewController {
         resultButton.setTitleColor(.black, for: .normal)
         resultButton.setTitleColor(.lightGray, for: .disabled)
         resultButton.setTitleColor(.darkGray, for: .highlighted)
-
         resultButton.layer.cornerRadius = 10
-    }
-    
-    func designLabel(_ label: UILabel, message: String, fontType: FontType, fontSize: CGFloat, line: Int = 1, alignment: NSTextAlignment = .left, textColor: UIColor = .black) {
-        label.text = message
-        label.textColor = textColor
-        label.font = fontType == .BOLD ? .boldSystemFont(ofSize: fontSize) : .systemFont(ofSize: fontSize)
-        label.numberOfLines = line
-        label.textAlignment = alignment
-    }
-    
-    func designTexField(_ textField: UITextField, placeholder: String, keyboardType: UIKeyboardType = .numberPad) {
-        textField.textColor = .black
-        textField.backgroundColor = .white
-        textField.layer.borderColor = UIColor.black.cgColor
-        textField.layer.borderWidth = 2
-        textField.layer.cornerRadius = 15
-        textField.placeholder = placeholder
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.leftViewMode = .always
-        textField.keyboardType = keyboardType
-        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes: [.foregroundColor: UIColor.darkGray])
+        
+        setTextFieldText(heightTextField, text: height == nil ? "" : height!)
+        setTextFieldText(weightTextField, text: weight == nil ? "" : weight!)
     }
     
     func changeResultButtonState(_ firstTextField: UITextField, _ secondTextField: UITextField) {
-        if !(firstTextField.text == "" || secondTextField.text == "") { 
-            resultButton.isEnabled = true
-        } else {
-            resultButton.isEnabled = false
-        }
+        resultButton.isEnabled = !(firstTextField.text == "" || secondTextField.text == "")
     }
     
     func calculateBMI(height: Double, weight: Double) -> (Double, BMIType) {
@@ -146,31 +117,29 @@ class ViewController: UIViewController {
     }
     
     @objc func randomClicked(_ sender: UITapGestureRecognizer) {
-        let randomHeight = Int.random(in: 1 ... heightMax)
-        let randomWeight = Int.random(in: 1 ... weightMax)
+        let randomHeight = Int.random(in: 1 ... Constant.VALUE.HeightMAX)
+        let randomWeight = Int.random(in: 1 ... Constant.VALUE.WeightMAX)
         
-        heightTextField.text = "\(randomHeight)"
-        weightTextField.text = "\(randomWeight)"
+        setTextFieldText(heightTextField, text: "\(randomHeight)")
+        setTextFieldText(weightTextField, text: "\(randomWeight)")
         
         UIView.animate(withDuration: 0.05, delay: 0, options: .autoreverse, animations: {
             self.randomLabel.transform = CGAffineTransform(translationX: -2, y: 0)
         }, completion: { _ in
             self.randomLabel.transform = CGAffineTransform(translationX: 0, y: 0)
         })
-        
-        changeResultButtonState(heightTextField, weightTextField)
     }
     
     @IBAction func resetButtonClicked(_ sender: UIButton) {
-        UserDefaults.standard.setValue("", forKey: USERDEFAULTSKEY[0])
-        UserDefaults.standard.setValue("", forKey: USERDEFAULTSKEY[1])
-        UserDefaults.standard.setValue("", forKey: USERDEFAULTSKEY[2])
+        UserDefaults.standard.setValue("", forKey: Constant.KEY.LASTHEIGHT)
+        UserDefaults.standard.setValue("", forKey: Constant.KEY.LASTWEIGHT)
+        UserDefaults.standard.setValue("", forKey: Constant.KEY.LASTNICKNAME)
+        UserDefaults.standard.setValue(false, forKey: Constant.KEY.AUTOLOGIN)
         
-        heightTextField.text = ""
-        weightTextField.text = ""
-        nicknameTextField.text = ""
+        setTextFieldText(heightTextField, text: "")
+        setTextFieldText(weightTextField, text: "")
         
-        changeResultButtonState(heightTextField, weightTextField)
+        dismiss(animated: true) { }
     }
     
     @IBAction func userInputData(_ sender: UITextField) {
@@ -194,7 +163,7 @@ class ViewController: UIViewController {
         
         // 텍스트필드 별 범위 제약
         let minimum = 0
-        let maximum = sender.tag == 0 ? heightMax : weightMax
+        let maximum = sender.tag == 0 ? Constant.VALUE.HeightMAX : Constant.VALUE.WeightMAX
         
         if numData <= minimum || numData > maximum {
             sender.text = ""
@@ -202,10 +171,7 @@ class ViewController: UIViewController {
             return
         }
         
-        sender.tag == 0 ? (heightTextField.text = "\(numData)") : (weightTextField.text = "\(numData)")
-        
-        // 둘 다 값이 입력됐으면 result 버튼 활성화
-        changeResultButtonState(heightTextField, weightTextField)
+        sender.tag == 0 ? setTextFieldText(heightTextField, text: "\(numData)") : setTextFieldText(weightTextField, text: "\(numData)")
     }
     
     
@@ -222,14 +188,12 @@ class ViewController: UIViewController {
     @IBAction func resultButtonClicked(_ sender: UIButton) {
         guard let heightData = heightTextField.text else { return }
         guard let weightData = weightTextField.text else { return }
-        guard let nickName = nicknameTextField.text else { return }
         guard let height = Double(heightData) else { return }
         guard let weight = Double(weightData) else { return }
         
         // 결과 확인 시 저장
-        UserDefaults.standard.setValue(heightData, forKey: USERDEFAULTSKEY[0])
-        UserDefaults.standard.setValue(weightData, forKey: USERDEFAULTSKEY[1])
-        UserDefaults.standard.setValue(nickName, forKey: USERDEFAULTSKEY[2])
+        UserDefaults.standard.setValue(heightData, forKey: Constant.KEY.LASTHEIGHT)
+        UserDefaults.standard.setValue(weightData, forKey: Constant.KEY.LASTWEIGHT)
         
         let (bmi, bmiType) = calculateBMI(height: height, weight: weight)
         
