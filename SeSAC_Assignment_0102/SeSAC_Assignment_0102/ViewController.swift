@@ -13,9 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet var imageViews: [UIImageView]!
     @IBOutlet var labels: [UILabel]!
     var labelTitle = ["행복해", "사랑해", "좋아해", "당황해", "속상해", "우울해", "심심해", "행복해", "눈물나"]
+    var count = [Int].init(repeating: 0, count: 9)
+    let COUNTKEY = ["COUNT1", "COUNT2", "COUNT3", "COUNT4", "COUNT5", "COUNT6", "COUNT7", "COUNT8", "COUNT9"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        for idx in 0 ..< COUNTKEY.count { count[idx] = UserDefaults.standard.integer(forKey: COUNTKEY[idx]) }
         
         setUI()
         setTapGesture()
@@ -25,10 +29,10 @@ class ViewController: UIViewController {
         guard let image = sender.view as? UIImageView else { return }
         let idx = image.tag
         
-        //클릭마다 Label Tag에 1씩 추가
-        labels[idx].tag += 1
+        count[idx] = UserDefaults.standard.integer(forKey: COUNTKEY[idx]) + 1
+        UserDefaults.standard.setValue(count[idx], forKey: COUNTKEY[idx])
         
-        labels[idx].text = "\(labelTitle[idx]) \(labels[idx].tag)"
+        labels[idx].text = "\(labelTitle[idx]) \(count[idx])"
         
         UIView.animate(withDuration: 0.03, delay: 0, options: .autoreverse , animations: {
             image.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
@@ -70,7 +74,8 @@ class ViewController: UIViewController {
         }
         
         for idx in 0 ..< labels.count {
-            labels[idx].text = labelTitle[idx]
+            let count = UserDefaults.standard.integer(forKey: COUNTKEY[idx])
+            labels[idx].text = "\(labelTitle[idx]) \(count)"
             labels[idx].textAlignment = .center
             labels[idx].font = .boldSystemFont(ofSize: 12)
             labels[idx].textColor = .black
