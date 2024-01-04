@@ -6,6 +6,7 @@
 - [SeSAC_Assignment_1226](#❗-sesac-assignment-1226)
 - [SeSAC_Assignment_1228](#❗-sesac-assignment-1228)
 - [SeSAC_Assignment_0102](#❗-sesac-assignment-0102)
+- [SeSAC_Assignment_0103](#❗-sesac-assignment-0103)
 
 ---
 ## `❗ SeSAC Assignment 1226`
@@ -74,3 +75,29 @@ Image를 클릭했을 때 Scale을 키웠다 줄여주는 애니메이션을 추
 
 > **키워드**
 - CGAffineTransform
+
+---
+## `❗ SeSAC Assignment 0103`
+입력한 값에 맞추어 BMI 수치를 Alert창으로 보여준다.
+UITextField에는 다음과 같은 조건들이 있다. 
+1. 범위
+2. 숫자만 입력
+3. 최대 3자리까지 입력
+
+이에 맞추어 로직을 짜고 switch문 대신에 기존에 안써보았던 if case를 적용해보았다.
+그 외 새로 적용해본 기술은 없었고 로직을 최대한 깔끔하게 작성해보려고 노력했다.
+범위를 지정했으니 최대 3자리 입력 제약은 굳이 안넣어도 됐을 것 같다.
+
+> **기간**
+
+24.01.03
+
+> **UIKit**
+- UIAlertController
+- UIAlertAction
+
+> **키워드**
+- AutoLayout
+- UITapGestureRecognizer
+- if case / guard case
+- Enum
