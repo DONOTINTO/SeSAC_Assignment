@@ -91,6 +91,7 @@ class ViewController: UIViewController {
         textField.placeholder = placeholder
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
+        textField.keyboardType = .numberPad
     }
     
     func changeResultButtonState(_ firstTextField: UITextField, _ secondTextField: UITextField) {
