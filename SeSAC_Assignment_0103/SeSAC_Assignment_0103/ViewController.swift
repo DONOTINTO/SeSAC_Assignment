@@ -112,6 +112,7 @@ class ViewController: UIViewController {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
         textField.keyboardType = keyboardType
+        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes: [.foregroundColor: UIColor.darkGray])
     }
     
     func changeResultButtonState(_ firstTextField: UITextField, _ secondTextField: UITextField) {
