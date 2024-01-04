@@ -83,6 +83,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="didEndUserInput:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="PEs-Pe-7HH"/>
+                                            <action selector="dismissKeyboard:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="EQ1-Ye-Xe9"/>
                                             <action selector="userInputData:" destination="BYZ-38-t0r" eventType="editingChanged" id="ZJe-sP-EVI"/>
                                         </connections>
                                     </textField>
@@ -152,6 +153,7 @@
                         <outlet property="heightLabel" destination="FHn-cj-HQr" id="yJ7-ym-FkL"/>
                         <outlet property="heightTextField" destination="sd6-jV-W2l" id="Nf8-c1-xo5"/>
                         <outlet property="mainImageView" destination="LsQ-7c-HoL" id="qsJ-BX-3ru"/>
+                        <outlet property="mainView" destination="WmC-uP-fg8" id="e5L-nF-Dy4"/>
                         <outlet property="randomLabel" destination="7l2-iL-J4j" id="Nn5-UP-Lte"/>
                         <outlet property="resultButton" destination="oq2-Rx-uaN" id="sd3-1d-V9a"/>
                         <outlet property="secureButton" destination="gkD-DW-dZJ" id="ZUV-fT-6DZ"/>

@@ -19,6 +19,7 @@ enum BMIType: String {
 }
 
 class ViewController: UIViewController {
+    @IBOutlet var mainView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var heightLabel: UILabel!
@@ -45,6 +46,10 @@ class ViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(randomClicked(_:)))
         randomLabel.isUserInteractionEnabled = true
         randomLabel.addGestureRecognizer(tapGesture)
+        
+        let mainViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDismissKeyboard(_:)))
+        mainView.isUserInteractionEnabled = true
+        mainView.addGestureRecognizer(mainViewTapGesture)
     }
     
     func designUI() {
@@ -108,6 +113,10 @@ class ViewController: UIViewController {
         }
         
         return (bmi, bmiType)
+    }
+    
+    @objc func viewDismissKeyboard(_ sender: UITapGestureRecognizer) {
+        mainView.endEditing(true)
     }
     
     @objc func randomClicked(_ sender: UITapGestureRecognizer) {
@@ -185,5 +194,8 @@ class ViewController: UIViewController {
         alert.addAction(okAction)
         
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITextField) {
     }
 }
