@@ -28,10 +28,13 @@ class ViewController: UIViewController {
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var heightTextField: UITextField!
     @IBOutlet var weightTextField: UITextField!
+    @IBOutlet var nicknameTextField: UITextField!
+    @IBOutlet var resetButton: UIButton!
     @IBOutlet var secureButton: UIButton!
     @IBOutlet var resultButton: UIButton!
     let heightMax = 230
     let weightMax = 300
+    let USERDEFAULTSKEY = ["LASTHEIGHT", "LASTWEIGHT", "LASTNICKNAME"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +53,17 @@ class ViewController: UIViewController {
         let mainViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDismissKeyboard(_:)))
         mainView.isUserInteractionEnabled = true
         mainView.addGestureRecognizer(mainViewTapGesture)
+        
+        changeResultButtonState(heightTextField, weightTextField)
     }
     
     func designUI() {
+        let height = UserDefaults.standard.string(forKey: USERDEFAULTSKEY[0])
+        let weight = UserDefaults.standard.string(forKey: USERDEFAULTSKEY[1])
+        let nickname = UserDefaults.standard.string(forKey: USERDEFAULTSKEY[2])
+        
+        self.mainView.backgroundColor = .white
+        
         designLabel(titleLabel, message: "BMI Calculator", fontType: .BOLD, fontSize: 30)
         designLabel(subtitleLabel, message: "당신의 BMI 지수를 \n알려드릴게요", fontType: .REGULAR, fontSize: 16, line: 2)
         designLabel(heightLabel, message: "키가 어떻게 되시나요?", fontType: .REGULAR, fontSize: 14)
@@ -61,6 +72,14 @@ class ViewController: UIViewController {
         
         designTexField(heightTextField, placeholder: "cm")
         designTexField(weightTextField, placeholder: "kg")
+        designTexField(nicknameTextField, placeholder: "닉네임을 입력해주세요.", keyboardType: .default)
+        
+        heightTextField.text = height == nil ? "" : height!
+        weightTextField.text = weight == nil ? "" : weight!
+        nicknameTextField.text = nickname == nil ? "" : nickname!
+        
+        resetButton.tintColor = .black
+        resetButton.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
         
         secureButton.tintColor = .lightGray
         secureButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
@@ -83,19 +102,24 @@ class ViewController: UIViewController {
         label.textAlignment = alignment
     }
     
-    func designTexField(_ textField: UITextField, placeholder: String) {
+    func designTexField(_ textField: UITextField, placeholder: String, keyboardType: UIKeyboardType = .numberPad) {
         textField.textColor = .black
+        textField.backgroundColor = .white
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 15
         textField.placeholder = placeholder
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
-        textField.keyboardType = .numberPad
+        textField.keyboardType = keyboardType
     }
     
     func changeResultButtonState(_ firstTextField: UITextField, _ secondTextField: UITextField) {
-        if !(firstTextField.text == "" || secondTextField.text == "") { resultButton.isEnabled = true }
+        if !(firstTextField.text == "" || secondTextField.text == "") { 
+            resultButton.isEnabled = true
+        } else {
+            resultButton.isEnabled = false
+        }
     }
     
     func calculateBMI(height: Double, weight: Double) -> (Double, BMIType) {
@@ -136,6 +160,18 @@ class ViewController: UIViewController {
         changeResultButtonState(heightTextField, weightTextField)
     }
     
+    @IBAction func resetButtonClicked(_ sender: UIButton) {
+        UserDefaults.standard.setValue("", forKey: USERDEFAULTSKEY[0])
+        UserDefaults.standard.setValue("", forKey: USERDEFAULTSKEY[1])
+        UserDefaults.standard.setValue("", forKey: USERDEFAULTSKEY[2])
+        
+        heightTextField.text = ""
+        weightTextField.text = ""
+        nicknameTextField.text = ""
+        
+        changeResultButtonState(heightTextField, weightTextField)
+    }
+    
     @IBAction func userInputData(_ sender: UITextField) {
         resultButton.isEnabled = false
         
@@ -171,6 +207,7 @@ class ViewController: UIViewController {
         changeResultButtonState(heightTextField, weightTextField)
     }
     
+    
     @IBAction func didEndUserInput(_ sender: UITextField) {
         if sender.text == "" { sender.placeholder = sender.tag == 0 ? "cm" : "kg"}
     }
@@ -184,8 +221,14 @@ class ViewController: UIViewController {
     @IBAction func resultButtonClicked(_ sender: UIButton) {
         guard let heightData = heightTextField.text else { return }
         guard let weightData = weightTextField.text else { return }
+        guard let nickName = nicknameTextField.text else { return }
         guard let height = Double(heightData) else { return }
         guard let weight = Double(weightData) else { return }
+        
+        // 결과 확인 시 저장
+        UserDefaults.standard.setValue(heightData, forKey: USERDEFAULTSKEY[0])
+        UserDefaults.standard.setValue(weightData, forKey: USERDEFAULTSKEY[1])
+        UserDefaults.standard.setValue(nickName, forKey: USERDEFAULTSKEY[2])
         
         let (bmi, bmiType) = calculateBMI(height: height, weight: weight)
         
