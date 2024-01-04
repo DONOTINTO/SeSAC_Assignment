@@ -97,20 +97,14 @@ class ViewController: UIViewController {
         let bmi = weight / (heightForC * heightForC)
         var bmiType = BMIType.NORMALWEIGHT
         
-        switch bmi {
-        case 0..<18.5 :
+        if case 0 ..< 18.5 = bmi {
             bmiType = .UNDERWEIGHT
-            break
-        case 18.5..<23 :
+        } else if case 18.5 ..< 23 = bmi {
             bmiType = .NORMALWEIGHT
-            break
-        case 23..<25 :
+        } else if case 23 ..< 25 = bmi {
             bmiType = .OVERWEIGHT
-            break
-        case 25... :
+        } else if case 25... = bmi {
             bmiType = .HEAVYWEIGHT
-            break
-        default : break
         }
         
         return (bmi, bmiType)
