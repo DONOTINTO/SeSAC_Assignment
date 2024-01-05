@@ -69,11 +69,11 @@
 				ACFE7B042B4580B900D8E522 /* ViewController.swift */,
 				ACADD63A2B46E70A0055D81A /* EntryViewController.swift */,
 				ACADD63C2B46E7960055D81A /* UIExtension.swift */,
+				ACADD63E2B46F1650055D81A /* Constant.swift */,
 				ACFE7B062B4580B900D8E522 /* Main.storyboard */,
 				ACFE7B092B4580BA00D8E522 /* Assets.xcassets */,
 				ACFE7B0B2B4580BA00D8E522 /* LaunchScreen.storyboard */,
 				ACFE7B0E2B4580BA00D8E522 /* Info.plist */,
-				ACADD63E2B46F1650055D81A /* Constant.swift */,
 			);
 			path = SeSAC_Assignment_0103;
 			sourceTree = "<group>";

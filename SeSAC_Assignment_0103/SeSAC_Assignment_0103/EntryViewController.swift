@@ -14,7 +14,7 @@ class EntryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard let nickname = UserDefaults.standard.string(forKey: Constant.KEY.LASTNICKNAME) else { return }
-        nicknameTextField.text = nickname
+        setTextFieldText(nicknameTextField, text: nickname)
     }
     
     override func viewDidLoad() {
@@ -39,6 +39,11 @@ class EntryViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func setTextFieldText(_ textField: UITextField, text: String) {
+        textField.text = text
+        isButtonEnabled(saveButton, text: text)
+    }
+    
     func designUI() {
         self.view.backgroundColor = .white
         
@@ -57,7 +62,7 @@ class EntryViewController: UIViewController {
     
     @discardableResult
     func isButtonEnabled(_ button: UIButton, text: String) -> Bool {
-        let result = text.count > 2 ? true : false
+        let result = text.count > 1 ? true : false
         button.isEnabled = result
         return result
     }
