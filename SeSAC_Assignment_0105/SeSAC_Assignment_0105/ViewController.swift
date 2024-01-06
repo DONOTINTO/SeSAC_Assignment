@@ -37,6 +37,31 @@ class ViewController: UIViewController {
             nextVCButtons[idx].titleLabel?.font = .boldSystemFont(ofSize: 14)
         }
     }
-
+    
+    func makeNextVC(_ identifier: String) -> UIViewController? {
+        return self.storyboard?.instantiateViewController(withIdentifier: identifier)
+        
+    }
+    
+    @IBAction func concentrationModeButtonClicked(_ sender: UIButton) {
+        guard let nextVC = makeNextVC("firstCase") as? FirstCaseTableViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @IBAction func settingButtonClicked(_ sender: UIButton) {
+        guard let nextVC = makeNextVC("secondCase") as? SecondCaseTableViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @IBAction func shoppingButtonClicked(_ sender: UIButton) {
+        guard let nextVC = makeNextVC("thirdCase") as? ThirsdTableViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
 

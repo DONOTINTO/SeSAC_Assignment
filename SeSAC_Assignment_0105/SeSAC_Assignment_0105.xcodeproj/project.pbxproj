@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0A46A62B49AE0600932A9D /* SecondCaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A46A52B49AE0600932A9D /* SecondCaseTableViewCell.swift */; };
+		AC2A4F6C2B499C8D00DA3D3D /* FirstCaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2A4F6B2B499C8D00DA3D3D /* FirstCaseTableViewController.swift */; };
+		AC2A4F6E2B499C9700DA3D3D /* SecondCaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2A4F6D2B499C9700DA3D3D /* SecondCaseTableViewController.swift */; };
+		AC2A4F702B499C9E00DA3D3D /* ThirsdTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2A4F6F2B499C9E00DA3D3D /* ThirsdTableViewController.swift */; };
+		ACAD388E2B49B395009D1156 /* ThirdCaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD388D2B49B395009D1156 /* ThirdCaseTableViewCell.swift */; };
 		ACE500DD2B48D5DC001EBCEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE500DC2B48D5DC001EBCEA /* AppDelegate.swift */; };
 		ACE500DF2B48D5DC001EBCEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE500DE2B48D5DC001EBCEA /* SceneDelegate.swift */; };
 		ACE500E12B48D5DC001EBCEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE500E02B48D5DC001EBCEA /* ViewController.swift */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC0A46A52B49AE0600932A9D /* SecondCaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCaseTableViewCell.swift; sourceTree = "<group>"; };
+		AC2A4F6B2B499C8D00DA3D3D /* FirstCaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCaseTableViewController.swift; sourceTree = "<group>"; };
+		AC2A4F6D2B499C9700DA3D3D /* SecondCaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCaseTableViewController.swift; sourceTree = "<group>"; };
+		AC2A4F6F2B499C9E00DA3D3D /* ThirsdTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirsdTableViewController.swift; sourceTree = "<group>"; };
+		ACAD388D2B49B395009D1156 /* ThirdCaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCaseTableViewCell.swift; sourceTree = "<group>"; };
 		ACE500D92B48D5DC001EBCEA /* SeSAC_Assignment_0105.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_Assignment_0105.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE500DC2B48D5DC001EBCEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE500DE2B48D5DC001EBCEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,10 +66,15 @@
 		ACE500DB2B48D5DC001EBCEA /* SeSAC_Assignment_0105 */ = {
 			isa = PBXGroup;
 			children = (
+				AC0A46A52B49AE0600932A9D /* SecondCaseTableViewCell.swift */,
 				ACE500DC2B48D5DC001EBCEA /* AppDelegate.swift */,
 				ACE500DE2B48D5DC001EBCEA /* SceneDelegate.swift */,
 				ACE500E02B48D5DC001EBCEA /* ViewController.swift */,
 				ACE500E22B48D5DC001EBCEA /* Main.storyboard */,
+				ACAD388D2B49B395009D1156 /* ThirdCaseTableViewCell.swift */,
+				AC2A4F6B2B499C8D00DA3D3D /* FirstCaseTableViewController.swift */,
+				AC2A4F6D2B499C9700DA3D3D /* SecondCaseTableViewController.swift */,
+				AC2A4F6F2B499C9E00DA3D3D /* ThirsdTableViewController.swift */,
 				ACE500E52B48D5DD001EBCEA /* Assets.xcassets */,
 				ACE500E72B48D5DD001EBCEA /* LaunchScreen.storyboard */,
 				ACE500EA2B48D5DD001EBCEA /* Info.plist */,
@@ -138,8 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC2A4F6C2B499C8D00DA3D3D /* FirstCaseTableViewController.swift in Sources */,
+				ACAD388E2B49B395009D1156 /* ThirdCaseTableViewCell.swift in Sources */,
+				AC2A4F702B499C9E00DA3D3D /* ThirsdTableViewController.swift in Sources */,
 				ACE500E12B48D5DC001EBCEA /* ViewController.swift in Sources */,
+				AC2A4F6E2B499C9700DA3D3D /* SecondCaseTableViewController.swift in Sources */,
 				ACE500DD2B48D5DC001EBCEA /* AppDelegate.swift in Sources */,
+				AC0A46A62B49AE0600932A9D /* SecondCaseTableViewCell.swift in Sources */,
 				ACE500DF2B48D5DC001EBCEA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
