@@ -139,7 +139,10 @@ class ViewController: UIViewController {
         setTextFieldText(heightTextField, text: "")
         setTextFieldText(weightTextField, text: "")
         
-        dismiss(animated: true) { }
+        UIView.animate(withDuration: 0.5, delay: 0) {
+            self.resetButton.transform = CGAffineTransform(rotationAngle: 5)
+        }
+        // dismiss(animated: true) { }
     }
     
     @IBAction func userInputData(_ sender: UITextField) {
