@@ -7,10 +7,16 @@
 
 import UIKit
 
+struct MyItem {
+    var item: String
+    var check: Bool = false
+    var star: Bool = false
+}
+
 class ThirsdTableViewController: UITableViewController {
     @IBOutlet var mainTextField: UITextField!
     @IBOutlet var appendButton: UIButton!
-    var shoppingList = [String]()
+    var shoppingList = [MyItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +25,23 @@ class ThirsdTableViewController: UITableViewController {
     }
     
     @IBAction func appendButtonClicked(_ sender: UIButton) {
-        let text = mainTextField.text!
-        shoppingList.append(text)
+        guard let text = mainTextField.text else { return }
+        let myItem = MyItem(item: text)
+        shoppingList.append(myItem)
+        self.tableView.reloadData()
+    }
+    
+    @objc func checkButtonClicked(_ sender: UIButton) {
+        let idx = sender.tag
+        
+        shoppingList[idx].check.toggle()
+        self.tableView.reloadData()
+    }
+    
+    @objc func starButtonClicked(_ sender: UIButton) {
+        let idx = sender.tag
+        
+        shoppingList[idx].star.toggle()
         self.tableView.reloadData()
     }
     
@@ -63,27 +84,35 @@ class ThirsdTableViewController: UITableViewController {
         var buttonConfiguration = UIButton.Configuration.plain()
         buttonConfiguration.background.backgroundColor = .clear
         //------------------------------------------------------------------
-        
         cell.backgroundColor = .white
         cell.selectionStyle = .none
         
         cell.mainView.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
         cell.mainView.layer.cornerRadius = 10
         
-        cell.mainLabel.text = shoppingList[indexPath.row]
+        cell.mainLabel.text = shoppingList[indexPath.row].item
         cell.mainLabel.textColor = .black
         cell.mainLabel.textAlignment = .left
         
         cell.checkButton.configuration = buttonConfiguration
+        cell.checkButton.tag = indexPath.row
         cell.checkButton.tintColor = .black
-        cell.checkButton.setImage(UIImage(systemName: "checkmark.square", withConfiguration: imageConfiguration), for: .normal)
-        cell.checkButton.setImage(UIImage(systemName: "checkmark.square.fill", withConfiguration: imageConfiguration), for: .selected)
+        cell.checkButton.setImage(UIImage(systemName: shoppingList[indexPath.row].check ? "checkmark.square.fill" : "checkmark.square", withConfiguration: imageConfiguration), for: .normal)
+        cell.checkButton.addTarget(self, action: #selector(checkButtonClicked(_:)), for: .touchUpInside)
         
         cell.starButton.configuration = buttonConfiguration
+        cell.starButton.tag = indexPath.row
         cell.starButton.tintColor = .black
-        cell.starButton.setImage(UIImage(systemName: "star", withConfiguration: imageConfiguration), for: .normal)
-        cell.starButton.setImage(UIImage(systemName: "star.fill", withConfiguration: imageConfiguration), for: .selected)
+        cell.starButton.setImage(UIImage(systemName: shoppingList[indexPath.row].star ? "star.fill" : "star", withConfiguration: imageConfiguration), for: .normal)
+        cell.starButton.addTarget(self, action: #selector(starButtonClicked(_:)), for: .touchUpInside)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            shoppingList.remove(at: indexPath.row)
+        }
+        tableView.reloadData()
     }
 }
