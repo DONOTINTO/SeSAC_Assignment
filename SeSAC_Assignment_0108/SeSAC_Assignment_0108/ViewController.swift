@@ -10,7 +10,9 @@ import SafariServices
 
 class ViewController: UIViewController {
     @IBOutlet var magazineTableView: UITableView!
+    @IBOutlet var headerStackView: UIStackView!
     @IBOutlet var headerLabel: UILabel!
+    @IBOutlet var headerLineView: UIView!
     
     let magazine: [Magazine] = [
         Magazine(title: "유럽 여행 쇼핑 성지, OOO은 꼭 가세요!", subtitle: "유럽의 인기 쇼핑 명소 총정리", photo_image: "https://i.namu.wiki/i/1E2wCXUwFym-bYSTtV98bCnbQwdfmQVonirXbFOT_93AAbEOxuBKK44nhvh7RQEdcrPkmOO8L6bmO3K4-NDmnlJT5Y7-tG8VRN-KW9W821rHR2-D7TxbkBm_u-RCHCJEDSaCKjeIFnhXjyRgrJA51A.webp", date: "231118", link: "https://triple.guide/articles/265bd919-3f75-4adc-8d5d-c5cf60201bfe"),
@@ -38,12 +40,14 @@ class ViewController: UIViewController {
         self.magazineTableView.dataSource = self
         self.magazineTableView.separatorStyle = .none
         //동적인 높이 설정 다만 오토레이아웃을 모두 설정해주어야 한다.(위아래)
-        self.magazineTableView.estimatedRowHeight = 300
+        self.magazineTableView.estimatedRowHeight = UITableView.automaticDimension
         self.magazineTableView.rowHeight = UITableView.automaticDimension
         
         self.headerLabel.text = "SeSAC TRAVEL"
-        self.headerLabel.font = .boldSystemFont(ofSize: 20)
+        self.headerLabel.font = .boldSystemFont(ofSize: 17)
         self.headerLabel.textAlignment = .center
+        
+        self.headerLineView.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
     
     @objc func cellClicked(_ sender: UITapGestureRecognizer) {
