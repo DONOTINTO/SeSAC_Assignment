@@ -77,8 +77,7 @@ extension ViewController: UITableViewDataSource {
         let date = magazine[indexPath.row].date
         
         cell.tag = indexPath.row
-        cell.designUI()
-        cell.setData(link: link, title: title, subTitle: subTitle, date: date)
+        cell.setData(magazine: magazine[indexPath.row])
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(cellClicked(_:)))
         cell.addGestureRecognizer(tapGestureRecognizer)

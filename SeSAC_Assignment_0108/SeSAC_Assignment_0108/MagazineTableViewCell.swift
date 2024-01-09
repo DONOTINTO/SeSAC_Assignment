@@ -14,8 +14,9 @@ class MagazineTableViewCell: UITableViewCell {
     @IBOutlet var mainTitleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    let dateFormatter = DateFormatter()
     
-    func designUI() {
+    override func awakeFromNib() {
         mainImageView.layer.cornerRadius = 10
         mainImageView.contentMode = .scaleAspectFill
         
@@ -33,17 +34,16 @@ class MagazineTableViewCell: UITableViewCell {
         dateLabel.textAlignment = .right
     }
     
-    func setData(link: String, title: String, subTitle: String, date: String) {
-        let url = URL(string: link)
+    func setData(magazine: Magazine) {
+        let url = URL(string: magazine.link)
         mainImageView.kf.setImage(with: url)
         
-        mainTitleLabel.text = title
+        mainTitleLabel.text = magazine.title
         
-        subTitleLabel.text = subTitle
+        subTitleLabel.text = magazine.subtitle
         
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyMMdd"
-        guard let myDate = dateFormatter.date(from: date) else { return }
+        guard let myDate = dateFormatter.date(from: magazine.date) else { return }
         dateFormatter.dateFormat = "yy년 MM월 dd일"
         
         dateLabel.text = dateFormatter.string(from: myDate)
