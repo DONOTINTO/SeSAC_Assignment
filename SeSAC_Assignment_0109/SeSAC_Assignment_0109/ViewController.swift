@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var headerView: UIView!
     @IBOutlet var headerTitleLabel: UILabel!
     @IBOutlet var headerLineView: UIView!
     @IBOutlet var headerSegmentControl: UISegmentedControl!
@@ -48,8 +49,13 @@ class ViewController: UIViewController {
     }
 
     func designUI() {
+        self.view.backgroundColor = .white
+        
         // 헤더 뷰
+        headerView.backgroundColor = .white
+        
         headerTitleLabel.text = "인기 도시"
+        headerTitleLabel.textColor = .black
         headerTitleLabel.textAlignment = .center
         headerTitleLabel.font = .boldSystemFont(ofSize: 17)
         
@@ -58,12 +64,15 @@ class ViewController: UIViewController {
         let segmentNameList = ["모두", "국내", "해외"]
         for idx in 0 ..< headerSegmentControl.numberOfSegments {
             headerSegmentControl.setTitle(segmentNameList[idx], forSegmentAt: idx)
+            headerSegmentControl.backgroundColor = .black
             headerSegmentControl.addTarget(self, action: #selector(segmentControlClicked(_:)), for: .valueChanged)
         }
         
         // 콜렉션 뷰
+        cityCollectionView.backgroundColor = .white
+        
         let layout = UICollectionViewFlowLayout()
-        let width = cityCollectionView.frame.width
+        let width = UIScreen.main.bounds.width
         let insetSpacing: CGFloat = Spacing.insetSpacing
         let interSpacing: CGFloat = Spacing.interSpacing
         let lineSpacing: CGFloat = Spacing.lineSpacing

@@ -97,6 +97,7 @@
                         <outlet property="headerLineView" destination="aU2-of-OyM" id="WfL-7s-6ae"/>
                         <outlet property="headerSegmentControl" destination="pvV-x2-Ugc" id="9Dn-Xa-MEO"/>
                         <outlet property="headerTitleLabel" destination="QNt-c0-SYl" id="kMI-gN-LVq"/>
+                        <outlet property="headerView" destination="rjP-CU-IAW" id="JhQ-oM-ViG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

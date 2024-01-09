@@ -329,7 +329,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.donotinto.SeSAC-Assignment-0109";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donotinto.SeSACThirdWeek-SB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
