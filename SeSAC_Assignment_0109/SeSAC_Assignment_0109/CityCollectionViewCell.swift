@@ -17,10 +17,6 @@ class CityCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
-        let width = UIScreen.main.bounds.width
-        let imageRadius: CGFloat = (width - (2 * Spacing.insetSpacing) - ((Spacing.row - 1) * Spacing.interSpacing)) / 4
-        cityImageView.layer.cornerRadius = imageRadius
         cityImageView.contentMode = .scaleAspectFill
         
         cityLabel.font = .boldSystemFont(ofSize: 14)
@@ -39,5 +35,12 @@ class CityCollectionViewCell: UICollectionViewCell {
         
         cityLabel.text = "\(data.city_name) | \(data.city_english_name)"
         placeLabel.text = data.city_explain
+    }
+    
+    func setImageCornerRadius(width: CGFloat) {
+        // let width = UIScreen.main.bounds.width
+        print(width)
+        let imageRadius: CGFloat = (width - (2 * Spacing.insetSpacing) - ((Spacing.row - 1) * Spacing.interSpacing)) / 4
+        cityImageView.layer.cornerRadius = imageRadius
     }
 }

@@ -21,20 +21,20 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="114"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNt-c0-SYl">
-                                        <rect key="frame" x="0.0" y="9.9999999999999982" width="393" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="10.000000000000002" width="393" height="20.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aU2-of-OyM">
-                                        <rect key="frame" x="0.0" y="40.333333333333329" width="393" height="1"/>
+                                        <rect key="frame" x="0.0" y="40.666666666666671" width="393" height="1"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ILZ-92-YPl"/>
                                         </constraints>
                                     </view>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pvV-x2-Ugc">
-                                        <rect key="frame" x="10" y="71.333333333333343" width="373" height="31"/>
+                                        <rect key="frame" x="10" y="71.666666666666657" width="373" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="tdm-HE-EpA"/>
                                         </constraints>

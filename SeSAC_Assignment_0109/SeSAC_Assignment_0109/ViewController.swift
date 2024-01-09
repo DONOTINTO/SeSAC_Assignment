@@ -36,12 +36,33 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         designUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // 콜렉션 뷰
+        cityCollectionView.backgroundColor = .white
+        
+        let layout = UICollectionViewFlowLayout()
+        let width = cityCollectionView.bounds.width
+        let insetSpacing: CGFloat = Spacing.insetSpacing
+        let interSpacing: CGFloat = Spacing.interSpacing
+        let lineSpacing: CGFloat = Spacing.lineSpacing
+        let row: CGFloat = Spacing.row
+        let itemWidth = width - (2 * insetSpacing) - ((row - 1) * interSpacing)
+        
+        layout.itemSize = CGSize(width: itemWidth / row, height: 250)
+        layout.minimumLineSpacing = lineSpacing
+        layout.minimumInteritemSpacing = interSpacing
+        layout.sectionInset = UIEdgeInsets(top: insetSpacing, left: insetSpacing, bottom: insetSpacing, right: insetSpacing)
+        
+        cityCollectionView.collectionViewLayout = layout
         
         let xib = UINib(nibName: "CityCollectionViewCell", bundle: nil)
         cityCollectionView.register(xib, forCellWithReuseIdentifier: "CityCollectionViewCell")
         cityCollectionView.delegate = self
         cityCollectionView.dataSource = self
         
+        cityCollectionView.reloadData()
     }
     
     @objc func segmentControlClicked(_ sender: UISegmentedControl) {
@@ -67,24 +88,6 @@ class ViewController: UIViewController {
             headerSegmentControl.backgroundColor = .black
             headerSegmentControl.addTarget(self, action: #selector(segmentControlClicked(_:)), for: .valueChanged)
         }
-        
-        // 콜렉션 뷰
-        cityCollectionView.backgroundColor = .white
-        
-        let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        let insetSpacing: CGFloat = Spacing.insetSpacing
-        let interSpacing: CGFloat = Spacing.interSpacing
-        let lineSpacing: CGFloat = Spacing.lineSpacing
-        let row: CGFloat = Spacing.row
-        let itemWidth = width - (2 * insetSpacing) - ((row - 1) * interSpacing)
-        
-        layout.itemSize = CGSize(width: itemWidth / row, height: 250)
-        layout.minimumLineSpacing = lineSpacing
-        layout.minimumInteritemSpacing = interSpacing
-        layout.sectionInset = UIEdgeInsets(top: insetSpacing, left: insetSpacing, bottom: insetSpacing, right: insetSpacing)
-        
-        cityCollectionView.collectionViewLayout = layout
     }
     
     func getDomesticCityList() -> [City] {
@@ -110,6 +113,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print(#function)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CityCollectionViewCell", for: indexPath) as? CityCollectionViewCell else { return UICollectionViewCell() }
         
         var list: [City] = cityInfoList
@@ -121,6 +125,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         let cityInfo = list[indexPath.item]
+        cell.setImageCornerRadius(width: cityCollectionView.frame.width)
         cell.setData(cityInfo)
         
         return cell
