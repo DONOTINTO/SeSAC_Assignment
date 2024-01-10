@@ -64,32 +64,6 @@ class ViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // // 콜렉션 뷰
-        // cityCollectionView.backgroundColor = .white
-        // 
-        // let layout = UICollectionViewFlowLayout()
-        // 
-        // let width = self.cityCollectionView.frame.width
-        // let insetSpacing: CGFloat = Spacing.insetSpacing
-        // let interSpacing: CGFloat = Spacing.interSpacing
-        // let lineSpacing: CGFloat = Spacing.lineSpacing
-        // let row: CGFloat = Spacing.row
-        // let itemWidth = width - (2 * insetSpacing) - ((row - 1) * interSpacing)
-        // 
-        // layout.itemSize = CGSize(width: itemWidth / row, height: 250)
-        // layout.minimumLineSpacing = lineSpacing
-        // layout.minimumInteritemSpacing = interSpacing
-        // layout.sectionInset = UIEdgeInsets(top: insetSpacing, left: insetSpacing, bottom: insetSpacing, right: insetSpacing)
-        // 
-        // cityCollectionView.collectionViewLayout = layout
-        // 
-        // let xib = UINib(nibName: "CityCollectionViewCell", bundle: nil)
-        // cityCollectionView.register(xib, forCellWithReuseIdentifier: "CityCollectionViewCell")
-        // cityCollectionView.delegate = self
-        // cityCollectionView.dataSource = self
-    }
-    
     @objc func segmentControlClicked(_ sender: UISegmentedControl) {
         self.cityCollectionView.reloadData()
     }
