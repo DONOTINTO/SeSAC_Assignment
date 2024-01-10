@@ -36,39 +36,64 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         designUI()
+        
+        // 콜렉션 뷰
+        DispatchQueue.main.async {
+            self.cityCollectionView.backgroundColor = .white
+            
+            let layout = UICollectionViewFlowLayout()
+            
+            let width = self.cityCollectionView.frame.width
+            let insetSpacing: CGFloat = Spacing.insetSpacing
+            let interSpacing: CGFloat = Spacing.interSpacing
+            let lineSpacing: CGFloat = Spacing.lineSpacing
+            let row: CGFloat = Spacing.row
+            let itemWidth = width - (2 * insetSpacing) - ((row - 1) * interSpacing)
+            
+            layout.itemSize = CGSize(width: itemWidth / row, height: 250)
+            layout.minimumLineSpacing = lineSpacing
+            layout.minimumInteritemSpacing = interSpacing
+            layout.sectionInset = UIEdgeInsets(top: insetSpacing, left: insetSpacing, bottom: insetSpacing, right: insetSpacing)
+            
+            self.cityCollectionView.collectionViewLayout = layout
+            
+            let xib = UINib(nibName: "CityCollectionViewCell", bundle: nil)
+            self.cityCollectionView.register(xib, forCellWithReuseIdentifier: "CityCollectionViewCell")
+            self.cityCollectionView.delegate = self
+            self.cityCollectionView.dataSource = self
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // 콜렉션 뷰
-        cityCollectionView.backgroundColor = .white
-        
-        let layout = UICollectionViewFlowLayout()
-        let width = cityCollectionView.bounds.width
-        let insetSpacing: CGFloat = Spacing.insetSpacing
-        let interSpacing: CGFloat = Spacing.interSpacing
-        let lineSpacing: CGFloat = Spacing.lineSpacing
-        let row: CGFloat = Spacing.row
-        let itemWidth = width - (2 * insetSpacing) - ((row - 1) * interSpacing)
-        
-        layout.itemSize = CGSize(width: itemWidth / row, height: 250)
-        layout.minimumLineSpacing = lineSpacing
-        layout.minimumInteritemSpacing = interSpacing
-        layout.sectionInset = UIEdgeInsets(top: insetSpacing, left: insetSpacing, bottom: insetSpacing, right: insetSpacing)
-        
-        cityCollectionView.collectionViewLayout = layout
-        
-        let xib = UINib(nibName: "CityCollectionViewCell", bundle: nil)
-        cityCollectionView.register(xib, forCellWithReuseIdentifier: "CityCollectionViewCell")
-        cityCollectionView.delegate = self
-        cityCollectionView.dataSource = self
-        
-        cityCollectionView.reloadData()
+        // // 콜렉션 뷰
+        // cityCollectionView.backgroundColor = .white
+        // 
+        // let layout = UICollectionViewFlowLayout()
+        // 
+        // let width = self.cityCollectionView.frame.width
+        // let insetSpacing: CGFloat = Spacing.insetSpacing
+        // let interSpacing: CGFloat = Spacing.interSpacing
+        // let lineSpacing: CGFloat = Spacing.lineSpacing
+        // let row: CGFloat = Spacing.row
+        // let itemWidth = width - (2 * insetSpacing) - ((row - 1) * interSpacing)
+        // 
+        // layout.itemSize = CGSize(width: itemWidth / row, height: 250)
+        // layout.minimumLineSpacing = lineSpacing
+        // layout.minimumInteritemSpacing = interSpacing
+        // layout.sectionInset = UIEdgeInsets(top: insetSpacing, left: insetSpacing, bottom: insetSpacing, right: insetSpacing)
+        // 
+        // cityCollectionView.collectionViewLayout = layout
+        // 
+        // let xib = UINib(nibName: "CityCollectionViewCell", bundle: nil)
+        // cityCollectionView.register(xib, forCellWithReuseIdentifier: "CityCollectionViewCell")
+        // cityCollectionView.delegate = self
+        // cityCollectionView.dataSource = self
     }
     
     @objc func segmentControlClicked(_ sender: UISegmentedControl) {
         self.cityCollectionView.reloadData()
     }
-
+    
     func designUI() {
         self.view.backgroundColor = .white
         
@@ -113,7 +138,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(#function)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CityCollectionViewCell", for: indexPath) as? CityCollectionViewCell else { return UICollectionViewCell() }
         
         var list: [City] = cityInfoList
@@ -125,7 +149,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         let cityInfo = list[indexPath.item]
-        cell.setImageCornerRadius(width: cityCollectionView.frame.width)
+        DispatchQueue.main.async {
+            cell.cityImageView.layer.cornerRadius = cell.cityImageView.frame.width / 2
+        }
         cell.setData(cityInfo)
         
         return cell
