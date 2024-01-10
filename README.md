@@ -167,6 +167,7 @@ let collectionViewWidth = collectionView.frame.width
 let itemWidth = collectionViewWidth - leftInset - rightInst - ((row - 1) * interSpacing) 
 ```
 
+collectionView의 너비가 확정되는 순간이 viewDidLoad가 아닌 view가 전부 그려진 viewDidAppear라는 점을 확인하여 해당 시점에 item의 크기를 결정해주었다.
 
 > **기간**
 
