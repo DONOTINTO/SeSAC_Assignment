@@ -71,10 +71,6 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "magazineCell", for: indexPath) as? MagazineTableViewCell else { return UITableViewCell() }
-        let link = magazine[indexPath.row].photo_image
-        let title = magazine[indexPath.row].title
-        let subTitle = magazine[indexPath.row].subtitle
-        let date = magazine[indexPath.row].date
         
         cell.tag = indexPath.row
         cell.setData(magazine: magazine[indexPath.row])

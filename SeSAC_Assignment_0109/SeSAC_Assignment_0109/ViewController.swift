@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ViewProtocol {    
     
     @IBOutlet var headerView: UIView!
     @IBOutlet var headerTitleLabel: UILabel!

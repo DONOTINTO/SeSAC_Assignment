@@ -18,6 +18,7 @@
 		ACFE26D22B4D32C3002EF629 /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE26D12B4D32C3002EF629 /* CityInfo.swift */; };
 		ACFE26D52B4D3662002EF629 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = ACFE26D42B4D3662002EF629 /* Kingfisher */; };
 		ACFE26D72B4D3A73002EF629 /* SpacingStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE26D62B4D3A73002EF629 /* SpacingStruct.swift */; };
+		ACFE26FD2B4EB9BA002EF629 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE26FC2B4EB9BA002EF629 /* ViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		ACFE26CE2B4D2DBE002EF629 /* CityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACFE26D12B4D32C3002EF629 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
 		ACFE26D62B4D3A73002EF629 /* SpacingStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingStruct.swift; sourceTree = "<group>"; };
+		ACFE26FC2B4EB9BA002EF629 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				ACFE26BD2B4D2CCF002EF629 /* ViewController.swift */,
 				ACFE26D62B4D3A73002EF629 /* SpacingStruct.swift */,
 				ACFE26BF2B4D2CCF002EF629 /* Main.storyboard */,
+				ACFE26FC2B4EB9BA002EF629 /* ViewProtocol.swift */,
 				ACFE26CD2B4D2DBE002EF629 /* CityCollectionViewCell.swift */,
 				ACFE26CE2B4D2DBE002EF629 /* CityCollectionViewCell.xib */,
 				ACFE26C22B4D2CD1002EF629 /* Assets.xcassets */,
@@ -163,6 +166,7 @@
 				ACFE26BA2B4D2CCF002EF629 /* AppDelegate.swift in Sources */,
 				ACFE26D22B4D32C3002EF629 /* CityInfo.swift in Sources */,
 				ACFE26BC2B4D2CCF002EF629 /* SceneDelegate.swift in Sources */,
+				ACFE26FD2B4EB9BA002EF629 /* ViewProtocol.swift in Sources */,
 				ACFE26D72B4D3A73002EF629 /* SpacingStruct.swift in Sources */,
 				ACFE26CF2B4D2DBE002EF629 /* CityCollectionViewCell.swift in Sources */,
 			);
