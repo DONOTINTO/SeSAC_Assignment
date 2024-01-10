@@ -19,6 +19,7 @@
 		ACFE26D52B4D3662002EF629 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = ACFE26D42B4D3662002EF629 /* Kingfisher */; };
 		ACFE26D72B4D3A73002EF629 /* SpacingStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE26D62B4D3A73002EF629 /* SpacingStruct.swift */; };
 		ACFE26FD2B4EB9BA002EF629 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE26FC2B4EB9BA002EF629 /* ViewProtocol.swift */; };
+		ACFE26FF2B4EDC3D002EF629 /* TestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE26FE2B4EDC3D002EF629 /* TestProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		ACFE26D12B4D32C3002EF629 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
 		ACFE26D62B4D3A73002EF629 /* SpacingStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingStruct.swift; sourceTree = "<group>"; };
 		ACFE26FC2B4EB9BA002EF629 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		ACFE26FE2B4EDC3D002EF629 /* TestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				ACFE26C22B4D2CD1002EF629 /* Assets.xcassets */,
 				ACFE26C42B4D2CD1002EF629 /* LaunchScreen.storyboard */,
 				ACFE26C72B4D2CD1002EF629 /* Info.plist */,
+				ACFE26FE2B4EDC3D002EF629 /* TestProtocol.swift */,
 			);
 			path = SeSAC_Assignment_0109;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				ACFE26FD2B4EB9BA002EF629 /* ViewProtocol.swift in Sources */,
 				ACFE26D72B4D3A73002EF629 /* SpacingStruct.swift in Sources */,
 				ACFE26CF2B4D2DBE002EF629 /* CityCollectionViewCell.swift in Sources */,
+				ACFE26FF2B4EDC3D002EF629 /* TestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
