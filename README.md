@@ -101,3 +101,88 @@ UITextField에는 다음과 같은 조건들이 있다.
 - UITapGestureRecognizer
 - if case / guard case
 - Enum
+
+---
+## `❗ SeSAC Assignment 0105`
+테이블 뷰를 만들어보는 과제로, 스토리보드와 코드로 진행했다.
+테이블 뷰의 데이터를 삽입 삭제할 때 테이블 뷰를 다시 한번 호출하여 뷰에도 데이터가 삽입되고 삭제되는 로직을 구현했다.
+
+button의 image를 selected에 따라 변경해주었는데, 이때 background가 원치않은 색상으로 자동으로 변경되는 문제가 있었다.
+우선 iOS 15부터 적용되는 UIButton.Configuration을 통해 해당 문제를 해결할 수 있었다.
+
+더 좋은 방법으로는 UIButton이 아닌 데이터 자체에 클릭 여부를 판별할 수 있는 프로퍼티를 생성하고, 해당 프로퍼티에 따라 .normal 상태에서 이미지를 변경해줄 수 있었다.
+
+> **기간**
+
+24.01.05
+
+> **UIKit**
+- UITableView
+- UITebleViewCell
+- UIButton.Configuration
+
+> **키워드**
+- 테이블 뷰 데이터 삽입/삭제
+
+---
+## `❗ SeSAC Assignment 0108`
+테이블뷰에 전달할 데이터가 많아져서 이를 구조체로 만들었다.
+생성한 구조체에는 데이터를 저장하고 테이블 뷰의 셀에 데이터를 담아주었다.
+
+SPM을 통해 KingFisher 라이브러리를 추가하였다.
+KingFisher를 외부 링크 이미지를 불러와 볼 수 있었다.
+
+> **기간**
+
+24.01.08
+
+> **UIKit**
+- UITableView
+- UITableViewCell
+- DateFormatter
+
+> **Library**
+- KingFisher
+
+> **키워드**
+- 테이블 뷰 데이터 삽입/삭제
+
+---
+## `❗ SeSAC Assignment 0109`
+콜렉션 뷰를 통해 2열로 커스텀 셀을 보여주었다.
+테이블 뷰와 다르게 FlowLayout을 통해 내부 설정들을 진행해주어야 했다.
+
+아이템을 원하는 열만큼 보여주기 위하여 다음과 같이 수행했다.
+collectionView의 Width에서 좌우 inset과 아이템별 interSpacing을 빼주었다.
+interspacing은 내가 희망하는 열의 1을 뺀 값만큼 존재하기 때문에 interSpacing에서 row의 갯수 - 1을 해주어  곱해주었다.
+
+```swift
+//예시
+let leftInset: CGFloat = 10
+let rightInset: CGFloat = 10
+let interSpacing: CGFloat = 15
+let row: CGFloat = 3
+let collectionViewWidth = collectionView.frame.width
+
+let itemWidth = collectionViewWidth - leftInset - rightInst - ((row - 1) * interSpacing) 
+```
+
+
+> **기간**
+
+24.01.09
+
+> **UIKit**
+- UICollectionView
+- UICollectionViewCell
+- UICollectionViewFlowLayout
+- UICollectionViewLayout
+
+> **Library**
+- KingFisher
+
+> **키워드**
+- Delegate
+- DataSource
+- Nib / Xib
+- View의 Frame.width가 정해지는 시점
