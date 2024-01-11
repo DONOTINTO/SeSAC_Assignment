@@ -12,6 +12,6 @@ struct Travel {
     let travel_image: String?
     let grade: Float?
     let save: Int?
-    let like: Bool?
+    var like: Bool?
     let ad: Bool
 }

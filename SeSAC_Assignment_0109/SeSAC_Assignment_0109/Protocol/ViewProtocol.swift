@@ -8,5 +8,7 @@
 import UIKit
 
 protocol ViewProtocol {
-    func designUI()
+    static var identifier: String { get }
+    
+    func configureUI()
 }

@@ -34,10 +34,11 @@
                             <constraint firstItem="qTE-jI-aLE" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="lXa-lK-BNu"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jMd-D2-WLm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="-2"/>
+            <point key="canvasLocation" x="1929.0076335877861" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>

@@ -11,6 +11,8 @@ import Kingfisher
 
 class DetailTableViewCell: UITableViewCell {
     
+    static let identifier = "DetailTableViewCell"
+    
     @IBOutlet var cityImage: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -19,33 +21,27 @@ class DetailTableViewCell: UITableViewCell {
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var gradeImages: [UIImageView]!
     
-    static let identifier = "DetailTableViewCell"
-
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        configureUI()
+    }
+}
+
+extension DetailTableViewCell: ViewProtocol {
+    func configureUI() {
         gradeStackView.spacing = 0
         gradeStackView.distribution = .fillEqually
         
         cityImage.contentMode = .scaleAspectFill
         cityImage.layer.cornerRadius = 3
         
-        titleLabel.font = .boldSystemFont(ofSize: 17)
-        titleLabel.textAlignment = .left
-        titleLabel.textColor = .black
-        
-        descriptionLabel.font = .systemFont(ofSize: 15)
-        descriptionLabel.textAlignment = .left
-        descriptionLabel.textColor = .black
-        descriptionLabel.numberOfLines = 0
-        
-        saveLabel.font = .systemFont(ofSize: 13)
-        saveLabel.textAlignment = .left
-        saveLabel.textColor = .lightGray
+        titleLabel.setLabel(text: "", font: .Bold, fontSize: 17, alignment: .left)
+        descriptionLabel.setLabel(text: "", font: .System, fontSize: 15, line: 0, alignment: .left)
+        saveLabel.setLabel(text: "", textColor: .lightGray, font: .System, fontSize: 13, alignment: .left)
         
         likeButton.tintColor = .black
         likeButton.setTitle("", for: .normal)
-        
     }
     
     func setInfo(_ travel: Travel) {
@@ -55,8 +51,10 @@ class DetailTableViewCell: UITableViewCell {
         guard let grade = travel.grade else { return }
         guard let save = travel.save else { return }
         guard let like = travel.like else { return }
+        
         let numberFomatter = NumberFormatter()
         numberFomatter.numberStyle = .decimal
+        
         guard let result = numberFomatter.string(from: NSNumber(value: save)) else { return }
         
         let url = URL(string: travel_image)
@@ -70,7 +68,6 @@ class DetailTableViewCell: UITableViewCell {
         
         for idx in 0 ..< gradeImages.count {
             let imageConfig = UIImage.SymbolConfiguration(scale: .medium)
-            gradeImages[idx].tag = idx + 1
             gradeImages[idx].tintColor = .systemYellow
             
             let image = UIImage(systemName: (Float(idx + 1) <= grade ? "star.fill" : "star") , withConfiguration: imageConfig)

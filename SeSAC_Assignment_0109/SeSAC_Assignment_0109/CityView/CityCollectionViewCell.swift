@@ -9,6 +9,8 @@ import UIKit
 import Kingfisher
 
 class CityCollectionViewCell: UICollectionViewCell {
+    
+    static let identifier: String = "CityCollectionViewCell"
 
     @IBOutlet var cityImageView: UIImageView!
     @IBOutlet var cityLabel: UILabel!
@@ -17,18 +19,17 @@ class CityCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        cityImageView.contentMode = .scaleAspectFill
-        
-        cityLabel.font = .boldSystemFont(ofSize: 14)
-        cityLabel.textAlignment = .center
-        cityLabel.textColor = .black
-        
-        placeLabel.font = .systemFont(ofSize: 12)
-        placeLabel.numberOfLines = 0
-        placeLabel.textAlignment = .center
-        placeLabel.textColor = .lightGray
+        configureUI()
     }
+}
 
+extension CityCollectionViewCell: ViewProtocol {
+    func configureUI() {
+        cityImageView.contentMode = .scaleAspectFill
+        cityLabel.setLabel(text: "", font: .Bold, fontSize: 14)
+        placeLabel.setLabel(text: "", textColor: .lightGray, font: .System, fontSize: 12, line: 0)
+    }
+    
     func setData(_ data: City) {
         let url = URL(string: data.city_image)
         cityImageView.kf.setImage(with: url)
