@@ -31,7 +31,6 @@ class ViewController: UIViewController, ViewProtocol {
         City(city_name: "토론토", city_english_name: "Toronto", city_explain: "토론토, 나이아가라, 킹스턴, 블루마운틴", city_image: "https://i.namu.wiki/i/I7os9ysTEyBl4sVe-9AN-dHFmJ95e0j3P03DIQiVwIrLOi_RAbo311TdKiRFb0LMyUkbhAPzASfH6JR25cVXj3vYNR2S9koQBZsWrEitWWRe855pPYigkUFUvXGDn1xTF2jxneC4NRl7zcRY5_iBRA.webp", domestic_travel: false),
         City(city_name: "대전", city_english_name: "Daejeon", city_explain: "대전, 성심당", city_image: "https://i.namu.wiki/i/fFklvoNy6HqB2XtGHad8aZ9zItaH-ow-H97JlYV5OvgYHWgOfjiL4OPB_7UWLbKdQhJXlIrxs1Q25WomVNz1McMgUZmlME4OpNOI1KUMrOkR05LWsoU7PfXLI_EOKZdy6PCx9Bu7JBNTLbDn8RvdQA.webp", domestic_travel: true),
     ]
-    var delegate: TestProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,5 +129,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.setData(cityInfo)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailStoryboard = UIStoryboard(name: "Detail", bundle: nil)
+        guard let nextVC = detailStoryboard.instantiateViewController(identifier: DetailViewController.identifier) as? DetailViewController else { return }
+        
+        let navigationVC = UINavigationController(rootViewController: nextVC)
+        navigationVC.modalPresentationStyle = .fullScreen
+        
+        present(navigationVC, animated: true)
     }
 }
