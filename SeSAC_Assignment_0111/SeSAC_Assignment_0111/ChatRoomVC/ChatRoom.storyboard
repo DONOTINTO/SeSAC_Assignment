@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat Room View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="ChatRoomViewController" id="Y6W-OH-hqX" customClass="ChatRoomViewController" customModule="SeSAC_Assignment_0111" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHv-Ig-McR">
+                                <rect key="frame" x="0.0" y="768" width="393" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h6k-4s-2gP">
+                                        <rect key="frame" x="15" y="3" width="363" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuG-gZ-ZGa">
+                                        <rect key="frame" x="308" y="10" width="75" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="h6k-4s-2gP" secondAttribute="bottom" constant="3" id="0gU-YV-VuE"/>
+                                    <constraint firstAttribute="height" constant="50" id="V8G-Ai-efA"/>
+                                    <constraint firstItem="iuG-gZ-ZGa" firstAttribute="top" secondItem="BHv-Ig-McR" secondAttribute="top" constant="10" id="WNq-cA-L2g"/>
+                                    <constraint firstAttribute="trailing" secondItem="iuG-gZ-ZGa" secondAttribute="trailing" constant="10" id="c74-Ue-dyh"/>
+                                    <constraint firstAttribute="bottom" secondItem="iuG-gZ-ZGa" secondAttribute="bottom" constant="10" id="hwH-my-236"/>
+                                    <constraint firstItem="h6k-4s-2gP" firstAttribute="leading" secondItem="BHv-Ig-McR" secondAttribute="leading" constant="15" id="p7k-Xa-kSL"/>
+                                    <constraint firstAttribute="trailing" secondItem="h6k-4s-2gP" secondAttribute="trailing" constant="15" id="pjl-Ud-dvy"/>
+                                    <constraint firstItem="h6k-4s-2gP" firstAttribute="top" secondItem="BHv-Ig-McR" secondAttribute="top" constant="3" id="yci-Hh-pkK"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xne-c2-D75">
+                                <rect key="frame" x="0.0" y="59" width="393" height="709"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="BHv-Ig-McR" secondAttribute="trailing" id="KIw-kG-FlM"/>
+                            <constraint firstItem="xne-c2-D75" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="flm-sw-Oxf"/>
+                            <constraint firstItem="BHv-Ig-McR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="kD6-uw-8Dc"/>
+                            <constraint firstItem="BHv-Ig-McR" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="oYv-0W-BKh"/>
+                            <constraint firstItem="xne-c2-D75" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="r12-nl-339"/>
+                            <constraint firstItem="BHv-Ig-McR" firstAttribute="top" secondItem="xne-c2-D75" secondAttribute="bottom" id="rwk-MR-8jb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xne-c2-D75" secondAttribute="trailing" id="w7Y-tX-I7H"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chatRoomTableView" destination="xne-c2-D75" id="53k-Jc-ohh"/>
+                        <outlet property="mainTextField" destination="h6k-4s-2gP" id="Izm-VP-Cxb"/>
+                        <outlet property="sendButton" destination="iuG-gZ-ZGa" id="T7c-gl-h3R"/>
+                        <outlet property="textFieldLayoutView" destination="BHv-Ig-McR" id="cR6-YB-XXv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="77" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

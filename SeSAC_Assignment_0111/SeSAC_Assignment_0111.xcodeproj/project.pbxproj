@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC0A88162B52683D00BCD1CA /* ChatRoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88152B52683D00BCD1CA /* ChatRoomListViewController.swift */; };
+		AC0A88192B5268C000BCD1CA /* DefaultChatRoomListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88172B5268C000BCD1CA /* DefaultChatRoomListTableViewCell.swift */; };
+		AC0A881E2B52728300BCD1CA /* DefaultChatRoomListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0A881D2B52728300BCD1CA /* DefaultChatRoomListTableViewCell.xib */; };
+		AC0A88202B52729200BCD1CA /* ThreeChatRoomListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0A881F2B52729200BCD1CA /* ThreeChatRoomListTableViewCell.xib */; };
+		AC0A88222B5272AC00BCD1CA /* FourChatRoomListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0A88212B5272AC00BCD1CA /* FourChatRoomListTableViewCell.xib */; };
+		AC0A88242B5272D400BCD1CA /* FiveChatRoomListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0A88232B5272D400BCD1CA /* FiveChatRoomListTableViewCell.xib */; };
+		AC0A88262B52785B00BCD1CA /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88252B52785B00BCD1CA /* ChatData.swift */; };
+		AC0A88282B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88272B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift */; };
+		AC0A882A2B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88292B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift */; };
+		AC0A882C2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A882B2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift */; };
+		AC0A882E2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A882D2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift */; };
+		AC0A88302B5288C700BCD1CA /* TableViewCell++.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A882F2B5288C700BCD1CA /* TableViewCell++.swift */; };
+		AC0A88372B52A05100BCD1CA /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88362B52A05100BCD1CA /* ChatRoomViewController.swift */; };
+		AC0A88392B52A09000BCD1CA /* ChatRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0A88382B52A09000BCD1CA /* ChatRoom.storyboard */; };
+		AC0A883C2B52A7B800BCD1CA /* OthersChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A883A2B52A7B800BCD1CA /* OthersChatTableViewCell.swift */; };
+		AC0A883D2B52A7B800BCD1CA /* OthersChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0A883B2B52A7B800BCD1CA /* OthersChatTableViewCell.xib */; };
+		AC0A88402B52A7C700BCD1CA /* OwnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A883E2B52A7C700BCD1CA /* OwnTableViewCell.swift */; };
+		AC0A88412B52A7C700BCD1CA /* OwnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0A883F2B52A7C700BCD1CA /* OwnTableViewCell.xib */; };
+		AC6B50062B5265B600FA890F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B50052B5265B600FA890F /* AppDelegate.swift */; };
+		AC6B50082B5265B600FA890F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B50072B5265B600FA890F /* SceneDelegate.swift */; };
+		AC6B500D2B5265B600FA890F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6B500B2B5265B600FA890F /* Main.storyboard */; };
+		AC6B500F2B5265B700FA890F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6B500E2B5265B700FA890F /* Assets.xcassets */; };
+		AC6B50122B5265B700FA890F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6B50102B5265B700FA890F /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AC0A88152B52683D00BCD1CA /* ChatRoomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListViewController.swift; sourceTree = "<group>"; };
+		AC0A88172B5268C000BCD1CA /* DefaultChatRoomListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChatRoomListTableViewCell.swift; sourceTree = "<group>"; };
+		AC0A881D2B52728300BCD1CA /* DefaultChatRoomListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultChatRoomListTableViewCell.xib; sourceTree = "<group>"; };
+		AC0A881F2B52729200BCD1CA /* ThreeChatRoomListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreeChatRoomListTableViewCell.xib; sourceTree = "<group>"; };
+		AC0A88212B5272AC00BCD1CA /* FourChatRoomListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FourChatRoomListTableViewCell.xib; sourceTree = "<group>"; };
+		AC0A88232B5272D400BCD1CA /* FiveChatRoomListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiveChatRoomListTableViewCell.xib; sourceTree = "<group>"; };
+		AC0A88252B52785B00BCD1CA /* ChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatData.swift; sourceTree = "<group>"; };
+		AC0A88272B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeChatRoomListTableViewCell.swift; sourceTree = "<group>"; };
+		AC0A88292B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourChatRoomListTableViewCell.swift; sourceTree = "<group>"; };
+		AC0A882B2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveChatRoomListTableViewCell.swift; sourceTree = "<group>"; };
+		AC0A882D2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListTableViewCellProtocol.swift; sourceTree = "<group>"; };
+		AC0A882F2B5288C700BCD1CA /* TableViewCell++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell++.swift"; sourceTree = "<group>"; };
+		AC0A88362B52A05100BCD1CA /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		AC0A88382B52A09000BCD1CA /* ChatRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoom.storyboard; sourceTree = "<group>"; };
+		AC0A883A2B52A7B800BCD1CA /* OthersChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersChatTableViewCell.swift; sourceTree = "<group>"; };
+		AC0A883B2B52A7B800BCD1CA /* OthersChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OthersChatTableViewCell.xib; sourceTree = "<group>"; };
+		AC0A883E2B52A7C700BCD1CA /* OwnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnTableViewCell.swift; sourceTree = "<group>"; };
+		AC0A883F2B52A7C700BCD1CA /* OwnTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OwnTableViewCell.xib; sourceTree = "<group>"; };
+		AC6B50022B5265B600FA890F /* SeSAC_Assignment_0111.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_Assignment_0111.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC6B50052B5265B600FA890F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC6B50072B5265B600FA890F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AC6B500C2B5265B600FA890F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC6B500E2B5265B700FA890F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC6B50112B5265B700FA890F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC6B50132B5265B700FA890F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC6B4FFF2B5265B600FA890F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC0A88322B529FF500BCD1CA /* ChatRoomListVC */ = {
+			isa = PBXGroup;
+			children = (
+				AC6B500B2B5265B600FA890F /* Main.storyboard */,
+				AC0A88152B52683D00BCD1CA /* ChatRoomListViewController.swift */,
+				AC0A88172B5268C000BCD1CA /* DefaultChatRoomListTableViewCell.swift */,
+				AC0A881D2B52728300BCD1CA /* DefaultChatRoomListTableViewCell.xib */,
+				AC0A88272B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift */,
+				AC0A881F2B52729200BCD1CA /* ThreeChatRoomListTableViewCell.xib */,
+				AC0A88292B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift */,
+				AC0A88212B5272AC00BCD1CA /* FourChatRoomListTableViewCell.xib */,
+				AC0A882B2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift */,
+				AC0A88232B5272D400BCD1CA /* FiveChatRoomListTableViewCell.xib */,
+			);
+			path = ChatRoomListVC;
+			sourceTree = "<group>";
+		};
+		AC0A88332B52A00D00BCD1CA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				AC0A882D2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		AC0A88342B52A01500BCD1CA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AC0A882F2B5288C700BCD1CA /* TableViewCell++.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		AC0A88352B52A02400BCD1CA /* ChatRoomVC */ = {
+			isa = PBXGroup;
+			children = (
+				AC0A88362B52A05100BCD1CA /* ChatRoomViewController.swift */,
+				AC0A88382B52A09000BCD1CA /* ChatRoom.storyboard */,
+				AC0A883A2B52A7B800BCD1CA /* OthersChatTableViewCell.swift */,
+				AC0A883B2B52A7B800BCD1CA /* OthersChatTableViewCell.xib */,
+				AC0A883E2B52A7C700BCD1CA /* OwnTableViewCell.swift */,
+				AC0A883F2B52A7C700BCD1CA /* OwnTableViewCell.xib */,
+			);
+			path = ChatRoomVC;
+			sourceTree = "<group>";
+		};
+		AC6B4FF92B5265B500FA890F = {
+			isa = PBXGroup;
+			children = (
+				AC6B50042B5265B600FA890F /* SeSAC_Assignment_0111 */,
+				AC6B50032B5265B600FA890F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC6B50032B5265B600FA890F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC6B50022B5265B600FA890F /* SeSAC_Assignment_0111.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC6B50042B5265B600FA890F /* SeSAC_Assignment_0111 */ = {
+			isa = PBXGroup;
+			children = (
+				AC0A88342B52A01500BCD1CA /* Extension */,
+				AC0A88332B52A00D00BCD1CA /* Protocol */,
+				AC6B50052B5265B600FA890F /* AppDelegate.swift */,
+				AC6B50072B5265B600FA890F /* SceneDelegate.swift */,
+				AC0A88252B52785B00BCD1CA /* ChatData.swift */,
+				AC0A88322B529FF500BCD1CA /* ChatRoomListVC */,
+				AC0A88352B52A02400BCD1CA /* ChatRoomVC */,
+				AC6B500E2B5265B700FA890F /* Assets.xcassets */,
+				AC6B50102B5265B700FA890F /* LaunchScreen.storyboard */,
+				AC6B50132B5265B700FA890F /* Info.plist */,
+			);
+			path = SeSAC_Assignment_0111;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC6B50012B5265B600FA890F /* SeSAC_Assignment_0111 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC6B50162B5265B700FA890F /* Build configuration list for PBXNativeTarget "SeSAC_Assignment_0111" */;
+			buildPhases = (
+				AC6B4FFE2B5265B600FA890F /* Sources */,
+				AC6B4FFF2B5265B600FA890F /* Frameworks */,
+				AC6B50002B5265B600FA890F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SeSAC_Assignment_0111;
+			productName = SeSAC_Assignment_0111;
+			productReference = AC6B50022B5265B600FA890F /* SeSAC_Assignment_0111.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC6B4FFA2B5265B500FA890F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					AC6B50012B5265B600FA890F = {
+						CreatedOnToolsVersion = 15.1;
+					};
+				};
+			};
+			buildConfigurationList = AC6B4FFD2B5265B500FA890F /* Build configuration list for PBXProject "SeSAC_Assignment_0111" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC6B4FF92B5265B500FA890F;
+			productRefGroup = AC6B50032B5265B600FA890F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC6B50012B5265B600FA890F /* SeSAC_Assignment_0111 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC6B50002B5265B600FA890F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC0A88412B52A7C700BCD1CA /* OwnTableViewCell.xib in Resources */,
+				AC6B50122B5265B700FA890F /* LaunchScreen.storyboard in Resources */,
+				AC0A88202B52729200BCD1CA /* ThreeChatRoomListTableViewCell.xib in Resources */,
+				AC0A88242B5272D400BCD1CA /* FiveChatRoomListTableViewCell.xib in Resources */,
+				AC6B500F2B5265B700FA890F /* Assets.xcassets in Resources */,
+				AC0A881E2B52728300BCD1CA /* DefaultChatRoomListTableViewCell.xib in Resources */,
+				AC6B500D2B5265B600FA890F /* Main.storyboard in Resources */,
+				AC0A88222B5272AC00BCD1CA /* FourChatRoomListTableViewCell.xib in Resources */,
+				AC0A883D2B52A7B800BCD1CA /* OthersChatTableViewCell.xib in Resources */,
+				AC0A88392B52A09000BCD1CA /* ChatRoom.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC6B4FFE2B5265B600FA890F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC6B50062B5265B600FA890F /* AppDelegate.swift in Sources */,
+				AC0A88162B52683D00BCD1CA /* ChatRoomListViewController.swift in Sources */,
+				AC0A882E2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift in Sources */,
+				AC0A88402B52A7C700BCD1CA /* OwnTableViewCell.swift in Sources */,
+				AC0A88282B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift in Sources */,
+				AC0A883C2B52A7B800BCD1CA /* OthersChatTableViewCell.swift in Sources */,
+				AC0A882C2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift in Sources */,
+				AC0A88302B5288C700BCD1CA /* TableViewCell++.swift in Sources */,
+				AC0A882A2B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift in Sources */,
+				AC0A88192B5268C000BCD1CA /* DefaultChatRoomListTableViewCell.swift in Sources */,
+				AC0A88262B52785B00BCD1CA /* ChatData.swift in Sources */,
+				AC6B50082B5265B600FA890F /* SceneDelegate.swift in Sources */,
+				AC0A88372B52A05100BCD1CA /* ChatRoomViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AC6B500B2B5265B600FA890F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC6B500C2B5265B600FA890F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC6B50102B5265B700FA890F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC6B50112B5265B700FA890F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC6B50142B5265B700FA890F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC6B50152B5265B700FA890F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC6B50172B5265B700FA890F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92Y6UC7Q5M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SeSAC_Assignment_0111/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donotinto.SeSAC-Assignment-0111";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AC6B50182B5265B700FA890F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92Y6UC7Q5M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SeSAC_Assignment_0111/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donotinto.SeSAC-Assignment-0111";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC6B4FFD2B5265B500FA890F /* Build configuration list for PBXProject "SeSAC_Assignment_0111" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC6B50142B5265B700FA890F /* Debug */,
+				AC6B50152B5265B700FA890F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC6B50162B5265B700FA890F /* Build configuration list for PBXNativeTarget "SeSAC_Assignment_0111" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC6B50172B5265B700FA890F /* Debug */,
+				AC6B50182B5265B700FA890F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC6B4FFA2B5265B500FA890F /* Project object */;
+}
