@@ -21,47 +21,97 @@ class ChatRoomViewController: UIViewController {
     @IBOutlet var mainTextField: UITextField!
     @IBOutlet var sendButton: UIButton!
     let cellIdentifier = [OthersChatTableViewCell.identifier, OwnTableViewCell.identifier]
-    var chatData: ChatRoom?
+    var roomID: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        setTableView()
+        setDismissKeyboard()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
+    func setTableView() {
+        chatRoomTableView.separatorStyle = .none
         chatRoomTableView.dataSource = self
         chatRoomTableView.delegate = self
         cellIdentifier.forEach {
             let xib = UINib(nibName: $0, bundle: nil)
             chatRoomTableView.register(xib, forCellReuseIdentifier: $0)
         }
+    }
+    
+    func setRoomID(_ id: Int) {
+        self.roomID = id
         
+        setScrollToRow()
+        setNavigationUI()
+    }
+    
+    // 스크롤 맨 아래로 이동, 네비게이션 타이틀 설정
+    // chatData가 넘어오는 시점이 viewDidLoad보다는 뒤임
+    // 다른 처리 방법은?
+    func setScrollToRow() {
         DispatchQueue.main.async {
-            guard let chatData = self.chatData else { return }
+            let chatData = self.getChatData()
+            
             let chatList = chatData.chatList
             let last = IndexPath(row: chatList.count - 1, section: 0)
             self.chatRoomTableView.scrollToRow(at: last, at: .top, animated: false)
-            self.navigationController?.navigationBar.topItem?.title = chatData.chatroomName
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.chatRoomTableView.endEditing(true)
+    func getChatData() -> ChatRoom {
+        return ChatRoomList.shared.getChatRoomDataByRoomID(roomID)
     }
     
+    // 새로운 메시지 띄우기
     @IBAction func sendButtonClicked(_ sender: UIButton) {
+        guard let newMessage = mainTextField.text else { return }
+        if newMessage == "" { return }
         
+        mainTextField.text = ""
+        ChatRoomList.shared.updateChatData(roomID, message: newMessage)
+        chatRoomTableView.reloadData()
+        setScrollToRow()
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+        
+        if view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= keyboardHeight
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+        
+        if view.frame.origin.y != 0 {
+            self.view.frame.origin.y += keyboardHeight
+        }
     }
 }
 
 extension ChatRoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let chatData else { return 0 }
+        let chatData = getChatData()
         
         return chatData.chatList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let chatData else { return UITableViewCell() }
+        let chatData = getChatData()
         let chatList = chatData.chatList
         
         if case .user = chatList[indexPath.row].user {
@@ -105,5 +155,11 @@ extension ChatRoomViewController {
         sendButton.tintColor = .darkGray
     }
     
-    
+    func setNavigationUI() {
+        DispatchQueue.main.async {
+            let chatData = self.getChatData()
+            
+            self.navigationController?.navigationBar.topItem?.title = chatData.chatroomName
+        }
+    }
 }

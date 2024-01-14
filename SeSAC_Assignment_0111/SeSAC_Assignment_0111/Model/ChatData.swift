@@ -37,12 +37,14 @@ struct ChatRoom {
     var chatList: [Chat] = [] //채팅 화면에서 사용할 데이터
 }
 
+// ChatRoom 전체 관리 싱글톤
 struct ChatRoomList {
+    /// 하나의 객체로 관리
     static var shared: ChatRoomList = ChatRoomList()
     
     private init() { }
     
-    private let list: [ChatRoom] = [
+    private var list: [ChatRoom] = [
         ChatRoom(chatroomId: 1,
                  chatroomImage: [User.hue.profileImage, User.jack.profileImage, User.bran.profileImage, User.den.profileImage],
                  chatroomName: "도봉 멘토방",
@@ -220,11 +222,11 @@ struct ChatRoomList {
                  ])
         ]
     
+    /// 채팅방에 해당 유저가 한명이라도 있으면 ChatRoom 배열에 추가하여 반환
     func searchData(_ data: String) -> [ChatRoom] {
         var searchChatRoom: [ChatRoom] = []
-        var list = ChatRoomList.shared.list
+        let list = ChatRoomList.shared.list
         
-        // 채팅방에 해당 유저가 한명이라도 있으면 결과로 보여줄 searchChatRoom에 추가
         list.forEach { chatRoom in
             if chatRoom.chatList.filter({ chat in chat.user.rawValue.uppercased() == data.uppercased() }).count > 0 {
                 searchChatRoom.append(chatRoom)
@@ -233,12 +235,42 @@ struct ChatRoomList {
         return searchChatRoom
     }
     
+    /// 채팅방 개수
     func getChatRoomListCount() -> Int {
         return ChatRoomList.shared.list.count
     }
     
+    /// index를 통해 채팅 정보 반환
     func getChatDataByIndex(_ index: Int) -> ChatRoom {
         return ChatRoomList.shared.list[index]
+    }
+    
+    /// chatRoom ID를 통해 채팅 정보 반환
+    func getChatRoomDataByRoomID(_ roomID: Int) -> ChatRoom {
+        var result: ChatRoom?
+        ChatRoomList.shared.list.forEach { chatRoom in
+            if chatRoom.chatroomId == roomID {
+                result = chatRoom
+            }
+        }
+        return result!
+    }
+    
+    /// user 메시지 업데이트
+    func updateChatData(_ roomID: Int, message: String) {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let convertDate = dateFormatter.string(from: now)
+        
+        let newChat = Chat(user: .user, date: convertDate, message: message)
+        
+        for idx in 0 ..< ChatRoomList.shared.list.count {
+            if ChatRoomList.shared.list[idx].chatroomId == roomID {
+                ChatRoomList.shared.list[idx].chatList.append(newChat)
+            }
+        }
     }
 }
 

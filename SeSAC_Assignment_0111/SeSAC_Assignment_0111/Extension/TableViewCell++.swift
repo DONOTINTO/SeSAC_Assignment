@@ -33,7 +33,6 @@ extension UITableViewCell {
         roomMessage.textColor = UIColor(white: 1, alpha: 0.8)
         roomMessage.numberOfLines = 1
         roomMessage.textAlignment = .left
-        // roomMessage.lineBreakMode =
         roomMessage.adjustsFontSizeToFitWidth = true
         
         date.font = .systemFont(ofSize: 11)

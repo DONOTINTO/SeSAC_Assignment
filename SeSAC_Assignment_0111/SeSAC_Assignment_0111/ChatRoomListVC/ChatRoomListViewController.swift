@@ -28,11 +28,9 @@ class ChatRoomListViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         setTableView()
+        setDismissKeyboard()
         
         mainSearchBar.delegate = self
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.view.addGestureRecognizer(tapGesture)
     }
     
     func setTableView() {
@@ -44,10 +42,6 @@ class ChatRoomListViewController: UIViewController {
             let xib = UINib(nibName: $0, bundle: nil)
             chatRoomListTableView.register(xib, forCellReuseIdentifier: $0)
         }
-    }
-    
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
     }
 }
 
@@ -111,23 +105,27 @@ extension ChatRoomListViewController: UITableViewDelegate, UITableViewDataSource
         return UITableView.automaticDimension
     }
     
+    // 해당 채팅 방으로 이동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "ChatRoom", bundle: nil)
         guard let nextVC = storyBoard.instantiateViewController(withIdentifier: ChatRoomViewController.identifier) as? ChatRoomViewController else { return }
         
-        nextVC.chatData = ChatRoomList.shared.getChatDataByIndex(indexPath.row)
+        let chatData = ChatRoomList.shared.getChatDataByIndex(indexPath.row)
+        nextVC.setRoomID(chatData.chatroomId)
         
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
 extension ChatRoomListViewController: UISearchBarDelegate {
+    // 검색 결과를 포함하는 채팅방만 노출
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchList = ChatRoomList.shared.searchData(searchText)
         
         chatRoomListTableView.reloadData()
     }
     
+    // 채팅방 리스트 리셋
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if let inputText = searchBar.text {
             self.searchList = inputText.isEmpty ? nil : ChatRoomList.shared.searchData(inputText)
@@ -135,11 +133,13 @@ extension ChatRoomListViewController: UISearchBarDelegate {
         }
     }
     
+    // 키보드 검색 클릭 시 키보드 다운
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 }
 
+// UI 관리
 extension ChatRoomListViewController {
     func configureUI() {
         self.view.backgroundColor = .black

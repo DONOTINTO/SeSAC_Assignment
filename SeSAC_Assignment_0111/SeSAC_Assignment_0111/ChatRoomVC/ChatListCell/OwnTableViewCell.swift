@@ -47,7 +47,8 @@ class OwnTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         guard let newDate = dateFormatter.date(from: data.date) else { return }
-        dateFormatter.dateFormat = "HH.mm"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "a hh.mm"
         let newDateString = dateFormatter.string(from: newDate)
         self.dateLabel.text = newDateString
     }
