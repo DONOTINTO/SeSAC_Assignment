@@ -11,7 +11,6 @@ class OthersChatTableViewCell: UITableViewCell {
     static var identifier: String = "OthersChatTableViewCell"
     
     @IBOutlet var userImageView: UIImageView!
-    @IBOutlet var mainStackView: UIStackView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var messageLayoutView: UIView!
     @IBOutlet var messageLabel: UILabel!
@@ -56,12 +55,6 @@ class OthersChatTableViewCell: UITableViewCell {
         dateLabel.textColor = UIColor(white: 1, alpha: 0.8)
         dateLabel.numberOfLines = 1
         dateLabel.textAlignment = .right
-        // dateLabel.setContentCompressionResistancePriority(UILayoutPriority(751), for: .horizontal)
-        
-        // mainStackView.distribution = .fill
-        // mainStackView.spacing = 10
-        // mainStackView.backgroundColor = .clear
-        // mainStackView.sizeToFit()
     }
     
     func setData(_ data: Chat) {

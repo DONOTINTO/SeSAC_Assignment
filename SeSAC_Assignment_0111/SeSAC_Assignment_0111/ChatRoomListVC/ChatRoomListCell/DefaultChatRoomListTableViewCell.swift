@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DefaultChatRoomListTableViewCell: UITableViewCell, ChatCellProtocol {
+class DefaultChatRoomListTableViewCell: UITableViewCell {
     static var identifier: String = "DefaultChatRoomListTableViewCell"
     var chatData: ChatRoom?
     

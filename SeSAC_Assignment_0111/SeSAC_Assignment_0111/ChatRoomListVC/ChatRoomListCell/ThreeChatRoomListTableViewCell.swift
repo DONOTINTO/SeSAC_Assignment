@@ -1,5 +1,5 @@
 //
-//  FourChatRoomListTableViewCell.swift
+//  ThreeChatRoomListTableViewCell.swift
 //  SeSAC_Assignment_0111
 //
 //  Created by 이중엽 on 1/13/24.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FourChatRoomListTableViewCell: UITableViewCell, ChatCellProtocol {
-    static var identifier: String = "FourChatRoomListTableViewCell"
+class ThreeChatRoomListTableViewCell: UITableViewCell {
+    static var identifier: String = "ThreeChatRoomListTableViewCell"
     var chatData: ChatRoom?
     
     @IBOutlet var imageLayoutView: UIView!
@@ -16,7 +16,7 @@ class FourChatRoomListTableViewCell: UITableViewCell, ChatCellProtocol {
     @IBOutlet var chatroomNameLabel: UILabel!
     @IBOutlet var chatroomMessageLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
-
+    
     override func awakeFromNib() {
         self.configureChatRoomListUI(layoutView: imageLayoutView, imageViews: chatroomImageViews, roomName: chatroomNameLabel, roomMessage: chatroomMessageLabel, date: dateLabel)
         

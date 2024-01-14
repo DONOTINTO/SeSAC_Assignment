@@ -17,7 +17,6 @@
 		AC0A88282B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88272B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift */; };
 		AC0A882A2B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88292B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift */; };
 		AC0A882C2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A882B2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift */; };
-		AC0A882E2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A882D2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift */; };
 		AC0A88302B5288C700BCD1CA /* TableViewCell++.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A882F2B5288C700BCD1CA /* TableViewCell++.swift */; };
 		AC0A88372B52A05100BCD1CA /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A88362B52A05100BCD1CA /* ChatRoomViewController.swift */; };
 		AC0A88392B52A09000BCD1CA /* ChatRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0A88382B52A09000BCD1CA /* ChatRoom.storyboard */; };
@@ -25,6 +24,7 @@
 		AC0A883D2B52A7B800BCD1CA /* OthersChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0A883B2B52A7B800BCD1CA /* OthersChatTableViewCell.xib */; };
 		AC0A88402B52A7C700BCD1CA /* OwnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A883E2B52A7C700BCD1CA /* OwnTableViewCell.swift */; };
 		AC0A88412B52A7C700BCD1CA /* OwnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0A883F2B52A7C700BCD1CA /* OwnTableViewCell.xib */; };
+		AC0A88442B53863200BCD1CA /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC0A88432B53863200BCD1CA /* IQKeyboardManagerSwift */; };
 		AC6B50062B5265B600FA890F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B50052B5265B600FA890F /* AppDelegate.swift */; };
 		AC6B50082B5265B600FA890F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B50072B5265B600FA890F /* SceneDelegate.swift */; };
 		AC6B500D2B5265B600FA890F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6B500B2B5265B600FA890F /* Main.storyboard */; };
@@ -43,7 +43,6 @@
 		AC0A88272B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeChatRoomListTableViewCell.swift; sourceTree = "<group>"; };
 		AC0A88292B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourChatRoomListTableViewCell.swift; sourceTree = "<group>"; };
 		AC0A882B2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveChatRoomListTableViewCell.swift; sourceTree = "<group>"; };
-		AC0A882D2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListTableViewCellProtocol.swift; sourceTree = "<group>"; };
 		AC0A882F2B5288C700BCD1CA /* TableViewCell++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell++.swift"; sourceTree = "<group>"; };
 		AC0A88362B52A05100BCD1CA /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		AC0A88382B52A09000BCD1CA /* ChatRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoom.storyboard; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0A88442B53863200BCD1CA /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,24 +76,9 @@
 			children = (
 				AC6B500B2B5265B600FA890F /* Main.storyboard */,
 				AC0A88152B52683D00BCD1CA /* ChatRoomListViewController.swift */,
-				AC0A88172B5268C000BCD1CA /* DefaultChatRoomListTableViewCell.swift */,
-				AC0A881D2B52728300BCD1CA /* DefaultChatRoomListTableViewCell.xib */,
-				AC0A88272B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift */,
-				AC0A881F2B52729200BCD1CA /* ThreeChatRoomListTableViewCell.xib */,
-				AC0A88292B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift */,
-				AC0A88212B5272AC00BCD1CA /* FourChatRoomListTableViewCell.xib */,
-				AC0A882B2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift */,
-				AC0A88232B5272D400BCD1CA /* FiveChatRoomListTableViewCell.xib */,
+				AC0A88452B53A94600BCD1CA /* ChatRoomListCell */,
 			);
 			path = ChatRoomListVC;
-			sourceTree = "<group>";
-		};
-		AC0A88332B52A00D00BCD1CA /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				AC0A882D2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift */,
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		AC0A88342B52A01500BCD1CA /* Extension */ = {
@@ -109,12 +94,43 @@
 			children = (
 				AC0A88362B52A05100BCD1CA /* ChatRoomViewController.swift */,
 				AC0A88382B52A09000BCD1CA /* ChatRoom.storyboard */,
+				AC0A88462B53A9FE00BCD1CA /* ChatListCell */,
+			);
+			path = ChatRoomVC;
+			sourceTree = "<group>";
+		};
+		AC0A88452B53A94600BCD1CA /* ChatRoomListCell */ = {
+			isa = PBXGroup;
+			children = (
+				AC0A88172B5268C000BCD1CA /* DefaultChatRoomListTableViewCell.swift */,
+				AC0A881D2B52728300BCD1CA /* DefaultChatRoomListTableViewCell.xib */,
+				AC0A88272B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift */,
+				AC0A881F2B52729200BCD1CA /* ThreeChatRoomListTableViewCell.xib */,
+				AC0A88292B527A9800BCD1CA /* FourChatRoomListTableViewCell.swift */,
+				AC0A88212B5272AC00BCD1CA /* FourChatRoomListTableViewCell.xib */,
+				AC0A882B2B527AB200BCD1CA /* FiveChatRoomListTableViewCell.swift */,
+				AC0A88232B5272D400BCD1CA /* FiveChatRoomListTableViewCell.xib */,
+			);
+			path = ChatRoomListCell;
+			sourceTree = "<group>";
+		};
+		AC0A88462B53A9FE00BCD1CA /* ChatListCell */ = {
+			isa = PBXGroup;
+			children = (
 				AC0A883A2B52A7B800BCD1CA /* OthersChatTableViewCell.swift */,
 				AC0A883B2B52A7B800BCD1CA /* OthersChatTableViewCell.xib */,
 				AC0A883E2B52A7C700BCD1CA /* OwnTableViewCell.swift */,
 				AC0A883F2B52A7C700BCD1CA /* OwnTableViewCell.xib */,
 			);
-			path = ChatRoomVC;
+			path = ChatListCell;
+			sourceTree = "<group>";
+		};
+		AC0A88472B53AA1C00BCD1CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC0A88252B52785B00BCD1CA /* ChatData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AC6B4FF92B5265B500FA890F = {
@@ -136,11 +152,10 @@
 		AC6B50042B5265B600FA890F /* SeSAC_Assignment_0111 */ = {
 			isa = PBXGroup;
 			children = (
+				AC0A88472B53AA1C00BCD1CA /* Model */,
 				AC0A88342B52A01500BCD1CA /* Extension */,
-				AC0A88332B52A00D00BCD1CA /* Protocol */,
 				AC6B50052B5265B600FA890F /* AppDelegate.swift */,
 				AC6B50072B5265B600FA890F /* SceneDelegate.swift */,
-				AC0A88252B52785B00BCD1CA /* ChatData.swift */,
 				AC0A88322B529FF500BCD1CA /* ChatRoomListVC */,
 				AC0A88352B52A02400BCD1CA /* ChatRoomVC */,
 				AC6B500E2B5265B700FA890F /* Assets.xcassets */,
@@ -166,6 +181,9 @@
 			dependencies = (
 			);
 			name = SeSAC_Assignment_0111;
+			packageProductDependencies = (
+				AC0A88432B53863200BCD1CA /* IQKeyboardManagerSwift */,
+			);
 			productName = SeSAC_Assignment_0111;
 			productReference = AC6B50022B5265B600FA890F /* SeSAC_Assignment_0111.app */;
 			productType = "com.apple.product-type.application";
@@ -194,6 +212,9 @@
 				Base,
 			);
 			mainGroup = AC6B4FF92B5265B500FA890F;
+			packageReferences = (
+				AC0A88422B53863200BCD1CA /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = AC6B50032B5265B600FA890F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -230,7 +251,6 @@
 			files = (
 				AC6B50062B5265B600FA890F /* AppDelegate.swift in Sources */,
 				AC0A88162B52683D00BCD1CA /* ChatRoomListViewController.swift in Sources */,
-				AC0A882E2B527E4500BCD1CA /* ChatRoomListTableViewCellProtocol.swift in Sources */,
 				AC0A88402B52A7C700BCD1CA /* OwnTableViewCell.swift in Sources */,
 				AC0A88282B527A7A00BCD1CA /* ThreeChatRoomListTableViewCell.swift in Sources */,
 				AC0A883C2B52A7B800BCD1CA /* OthersChatTableViewCell.swift in Sources */,
@@ -469,6 +489,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC0A88422B53863200BCD1CA /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC0A88432B53863200BCD1CA /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC0A88422B53863200BCD1CA /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC6B4FFA2B5265B500FA890F /* Project object */;
 }

@@ -1,5 +1,5 @@
 //
-//  FiveChatRoomListTableViewCell.swift
+//  FourChatRoomListTableViewCell.swift
 //  SeSAC_Assignment_0111
 //
 //  Created by 이중엽 on 1/13/24.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FiveChatRoomListTableViewCell: UITableViewCell, ChatCellProtocol {
-    static var identifier: String = "FiveChatRoomListTableViewCell"
+class FourChatRoomListTableViewCell: UITableViewCell {
+    static var identifier: String = "FourChatRoomListTableViewCell"
     var chatData: ChatRoom?
     
     @IBOutlet var imageLayoutView: UIView!

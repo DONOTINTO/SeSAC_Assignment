@@ -26,12 +26,7 @@ class ChatRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .black
-        chatRoomTableView.backgroundColor = .black
-        textFieldLayoutView.backgroundColor = .black
-        mainTextField.backgroundColor = .lightGray
-        mainTextField.placeholder = "메시지를 입력하세요"
-        mainTextField.attributedPlaceholder = NSAttributedString(string: mainTextField.placeholder!, attributes: [.foregroundColor: UIColor.white])
+        configureUI()
         
         chatRoomTableView.dataSource = self
         chatRoomTableView.delegate = self
@@ -45,7 +40,16 @@ class ChatRoomViewController: UIViewController {
             let chatList = chatData.chatList
             let last = IndexPath(row: chatList.count - 1, section: 0)
             self.chatRoomTableView.scrollToRow(at: last, at: .top, animated: false)
+            self.navigationController?.navigationBar.topItem?.title = chatData.chatroomName
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.chatRoomTableView.endEditing(true)
+    }
+    
+    @IBAction func sendButtonClicked(_ sender: UIButton) {
+        
     }
 }
 
@@ -78,4 +82,28 @@ extension ChatRoomViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
+}
+
+extension ChatRoomViewController {
+    func configureUI() {
+        self.view.backgroundColor = .black
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        
+        chatRoomTableView.backgroundColor = .black
+        
+        textFieldLayoutView.backgroundColor = .black
+        
+        mainTextField.backgroundColor = .lightGray
+        mainTextField.placeholder = "메시지를 입력하세요"
+        mainTextField.attributedPlaceholder = NSAttributedString(string: mainTextField.placeholder!, attributes: [.foregroundColor: UIColor.darkGray])
+        
+        sendButton.backgroundColor = .clear
+        
+        sendButton.setImage(UIImage(systemName: "arrowtriangle.forward"), for: .normal)
+        sendButton.setTitle("", for: .normal)
+        sendButton.tintColor = .darkGray
+    }
+    
+    
 }
