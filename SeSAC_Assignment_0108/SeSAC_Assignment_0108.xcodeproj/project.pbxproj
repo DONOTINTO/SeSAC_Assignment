@@ -16,6 +16,7 @@
 		ACB8D6892B4BE598005D9214 /* MagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8D6882B4BE598005D9214 /* MagazineTableViewCell.swift */; };
 		ACB8D68B2B4BE70A005D9214 /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8D68A2B4BE70A005D9214 /* MagazineInfo.swift */; };
 		ACB8D68E2B4BE975005D9214 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = ACB8D68D2B4BE975005D9214 /* Kingfisher */; };
+		ACFC711B2B5553CD0087D9CB /* WebLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC711A2B5553CD0087D9CB /* WebLinkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		ACB8D6822B4BE4E4005D9214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACB8D6882B4BE598005D9214 /* MagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewCell.swift; sourceTree = "<group>"; };
 		ACB8D68A2B4BE70A005D9214 /* MagazineInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
+		ACFC711A2B5553CD0087D9CB /* WebLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLinkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				ACB8D6762B4BE4E2005D9214 /* SceneDelegate.swift */,
 				ACB8D6782B4BE4E2005D9214 /* ViewController.swift */,
 				ACB8D67A2B4BE4E2005D9214 /* Main.storyboard */,
+				ACFC711A2B5553CD0087D9CB /* WebLinkViewController.swift */,
 				ACB8D68A2B4BE70A005D9214 /* MagazineInfo.swift */,
 				ACB8D6882B4BE598005D9214 /* MagazineTableViewCell.swift */,
 				ACB8D67D2B4BE4E3005D9214 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACB8D6792B4BE4E2005D9214 /* ViewController.swift in Sources */,
+				ACFC711B2B5553CD0087D9CB /* WebLinkViewController.swift in Sources */,
 				ACB8D6892B4BE598005D9214 /* MagazineTableViewCell.swift in Sources */,
 				ACB8D6752B4BE4E2005D9214 /* AppDelegate.swift in Sources */,
 				ACB8D6772B4BE4E2005D9214 /* SceneDelegate.swift in Sources */,

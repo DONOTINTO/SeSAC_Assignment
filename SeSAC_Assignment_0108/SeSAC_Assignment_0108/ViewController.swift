@@ -50,14 +50,14 @@ class ViewController: UIViewController {
         self.headerLineView.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
     
-    @objc func cellClicked(_ sender: UITapGestureRecognizer) {
-        guard let cell = sender.view as? MagazineTableViewCell else { return }
-        
-        let link = magazine[cell.tag].link
-        guard let url = NSURL(string: link) else { return }
-        let safariView: SFSafariViewController = SFSafariViewController(url: url as URL)
-        self.present(safariView, animated: true, completion: nil)
-    }
+    // @objc func cellClicked(_ sender: UITapGestureRecognizer) {
+    //     guard let cell = sender.view as? MagazineTableViewCell else { return }
+    //     
+    //     let link = magazine[cell.tag].link
+    //     guard let url = NSURL(string: link) else { return }
+    //     let safariView: SFSafariViewController = SFSafariViewController(url: url as URL)
+    //     self.present(safariView, animated: true, completion: nil)
+    // }
 }
 
 extension ViewController: UITableViewDelegate {
@@ -75,9 +75,18 @@ extension ViewController: UITableViewDataSource {
         cell.tag = indexPath.row
         cell.setData(magazine: magazine[indexPath.row])
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(cellClicked(_:)))
-        cell.addGestureRecognizer(tapGestureRecognizer)
+        // let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(cellClicked(_:)))
+        // cell.addGestureRecognizer(tapGestureRecognizer)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let nextVC = storyboard?.instantiateViewController(identifier: "WebLinkViewController") as? WebLinkViewController else { return }
+        
+        let magazine = magazine[indexPath.row]
+        nextVC.data = magazine
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
