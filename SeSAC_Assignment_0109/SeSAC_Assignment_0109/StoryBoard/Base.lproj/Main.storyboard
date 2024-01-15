@@ -21,22 +21,22 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="114"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNt-c0-SYl">
-                                        <rect key="frame" x="0.0" y="10.000000000000002" width="393" height="20.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="20.666666666666668"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aU2-of-OyM">
-                                        <rect key="frame" x="0.0" y="40.666666666666671" width="393" height="1"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="ILZ-92-YPl"/>
-                                        </constraints>
-                                    </view>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nC0-rd-e9q">
+                                        <rect key="frame" x="0.0" y="21" width="393" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="0om-pq-Yir"/>
+                                        </connections>
+                                    </searchBar>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pvV-x2-Ugc">
-                                        <rect key="frame" x="10" y="71.666666666666657" width="373" height="31"/>
+                                        <rect key="frame" x="10" y="76.666666666666657" width="373" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="tdm-HE-EpA"/>
+                                            <constraint firstAttribute="height" constant="30" id="VmC-Qa-lgH"/>
                                         </constraints>
                                         <segments>
                                             <segment title="First"/>
@@ -47,15 +47,15 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="aU2-of-OyM" firstAttribute="top" secondItem="QNt-c0-SYl" secondAttribute="bottom" constant="10" id="BRh-h3-I2y"/>
-                                    <constraint firstItem="pvV-x2-Ugc" firstAttribute="top" secondItem="aU2-of-OyM" secondAttribute="bottom" constant="30" id="KVD-8P-l3J"/>
+                                    <constraint firstAttribute="trailing" secondItem="nC0-rd-e9q" secondAttribute="trailing" id="BSy-LU-yoz"/>
+                                    <constraint firstItem="pvV-x2-Ugc" firstAttribute="top" secondItem="nC0-rd-e9q" secondAttribute="bottom" id="BmJ-CH-X78"/>
                                     <constraint firstItem="pvV-x2-Ugc" firstAttribute="leading" secondItem="rjP-CU-IAW" secondAttribute="leading" constant="10" id="RAA-cL-oxL"/>
-                                    <constraint firstItem="aU2-of-OyM" firstAttribute="leading" secondItem="rjP-CU-IAW" secondAttribute="leading" id="Tf9-FT-qhw"/>
-                                    <constraint firstAttribute="trailing" secondItem="aU2-of-OyM" secondAttribute="trailing" id="X7H-Qm-bIx"/>
                                     <constraint firstAttribute="trailing" secondItem="QNt-c0-SYl" secondAttribute="trailing" id="dwP-Qu-aqi"/>
+                                    <constraint firstItem="nC0-rd-e9q" firstAttribute="top" secondItem="QNt-c0-SYl" secondAttribute="bottom" id="hxR-Pt-wrM"/>
+                                    <constraint firstItem="nC0-rd-e9q" firstAttribute="leading" secondItem="rjP-CU-IAW" secondAttribute="leading" id="iAw-fO-tks"/>
                                     <constraint firstItem="QNt-c0-SYl" firstAttribute="leading" secondItem="rjP-CU-IAW" secondAttribute="leading" id="mmk-eU-qLA"/>
                                     <constraint firstAttribute="trailing" secondItem="pvV-x2-Ugc" secondAttribute="trailing" constant="10" id="wyQ-V9-l7a"/>
-                                    <constraint firstItem="QNt-c0-SYl" firstAttribute="top" secondItem="rjP-CU-IAW" secondAttribute="top" constant="10" id="zYg-zd-Ge8"/>
+                                    <constraint firstItem="QNt-c0-SYl" firstAttribute="top" secondItem="rjP-CU-IAW" secondAttribute="top" id="zYg-zd-Ge8"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4yp-YB-s5o">
@@ -94,10 +94,10 @@
                     </view>
                     <connections>
                         <outlet property="cityCollectionView" destination="4yp-YB-s5o" id="OwK-RM-Wxx"/>
-                        <outlet property="headerLineView" destination="aU2-of-OyM" id="WfL-7s-6ae"/>
                         <outlet property="headerSegmentControl" destination="pvV-x2-Ugc" id="9Dn-Xa-MEO"/>
                         <outlet property="headerTitleLabel" destination="QNt-c0-SYl" id="kMI-gN-LVq"/>
                         <outlet property="headerView" destination="rjP-CU-IAW" id="JhQ-oM-ViG"/>
+                        <outlet property="searchBar" destination="nC0-rd-e9q" id="3gr-xq-0ZR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

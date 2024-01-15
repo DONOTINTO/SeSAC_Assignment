@@ -7,21 +7,43 @@
 
 import UIKit
 
+enum CityType: Int {
+    case all
+    case domestic
+    case overseas
+    
+    var segment: String {
+        switch self {
+        case .all:
+            return "모두"
+        case .domestic:
+            return "국내"
+        case .overseas:
+            return "해외"
+        }
+    }
+}
+
 class ViewController: UIViewController {
     
     static var identifier: String = "ViewController"
     
     @IBOutlet var headerView: UIView!
     @IBOutlet var headerTitleLabel: UILabel!
-    @IBOutlet var headerLineView: UIView!
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var headerSegmentControl: UISegmentedControl!
     @IBOutlet var cityCollectionView: UICollectionView!
-    
+    var filteredData: [City] = [] {
+        didSet { cityCollectionView.reloadData() }
+    }
+    var keyword: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        
+        searchBar.delegate = self
     }
     
     @objc func segmentControlClicked(_ sender: UISegmentedControl) {
@@ -31,10 +53,14 @@ class ViewController: UIViewController {
     func getCityListBySegmentState() -> [City] {
         var list: [City] = Storage.shared.getCityAllList()
         
-        if case 1 = self.headerSegmentControl.selectedSegmentIndex {
+        let currentPick = CityType(rawValue: headerSegmentControl.selectedSegmentIndex)
+        
+        switch currentPick {
+        case .domestic:
             list = Storage.shared.getDomesticCityList()
-        } else if case 2 = self.headerSegmentControl.selectedSegmentIndex {
+        case .overseas:
             list = Storage.shared.getOverseasCityList()
+        default: break
         }
         
         return list
@@ -43,7 +69,11 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let list = getCityListBySegmentState()
+        var list = getCityListBySegmentState()
+        
+        if !filteredData.isEmpty {
+            list = filteredData
+        }
         
         return list.count
     }
@@ -52,7 +82,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CityCollectionViewCell.identifier, for: indexPath) as? CityCollectionViewCell else { return UICollectionViewCell() }
         
-        let list = getCityListBySegmentState()
+        var list = getCityListBySegmentState()
+        
+        if !filteredData.isEmpty {
+            list = filteredData
+            
+            
+        }
+        
         let cityInfo = list[indexPath.item]
         cell.setData(cityInfo)
         
@@ -75,6 +112,36 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        var cityList = getCityListBySegmentState()
+        var filter: [City] = []
+        let text = searchText.uppercased()
+        
+        for city in cityList {
+            if city.city_english_name.uppercased().contains(text) || city.city_explain.uppercased().contains(text) || city.city_name.uppercased().contains(text) {
+                filter.append(city)
+            }
+        }
+        
+        self.filteredData = filter
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        var cityList = getCityListBySegmentState()
+        var filter: [City] = []
+        let text = searchBar.text!.uppercased()
+        
+        for city in cityList {
+            if city.city_english_name.uppercased().contains(text) || city.city_explain.uppercased().contains(text) || city.city_name.uppercased().contains(text) {
+                filter.append(city)
+            }
+        }
+        
+        self.filteredData = filter
+    }
+}
+
 extension ViewController: ViewProtocol {
     func configureUI() {
         self.view.backgroundColor = .white
@@ -83,8 +150,6 @@ extension ViewController: ViewProtocol {
         headerView.backgroundColor = .white
         
         headerTitleLabel.setLabel(text: "인기도시", font: .Bold, fontSize: 17)
-        
-        headerLineView.backgroundColor = .init(white: 0, alpha: 0.3)
         
         let segmentNameList = ["모두", "국내", "해외"]
         for idx in 0 ..< headerSegmentControl.numberOfSegments {
