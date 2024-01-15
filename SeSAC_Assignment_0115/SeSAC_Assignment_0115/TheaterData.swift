@@ -21,8 +21,12 @@ struct TheaterList {
         Theater(type: "CGV", location: "CGV 용산 아이파크몰", latitude: 37.53149302830903, longitude: 126.9654030486416)
     ]
     
+    func getAll() -> [Theater] {
+        return TheaterList.shared.mapAnnotations
+    }
+    
     func getList(_ title: String) -> [Theater] {
-        if title == "전체보기" { return TheaterList.shared.mapAnnotations }
+        if title == "전체보기" { return TheaterList.shared.getAll() }
         return TheaterList.shared.mapAnnotations.filter { $0.type == title}
     }
 }
