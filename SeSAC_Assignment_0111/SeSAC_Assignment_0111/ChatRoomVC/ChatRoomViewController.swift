@@ -44,7 +44,7 @@ class ChatRoomViewController: UIViewController {
             chatRoomTableView.register(xib, forCellReuseIdentifier: $0)
         }
     }
-
+    
     func setScrollToRow() {
         guard let chatData else { return }
         
@@ -145,9 +145,9 @@ extension ChatRoomViewController {
     }
     
     func setNavigationUI() {
-        DispatchQueue.main.async {
-           let chatData = self.getChatData()
-            self.navigationController?.navigationBar.topItem?.title = chatData.chatroomName
-        }
+        let chatData = self.getChatData()
+        self.navigationItem.title = chatData.chatroomName
+        //얘는 동작이 이상함
+        // self.navigationController?.navigationBar.topItem?.title = chatData.chatroomName
     }
 }
