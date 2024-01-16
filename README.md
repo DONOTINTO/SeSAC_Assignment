@@ -169,6 +169,10 @@ let itemWidth = collectionViewWidth - leftInset - rightInst - ((row - 1) * inter
 
 collectionView의 너비가 확정되는 순간이 viewDidLoad가 아닌 view가 전부 그려진 viewDidAppear라는 점을 확인하여 해당 시점에 item의 크기를 결정해주었다.
 
+검색창을 통해 검색 내용에 해당하는 item만을 Filtering 하여 화면에 노출해주었다.
+필터된 데이터는 filteredData라는 변수에 넣어주었고, 해당 변수에 값이 변경될 때마다 테이블뷰의 reloadData를 하기 위하여 변수의 didSet에 tableView.reloadData를 해주었다.
+이 방식을 통해 값이 변경될 떄마다 reloadData를 해주는 방식에서 filteredData에 didSet만 관리하면 되도록 코드를 줄일 수 있었다.
+
 > **기간**
 
 24.01.09
@@ -187,3 +191,46 @@ collectionView의 너비가 확정되는 순간이 viewDidLoad가 아닌 view가
 - DataSource
 - Nib / Xib
 - View의 Frame.width가 정해지는 시점
+- didSet
+
+---
+## `❗ SeSAC Assignment 0111`
+로우 데이터를 통해 간단한 메신저 UI를 구성하였다.
+VC에서 VC로 데이터를 전달하는 방법과 VC에서 Cell로 데이터를 전달하는 방식이 다르다는 것을 알게 되었다. (awakeForNib)
+로우 데이터의 경우에는 싱글톤을 통해 한가지의 객체만을 생성하여 데이터가 뒤섞이지 않도록 하였고, 채팅 기능을 구현하기 위해 채팅방에 입력을 하면 로우 데이터에 쌓이는 방식을 통해 테이블 뷰로 보여주었다.
+
+
+> **기간**
+
+24.01.11
+
+> **UIKit**
+- UISearchBar
+- UITableView
+- UITableViewCell
+- UINavigationController
+
+> **키워드**
+- Sigleton Pattern
+- Extension
+- SearchBar
+- Nib
+
+
+---
+## `❗ SeSAC Assignment 0115`
+MapKit을 이용하여 지도를 보여주었고 Alert를 통해 원하는 영화관 리스트를 가져와 지도에 핀을 노출해주었다.
+영화관을 분류하는 방법으로는 Enum(CaseIterable)과 연산 프로퍼티를 통해 희망하는 값을 가져와 코드를 줄일 수 있었다.
+
+> **기간**
+
+24.01.15
+
+> **UIKit**
+- MapKit
+
+> **키워드**
+- MapKit
+- Enum
+- CaseIterable
+- 연산 프로퍼티(Computed Property)
