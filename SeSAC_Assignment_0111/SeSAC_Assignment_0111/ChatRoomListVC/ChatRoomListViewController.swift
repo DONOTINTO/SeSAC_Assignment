@@ -26,6 +26,7 @@ class ChatRoomListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
         setTableView()
         setDismissKeyboard()
@@ -68,7 +69,8 @@ extension ChatRoomListViewController: UITableViewDelegate, UITableViewDataSource
             
             cell.setChatRoomListData(chatroom: chatData, imageViews: cell.chatroomImageView, roomName: cell.chatroomNameLabel, roomMessage: cell.chatroomMessageLabel, date: cell.dateLabel)
             
-            cell.chatData = chatData
+            // VC -> Cell 데이터 직접 전달 불가
+            // cell.chatData = chatData
             
             return cell
         } else if case .three = cellCase {
@@ -111,7 +113,7 @@ extension ChatRoomListViewController: UITableViewDelegate, UITableViewDataSource
         guard let nextVC = storyBoard.instantiateViewController(withIdentifier: ChatRoomViewController.identifier) as? ChatRoomViewController else { return }
         
         let chatData = ChatRoomList.shared.getChatDataByIndex(indexPath.row)
-        nextVC.setRoomID(chatData.chatroomId)
+        nextVC.chatData = chatData
         
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

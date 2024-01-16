@@ -8,8 +8,8 @@
 import UIKit
 
 class DefaultChatRoomListTableViewCell: UITableViewCell {
-    static var identifier: String = "DefaultChatRoomListTableViewCell"
-    var chatData: ChatRoom?
+    
+    // var chatData: ChatRoom?
     
     @IBOutlet var imageLayoutView: UIView!
     @IBOutlet var chatroomImageView: [UIImageView]!
@@ -19,8 +19,8 @@ class DefaultChatRoomListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         self.configureChatRoomListUI(layoutView: imageLayoutView, imageViews: chatroomImageView, roomName: chatroomNameLabel, roomMessage: chatroomMessageLabel, date: dateLabel)
-        
-        guard let data = chatData else { return }
-        self.setChatRoomListData(chatroom: data, imageViews: chatroomImageView, roomName: chatroomNameLabel, roomMessage: chatroomMessageLabel, date: dateLabel)
+        // 
+        // guard let data = chatData else { return }
+        // self.setChatRoomListData(chatroom: data, imageViews: chatroomImageView, roomName: chatroomNameLabel, roomMessage: chatroomMessageLabel, date: dateLabel)
     }
 }

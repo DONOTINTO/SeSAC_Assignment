@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -62,6 +62,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xne-c2-D75" secondAttribute="trailing" id="w7Y-tX-I7H"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="5bP-8t-Xiy"/>
                     <connections>
                         <outlet property="chatRoomTableView" destination="xne-c2-D75" id="53k-Jc-ohh"/>
                         <outlet property="mainTextField" destination="h6k-4s-2gP" id="Izm-VP-Cxb"/>
@@ -71,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75.572519083969468" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="1929.0076335877861" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

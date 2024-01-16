@@ -8,6 +8,10 @@
 import UIKit
 
 extension UIViewController {
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
     func setDismissKeyboard() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false

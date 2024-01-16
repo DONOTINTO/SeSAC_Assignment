@@ -8,7 +8,7 @@
 import UIKit
 
 class FiveChatRoomListTableViewCell: UITableViewCell {
-    static var identifier: String = "FiveChatRoomListTableViewCell"
+    
     var chatData: ChatRoom?
     
     @IBOutlet var imageLayoutView: UIView!

@@ -8,6 +8,10 @@
 import UIKit
 
 extension UITableViewCell {
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
     func configureChatRoomListUI(layoutView: UIView, imageViews: [UIImageView], roomName: UILabel, roomMessage: UILabel, date: UILabel) {
         
         self.backgroundColor = .clear

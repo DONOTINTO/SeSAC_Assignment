@@ -8,7 +8,6 @@
 import UIKit
 
 class OthersChatTableViewCell: UITableViewCell {
-    static var identifier: String = "OthersChatTableViewCell"
     
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -16,10 +15,7 @@ class OthersChatTableViewCell: UITableViewCell {
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     
-    var chatData: Chat?
-    
     override func awakeFromNib() {
-        
         self.configureUI()
     }
     
@@ -58,6 +54,7 @@ class OthersChatTableViewCell: UITableViewCell {
     }
     
     func setData(_ data: Chat) {
+        print(#function)
         let image = UIImage(named: data.user.profileImage)
         self.userImageView.image = image
         

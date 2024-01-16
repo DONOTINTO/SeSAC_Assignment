@@ -8,13 +8,10 @@
 import UIKit
 
 class OwnTableViewCell: UITableViewCell {
-    static var identifier: String = "OwnTableViewCell"
     
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var messageLayoutView: UIView!
     @IBOutlet var messageLabel: UILabel!
-    
-    var chatData: Chat?
     
     override func awakeFromNib() {
         configureUI()
