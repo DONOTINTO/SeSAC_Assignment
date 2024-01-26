@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SeSAC_Assignment_0124" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giO-08-zAC">
+                                <rect key="frame" x="0.0" y="94" width="393" height="724"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qvv-aR-N9o">
+                                <rect key="frame" x="0.0" y="59" width="393" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="locationButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LM9-Dw-3km"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="giO-08-zAC" secondAttribute="bottom" id="0XG-Up-yvA"/>
+                            <constraint firstItem="giO-08-zAC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3kS-uD-0NW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="giO-08-zAC" secondAttribute="trailing" id="65D-qn-ZZS"/>
+                            <constraint firstItem="Qvv-aR-N9o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Fsx-FI-Hzh"/>
+                            <constraint firstItem="Qvv-aR-N9o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gS3-qD-Hdj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qvv-aR-N9o" secondAttribute="trailing" id="maH-Vy-w68"/>
+                            <constraint firstItem="giO-08-zAC" firstAttribute="top" secondItem="Qvv-aR-N9o" secondAttribute="bottom" id="xfj-9d-dFW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2sz-ME-7CO"/>
+                    <connections>
+                        <outlet property="locationButton" destination="Qvv-aR-N9o" id="qRV-bQ-T0a"/>
+                        <outlet property="myMapView" destination="giO-08-zAC" id="GnE-Cf-Z8P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063.3587786259541" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

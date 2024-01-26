@@ -13,10 +13,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        if #available(iOS 15, *) {
+            // MARK: Navigation bar appearance
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithOpaqueBackground()
+            navigationBarAppearance.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor : UIColor.white
+            ]
+            navigationBarAppearance.backgroundColor = UIColor.clear
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+            
+            // MARK: Tab bar appearance
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithOpaqueBackground()
+            tabBarAppearance.backgroundColor = UIColor.clear
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+        }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let window = UIWindow(windowScene: windowScene)
+        
+        let rootVC = UITabBarController()
+        let homeNaviVC = UINavigationController(rootViewController: HomeViewController())
+        let newHotNaviVC = UINavigationController(rootViewController: NewHotViewController())
+        let storedNaviVC = UINavigationController(rootViewController: StoredViewController())
+        let signUpNaviVC = UINavigationController(rootViewController: SignUpViewController())
+        
+        rootVC.setViewControllers([homeNaviVC, newHotNaviVC, storedNaviVC, signUpNaviVC], animated: true)
+        
+        self.window = window
+        self.window?.rootViewController = rootVC
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
