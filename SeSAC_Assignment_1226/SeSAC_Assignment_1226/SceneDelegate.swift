@@ -78,7 +78,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             rootVC.tabBar.items![idx].title = title
         }
         rootVC.tabBar.tintColor = .white
-        // rootVC.tabBar.unselectedItemTintColor = .white
         
         self.window = window
         self.window?.rootViewController = rootVC

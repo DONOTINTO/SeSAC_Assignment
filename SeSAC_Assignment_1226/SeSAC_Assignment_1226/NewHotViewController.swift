@@ -28,6 +28,7 @@ class NewHotViewController: UIViewController {
     
     func configureView() {
         self.view.backgroundColor = .black
+        self.navigationItem.title = "NEW & HOT 검색"
         
         [searchBar, buttonStackView, infoLabel, subInfoLabel].forEach {
             self.view.addSubview($0)

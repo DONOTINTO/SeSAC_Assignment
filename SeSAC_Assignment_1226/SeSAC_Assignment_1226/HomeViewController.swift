@@ -53,6 +53,7 @@ extension HomeViewController {
         self.view.backgroundColor = .black
         self.scrollView.backgroundColor = .clear
         self.scrollContentView.backgroundColor = .clear
+        self.navigationItem.title = "고래밥님"
         
         scrollView.addSubview(scrollContentView)
         
