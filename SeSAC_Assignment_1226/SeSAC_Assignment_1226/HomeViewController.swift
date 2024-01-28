@@ -81,7 +81,7 @@ extension HomeViewController {
         playButton.configuration = playBtnConfig
         
         let listImage = UIImage(systemName: "plus")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        var listBtnConfig = UIButton.Configuration.plain()
+        var listBtnConfig = UIButton.Configuration.filled()
         listBtnConfig.title = "내가 찜한 리스트"
         // listBtnConfig.title.adjec
         listBtnConfig.baseForegroundColor = .white
@@ -89,8 +89,8 @@ extension HomeViewController {
         listBtnConfig.imagePlacement = .leading
         listBtnConfig.imagePadding = 10
         listBtnConfig.background.backgroundColor = .gray
-        listBtnConfig.titleLineBreakMode = .byWordWrapping
-        // listBtnConfig.attributedTitle?.font = UIFont.systemFont(ofSize: 14)
+        listBtnConfig.titleLineBreakMode = .byTruncatingTail
+        listBtnConfig.attributedTitle?.font = UIFont.systemFont(ofSize: 14)
         listButton.configuration = listBtnConfig
         
         infoLable.text = "지금 뜨는 콘텐츠"

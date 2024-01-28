@@ -7,6 +7,34 @@
 
 import UIKit
 
+enum TabImgae: Int {
+    case home
+    case newHot
+    case stored
+    
+    var image: UIImage {
+        switch self {
+        case .home:
+            UIImage(systemName: "house")!
+        case .newHot:
+            UIImage(systemName: "play.rectangle.on.rectangle")!
+        case .stored:
+            UIImage(systemName: "arrow.down.circle.fill")!
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .home:
+            "홈"
+        case .newHot:
+            "new&hot"
+        case .stored:
+            "저장된 콘텐츠"
+        }
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -28,7 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // MARK: Tab bar appearance
             let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithOpaqueBackground()
-            tabBarAppearance.backgroundColor = UIColor.clear
+            tabBarAppearance.backgroundColor = UIColor.black
             UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             UITabBar.appearance().standardAppearance = tabBarAppearance
         }
@@ -41,9 +69,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let homeNaviVC = UINavigationController(rootViewController: HomeViewController())
         let newHotNaviVC = UINavigationController(rootViewController: NewHotViewController())
         let storedNaviVC = UINavigationController(rootViewController: StoredViewController())
-        let signUpNaviVC = UINavigationController(rootViewController: SignUpViewController())
         
-        rootVC.setViewControllers([homeNaviVC, newHotNaviVC, storedNaviVC, signUpNaviVC], animated: true)
+        rootVC.setViewControllers([homeNaviVC, newHotNaviVC, storedNaviVC], animated: true)
+        for idx in 0 ..< rootVC.tabBar.items!.count {
+            let image = TabImgae(rawValue: idx)?.image
+            let title = TabImgae(rawValue: idx)?.title
+            rootVC.tabBar.items![idx].image = image
+            rootVC.tabBar.items![idx].title = title
+        }
+        rootVC.tabBar.tintColor = .white
+        // rootVC.tabBar.unselectedItemTintColor = .white
         
         self.window = window
         self.window?.rootViewController = rootVC

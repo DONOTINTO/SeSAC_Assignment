@@ -6,64 +6,83 @@
 //
 
 import UIKit
+import SnapKit
 
 class NewHotViewController: UIViewController {
-    @IBOutlet var infoLabel: UILabel!
     
-    @IBOutlet var publicButton: UIButton!
-    @IBOutlet var popularButton: UIButton!
-    @IBOutlet var topTenButton: UIButton!
+    let searchBar = UISearchBar()
+    let publicButton = UIButton()
+    let popularButton = UIButton()
+    let topTenButton = UIButton()
+    let buttonStackView = UIStackView()
+    
+    let infoLabel = UILabel()
+    let subInfoLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        publicButton.setImage(UIImage(named: "blue"), for: .normal)
-        popularButton.setImage(UIImage(named: "turquoise"), for: .normal)
-        topTenButton.setImage(UIImage(named: "pink"), for: .normal)
-        changeColor(button: publicButton, isFocus: false)
-        changeColor(button: popularButton, isFocus: false)
-        changeColor(button: topTenButton, isFocus: false)
-    }
-    
-    @IBAction func tapGestureRecognizerClicked(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
-    @IBAction func tagButtonClicked(_ sender: UIButton) {
-        infoLabel.text = "이런! \(sender.titleLabel!.text!) 작품이 없습니다."
         
-        tagButtonFocused(button: sender)
+        configureView()
+        constraintsView()
     }
     
-    func tagButtonFocused(button: UIButton) {
-        switch button.titleLabel?.text {
-        case "공개 예정":
-            changeColor(button: publicButton, isFocus: true)
-            changeColor(button: popularButton, isFocus: false)
-            changeColor(button: topTenButton, isFocus: false)
-            break
-        case "모두의 인기 콘텐츠":
-            changeColor(button: publicButton, isFocus: false)
-            changeColor(button: popularButton, isFocus: true)
-            changeColor(button: topTenButton, isFocus: false)
-            break
-        case "TOP 10 시리즈":
-            changeColor(button: publicButton, isFocus: false)
-            changeColor(button: popularButton, isFocus: false)
-            changeColor(button: topTenButton, isFocus: true)
-            break
-        default:
-            break
+    func configureView() {
+        self.view.backgroundColor = .black
+        
+        [searchBar, buttonStackView, infoLabel, subInfoLabel].forEach {
+            self.view.addSubview($0)
         }
+        
+        [publicButton, popularButton, topTenButton].forEach {
+            buttonStackView.addArrangedSubview($0)
+        }
+        
+        buttonStackView.axis = .horizontal
+        buttonStackView.spacing = 3
+        buttonStackView.distribution = .fill
+        
+        searchBar.barTintColor = .black
+        searchBar.barStyle = .default
+        searchBar.placeholder = "게임, 시리즈, 영화를 검색하세요..."
+        
+        publicButton.setImage(UIImage(named: "blue"), for: .normal)
+        publicButton.setTitle("공개 예정", for: .normal)
+        
+        
+        popularButton.setImage(UIImage(named: "turquoise"), for: .normal)
+        popularButton.setTitle("모두의 인기 콘텐츠", for: .normal)
+        
+        topTenButton.setImage(UIImage(named: "pink"), for: .normal)
+        topTenButton.setTitle("TOP 10 시리즈", for: .normal)
+        
+        infoLabel.text = "이런! 찾으시는 작품이 없습니다."
+        infoLabel.textColor = .white
+        infoLabel.font = .boldSystemFont(ofSize: 22)
+        
+        subInfoLabel.text = "다른 영화, 시리즈, 배우, 감독 또는 장르를 검색해 보세요."
+        subInfoLabel.textColor = .lightGray
+        subInfoLabel.numberOfLines = 1
+        subInfoLabel.adjustsFontSizeToFitWidth = true
     }
     
-    func changeColor(button: UIButton, isFocus: Bool) {
-        let backgroundColor: UIColor = (isFocus == true) ? .white : .black
-        let titleColor: UIColor = (isFocus == true) ? .black : .white
+    func constraintsView() {
+        searchBar.snp.makeConstraints {
+            $0.horizontalEdges.top.equalTo(self.view.safeAreaLayoutGuide)
+        }
         
-        button.backgroundColor = backgroundColor
-        button.setTitleColor(titleColor, for: .normal)
+        buttonStackView.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(self.view.safeAreaLayoutGuide)
+            $0.top.equalTo(self.searchBar.snp.bottom)
+            $0.height.equalTo(50)
+        }
         
-        button.layer.cornerRadius = 5
+        infoLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        subInfoLabel.snp.makeConstraints {
+            $0.top.equalTo(infoLabel.snp.bottom).offset(5)
+            $0.horizontalEdges.equalTo(self.view.safeAreaLayoutGuide)
+        }
     }
 }
