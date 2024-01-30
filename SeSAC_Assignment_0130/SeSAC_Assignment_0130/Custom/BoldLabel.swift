@@ -12,7 +12,6 @@ class BoldLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.text = "test"
         self.textAlignment = .center
         self.textColor = .white
         self.font = .boldSystemFont(ofSize: 17)

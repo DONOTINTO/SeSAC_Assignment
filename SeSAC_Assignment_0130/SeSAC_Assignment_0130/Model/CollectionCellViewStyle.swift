@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum CollectionCellViewStyle: Int {
+enum CollectionCellViewStyle: Int, CaseIterable {
     case trend
     case topRated
     case popular
@@ -15,20 +15,22 @@ enum CollectionCellViewStyle: Int {
     var height: CGFloat {
         switch self {
         case .trend:
-            return 200
+            return 300
         case .topRated:
-            return 400
+            return 500
         case .popular:
-            return 200
+            return 300
         }
     }
     
     var width: CGFloat {
         switch self {
-        case .trend, .popular:
+        case .trend:
             return UIScreen.main.bounds.width / 2
         case .topRated:
             return UIScreen.main.bounds.width
+        case .popular:
+            return UIScreen.main.bounds.width / 3
         }
     }
 }

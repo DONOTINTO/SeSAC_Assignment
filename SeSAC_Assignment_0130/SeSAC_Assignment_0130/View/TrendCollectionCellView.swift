@@ -47,7 +47,7 @@ extension TrendCollectionCellView: ViewProtocol {
     }
     
     func configureView() {
-        self.imageView.backgroundColor = .brown
-        self.titleLabel.backgroundColor = .blue
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.clipsToBounds = true
     }
 }

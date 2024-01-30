@@ -7,10 +7,14 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ViewController: UIViewController {
     
     let mainView = MainView()
+    var trendData: [Results] = []
+    var topRatedData: [TopRated] = []
+    var popularData: [Popular] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +22,27 @@ class ViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureView()
+        
+        APIManager.shared.callTrendAPI(timeWindow: .day) { data in
+            self.trendData = data
+            self.mainView.tableView.reloadData()
+        }
+        
+        APIManager.shared.callTopRatedAPI() { data in
+            self.topRatedData = data
+            self.mainView.tableView.reloadData()
+        }
+        
+        APIManager.shared.callPopularAPI() { data in
+            self.popularData = data
+            self.mainView.tableView.reloadData()
+        }
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return CollectionCellViewStyle.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,8 +50,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 10
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.scrollDirection = .horizontal
         
         if let style = CollectionCellViewStyle(rawValue: indexPath.row) {
@@ -53,6 +70,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.delegate = self
         cell.collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "MainCollectionViewCell")
         cell.collectionView.tag = indexPath.row
+        cell.collectionView.reloadData()
         
         return cell
     }
@@ -64,15 +82,53 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        var cellItemCount = 0
+        let index = collectionView.tag
+        guard let viewStyle = CollectionCellViewStyle(rawValue: index) else { return 0}
+        
+        switch viewStyle {
+        case .trend:
+            cellItemCount = trendData.count
+        case .topRated:
+            cellItemCount = topRatedData.count
+        case .popular:
+            cellItemCount = popularData.count
+        }
+        
+        return cellItemCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell() }
         
         let index = collectionView.tag
+        
         if let style = CollectionCellViewStyle(rawValue: index) {
             cell.setViewStyle(style: style)
+            var urlStr = "https://image.tmdb.org/t/p/w500"
+            
+            switch style {
+            case .trend:
+                urlStr += self.trendData[indexPath.item].backdropPath
+                let url = URL(string: urlStr)
+                
+                (cell.mainView as? TrendCollectionCellView)?.imageView.kf.setImage(with: url)
+                (cell.mainView as? TrendCollectionCellView)?.titleLabel.text = self.trendData[indexPath.item].title
+                
+            case .topRated:
+                urlStr += self.topRatedData[indexPath.item].backdropPath
+                let url = URL(string: urlStr)
+                
+                (cell.mainView as? TopRatedCollectionCellView)?.imageView.kf.setImage(with: url)
+                (cell.mainView as? TopRatedCollectionCellView)?.titleLabel.text = self.topRatedData[indexPath.item].title
+                
+            case .popular:
+                urlStr += self.popularData[indexPath.item].backdropPath
+                let url = URL(string: urlStr)
+                
+                (cell.mainView as? PopularCollectionCellView)?.imageView.kf.setImage(with: url)
+                (cell.mainView as? PopularCollectionCellView)?.titleLabel.text = self.popularData[indexPath.item].title
+            }
         }
         
         return cell

@@ -49,6 +49,7 @@ extension MainCollectionViewCell: ViewProtocol {
     func configureLayout() {
         mainView.snp.makeConstraints {
             $0.edges.equalTo(self.contentView.snp.edges)
+            // $0.height.greaterThanOrEqualTo(self.contentView)
         }
     }
     
