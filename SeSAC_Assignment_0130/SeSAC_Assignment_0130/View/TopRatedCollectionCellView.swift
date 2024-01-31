@@ -35,6 +35,7 @@ extension TopRatedCollectionCellView: ViewProtocol {
     func configureLayout() {
         imageView.snp.makeConstraints {
             $0.edges.equalTo(self)
+            $0.height.width.equalTo(self)
         }
         
         titleLabel.snp.makeConstraints {
@@ -44,7 +45,8 @@ extension TopRatedCollectionCellView: ViewProtocol {
     }
     
     func configureView() {
-        self.imageView.backgroundColor = .gray
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.clipsToBounds = true
         self.titleLabel.backgroundColor = .black.withAlphaComponent(0.3)
     }
 }

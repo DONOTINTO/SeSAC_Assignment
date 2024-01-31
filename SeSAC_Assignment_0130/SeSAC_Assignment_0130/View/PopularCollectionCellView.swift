@@ -44,7 +44,8 @@ extension PopularCollectionCellView: ViewProtocol {
     }
     
     func configureView() {
-        self.imageView.backgroundColor = .gray
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.clipsToBounds = true
         self.titleLabel.backgroundColor = .black.withAlphaComponent(0.3)
     }
 }

@@ -33,11 +33,12 @@ extension TrendCollectionCellView: ViewProtocol {
     }
     
     func configureLayout() {
-        let multiple: Double = 4/3
+        let multiple: Double = 3/4
         
         self.imageView.snp.makeConstraints {
             $0.horizontalEdges.top.equalTo(self)
-            $0.width.equalTo(self.imageView.snp.height).multipliedBy(multiple)
+            $0.width.equalTo(self)
+            $0.height.equalTo(self.imageView.snp.width).multipliedBy(multiple)
         }
         
         self.titleLabel.snp.makeConstraints {

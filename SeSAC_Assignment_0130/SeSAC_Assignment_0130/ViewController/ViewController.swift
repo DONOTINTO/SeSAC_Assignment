@@ -23,18 +23,27 @@ class ViewController: UIViewController {
         configureLayout()
         configureView()
         
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
         APIManager.shared.callTrendAPI(timeWindow: .day) { data in
             self.trendData = data
-            self.mainView.tableView.reloadData()
+            dispatchGroup.leave()
         }
         
+        dispatchGroup.enter()
         APIManager.shared.callTopRatedAPI() { data in
             self.topRatedData = data
-            self.mainView.tableView.reloadData()
+            dispatchGroup.leave()
         }
         
+        dispatchGroup.enter()
         APIManager.shared.callPopularAPI() { data in
             self.popularData = data
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
             self.mainView.tableView.reloadData()
         }
     }
@@ -70,6 +79,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.delegate = self
         cell.collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "MainCollectionViewCell")
         cell.collectionView.tag = indexPath.row
+        
         cell.collectionView.reloadData()
         
         return cell
@@ -109,6 +119,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             
             switch style {
             case .trend:
+                cell.result = self.trendData[indexPath.item]
+                
                 urlStr += self.trendData[indexPath.item].backdropPath
                 let url = URL(string: urlStr)
                 
@@ -116,6 +128,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                 (cell.mainView as? TrendCollectionCellView)?.titleLabel.text = self.trendData[indexPath.item].title
                 
             case .topRated:
+                cell.topRated = self.topRatedData[indexPath.item]
+                
                 urlStr += self.topRatedData[indexPath.item].backdropPath
                 let url = URL(string: urlStr)
                 
@@ -123,6 +137,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                 (cell.mainView as? TopRatedCollectionCellView)?.titleLabel.text = self.topRatedData[indexPath.item].title
                 
             case .popular:
+                cell.popular = self.popularData[indexPath.item]
+                
                 urlStr += self.popularData[indexPath.item].backdropPath
                 let url = URL(string: urlStr)
                 
