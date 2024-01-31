@@ -53,7 +53,7 @@ class MainView: BaseView {
         }
         
         contentView.snp.makeConstraints {
-            $0.edges.equalTo(scrollView.snp.edges)
+            $0.edges.equalTo(scrollView.contentLayoutGuide.snp.edges)
             $0.width.equalTo(scrollView.frameLayoutGuide.snp.width)
         }
         
@@ -94,7 +94,7 @@ class MainView: BaseView {
         actorCollectionView.snp.makeConstraints {
             $0.top.equalTo(actorListLabel.snp.bottom).offset(5)
             $0.horizontalEdges.equalTo(contentView.snp.horizontalEdges)
-            $0.height.equalTo(contentView.snp.height).dividedBy(4)
+            $0.height.equalTo(self.contentView.snp.height).dividedBy(4)
         }
         
         recommendLabel.snp.makeConstraints {
@@ -105,23 +105,63 @@ class MainView: BaseView {
         recommendCollectionView.snp.makeConstraints {
             $0.top.equalTo(recommendLabel.snp.bottom).offset(5)
             $0.horizontalEdges.equalTo(contentView.snp.horizontalEdges)
-            $0.height.equalTo(contentView.snp.height).dividedBy(4)
+            $0.height.equalTo(self.contentView.snp.height).dividedBy(4)
             $0.bottom.equalTo(contentView.snp.bottom)
         }
     }
     
     override func configureView() {
+        actorCollectionView.backgroundColor = .clear
+        recommendCollectionView.backgroundColor = .clear
+        
         contentView.contentMode = .scaleAspectFill
         
         rateLabel.textColor = .systemGreen
         
         actorListLabel.text = "출연진"
         
-        actorCollectionView.backgroundColor = .clear
-        
         recommendLabel.text = "비슷한 출연진"
         
-        recommendCollectionView.backgroundColor = .clear
+        setActorCollecionCellLayout()
+        
+        setRecommendCollecionCellLayout()
+    }
+    
+    func setActorCollecionCellLayout() {
+        DispatchQueue.main.async {
+            let line: CGFloat = 15
+            let inter: CGFloat = 0
+            let leftRight: CGFloat = 10
+            let topBottom: CGFloat = 0
+            let flowLayout = UICollectionViewFlowLayout()
+            flowLayout.scrollDirection = .horizontal
+            flowLayout.minimumLineSpacing = line
+            flowLayout.minimumInteritemSpacing = inter
+            flowLayout.sectionInset = UIEdgeInsets(top: topBottom, left: leftRight, bottom: topBottom, right: leftRight)
+            let width: CGFloat = (self.actorCollectionView.frame.height / 5) * 3
+            flowLayout.itemSize = CGSize(width: width, height: self.actorCollectionView.frame.height)
+            self.actorCollectionView.collectionViewLayout = flowLayout
+        }
+    }
+    
+    func setRecommendCollecionCellLayout() {
+        DispatchQueue.main.async {
+            let line: CGFloat = 10
+            let inter: CGFloat = 10
+            let leftRight: CGFloat = 10
+            let column: CGFloat = 3
+            let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+            
+            flowLayout.scrollDirection = .vertical
+            flowLayout.minimumLineSpacing = line
+            flowLayout.minimumInteritemSpacing = inter
+            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: leftRight, bottom: 0, right: leftRight)
+            
+            let width: CGFloat = (self.recommendCollectionView.frame.width - (2 * leftRight) - ((column - 1) * inter)) / column
+            
+            flowLayout.itemSize = CGSize(width: width, height: width / 7 * 10)
+            self.recommendCollectionView.collectionViewLayout = flowLayout
+        }
     }
 
 }

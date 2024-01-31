@@ -12,6 +12,9 @@ import Kingfisher
 
 class MainViewController: BaseViewController {
 
+    var castingList: [CastingList] = []
+    var recommendList: [Recommend] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +39,21 @@ class MainViewController: BaseViewController {
     override func configureView() {
         super.configureView()
         
+        let view = getMainView()
+        
+        view.actorCollectionView.delegate = self
+        view.actorCollectionView.dataSource = self
+        view.actorCollectionView.register(ActorCollectionViewCell.self, forCellWithReuseIdentifier: "ActorCollectionViewCell")
+        
+        view.recommendCollectionView.delegate = self
+        view.recommendCollectionView.dataSource = self
+        view.recommendCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: "RecommendCollectionViewCell")
+    }
+    
+    func getMainView() -> MainView {
+        guard let view = self.mainView as? MainView else { return MainView() }
+        
+        return view
     }
     
     func fetch() {
@@ -72,7 +90,7 @@ class MainViewController: BaseViewController {
             
             let mainCastingList = data.cast.filter { $0.totalEpisodeCount == max }
             
-            
+            self.castingList = mainCastingList
             
             dispatchGroup.leave()
         }
@@ -80,13 +98,48 @@ class MainViewController: BaseViewController {
         dispatchGroup.enter()
         APIManager.shared.callAPI(scheme: "https", host: "api.themoviedb.org", path: "/3/tv/96102/recommendations", query: [queryItem], headers: header, type: TVRecommendModel.self) { data in
             
-            dump(data.results)
+            self.recommendList = data.results
             
             dispatchGroup.leave()
         }
         
         dispatchGroup.notify(queue: .main) {
-            print("끝")
+            self.getMainView().actorCollectionView.reloadData()
+            self.getMainView().recommendCollectionView.reloadData()
+        }
+    }
+}
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if collectionView == getMainView().actorCollectionView {
+            return castingList.count
+        } else {
+            return recommendList.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == getMainView().actorCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActorCollectionViewCell", for: indexPath) as? ActorCollectionViewCell else { return UICollectionViewCell() }
+            
+            let urlStr = Consts.Image.baseImagURL + castingList[indexPath.item].profilePath
+            if let url = URL(string: urlStr) {
+                cell.posterImageView.kf.setImage(with: url)
+                cell.nameLabel.text = castingList[indexPath.item].name
+            }
+            
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as? RecommendCollectionViewCell else { return UICollectionViewCell() }
+            
+            let urlStr = Consts.Image.baseImagURL + recommendList[indexPath.item].posterPath
+            if let url = URL(string: urlStr) {
+                cell.posterImageView.kf.setImage(with: url)
+            }
+            
+            return cell
         }
     }
 }
