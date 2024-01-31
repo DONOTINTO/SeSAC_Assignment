@@ -13,6 +13,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        if #available(iOS 15, *) {
+            // MARK: Navigation bar appearance
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithOpaqueBackground()
+            navigationBarAppearance.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor : UIColor.black
+            ]
+            navigationBarAppearance.backgroundColor = UIColor.clear
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+            
+            // MARK: Tab bar appearance
+            // let tabBarAppearance = UITabBarAppearance()
+            // tabBarAppearance.configureWithOpaqueBackground()
+            // tabBarAppearance.backgroundColor = UIColor.black
+            // UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            // UITabBar.appearance().standardAppearance = tabBarAppearance
+        }
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)

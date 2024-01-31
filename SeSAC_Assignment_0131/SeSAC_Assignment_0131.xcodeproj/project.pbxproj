@@ -97,13 +97,9 @@
 		AC27C9AF2B6A6DE7002BDB0F /* SeSAC_Assignment_0131 */ = {
 			isa = PBXGroup;
 			children = (
-				AC27C9EF2B6AAEEF002BDB0F /* Protocol */,
-				AC27C9E32B6A97D8002BDB0F /* APIManager.swift */,
-				AC27C9E52B6A9D56002BDB0F /* APIKey.swift */,
-				AC27C9E72B6AA35B002BDB0F /* TVDetailsModel.swift */,
-				AC27C9E92B6AA998002BDB0F /* TVCastingModel.swift */,
-				AC27C9EB2B6AABBB002BDB0F /* TVRecommendModel.swift */,
 				AC27C9DC2B6A8C13002BDB0F /* Custom */,
+				ACBF43062B6AD2A3007ED3A8 /* Model */,
+				AC27C9EF2B6AAEEF002BDB0F /* Protocol */,
 				AC27C9D92B6A8B29002BDB0F /* Consts */,
 				AC27C9D62B6A6FA6002BDB0F /* View */,
 				AC27C9D52B6A6F98002BDB0F /* ViewController */,
@@ -161,6 +157,18 @@
 				AC27C9F02B6AAEFA002BDB0F /* ViewProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		ACBF43062B6AD2A3007ED3A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC27C9E32B6A97D8002BDB0F /* APIManager.swift */,
+				AC27C9E52B6A9D56002BDB0F /* APIKey.swift */,
+				AC27C9E72B6AA35B002BDB0F /* TVDetailsModel.swift */,
+				AC27C9E92B6AA998002BDB0F /* TVCastingModel.swift */,
+				AC27C9EB2B6AABBB002BDB0F /* TVRecommendModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
