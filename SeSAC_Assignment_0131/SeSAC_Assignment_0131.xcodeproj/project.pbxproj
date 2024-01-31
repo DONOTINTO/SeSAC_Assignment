@@ -20,6 +20,16 @@
 		AC27C9CF2B6A6F40002BDB0F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AC27C9CE2B6A6F40002BDB0F /* Alamofire */; };
 		AC27C9D22B6A6F49002BDB0F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AC27C9D12B6A6F49002BDB0F /* Kingfisher */; };
 		AC27C9D42B6A6F92002BDB0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9D32B6A6F92002BDB0F /* BaseViewController.swift */; };
+		AC27C9D82B6A8A77002BDB0F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9D72B6A8A77002BDB0F /* BaseView.swift */; };
+		AC27C9DB2B6A8B39002BDB0F /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9DA2B6A8B39002BDB0F /* Consts.swift */; };
+		AC27C9DE2B6A8C38002BDB0F /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9DD2B6A8C38002BDB0F /* TitleLabel.swift */; };
+		AC27C9E02B6A8CFA002BDB0F /* HeadLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9DF2B6A8CFA002BDB0F /* HeadLabel.swift */; };
+		AC27C9E22B6A8D36002BDB0F /* BasicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9E12B6A8D36002BDB0F /* BasicLabel.swift */; };
+		AC27C9E42B6A97D8002BDB0F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9E32B6A97D8002BDB0F /* APIManager.swift */; };
+		AC27C9E62B6A9D56002BDB0F /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9E52B6A9D56002BDB0F /* APIKey.swift */; };
+		AC27C9E82B6AA35B002BDB0F /* TVDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9E72B6AA35B002BDB0F /* TVDetailsModel.swift */; };
+		AC27C9EA2B6AA998002BDB0F /* TVCastingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9E92B6AA998002BDB0F /* TVCastingModel.swift */; };
+		AC27C9EC2B6AABBB002BDB0F /* TVRecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9EB2B6AABBB002BDB0F /* TVRecommendModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +44,16 @@
 		AC27C9C42B6A6E52002BDB0F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AC27C9C62B6A6F0D002BDB0F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AC27C9D32B6A6F92002BDB0F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		AC27C9D72B6A8A77002BDB0F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		AC27C9DA2B6A8B39002BDB0F /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		AC27C9DD2B6A8C38002BDB0F /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		AC27C9DF2B6A8CFA002BDB0F /* HeadLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadLabel.swift; sourceTree = "<group>"; };
+		AC27C9E12B6A8D36002BDB0F /* BasicLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLabel.swift; sourceTree = "<group>"; };
+		AC27C9E32B6A97D8002BDB0F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		AC27C9E52B6A9D56002BDB0F /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		AC27C9E72B6AA35B002BDB0F /* TVDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailsModel.swift; sourceTree = "<group>"; };
+		AC27C9E92B6AA998002BDB0F /* TVCastingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCastingModel.swift; sourceTree = "<group>"; };
+		AC27C9EB2B6AABBB002BDB0F /* TVRecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRecommendModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +91,13 @@
 		AC27C9AF2B6A6DE7002BDB0F /* SeSAC_Assignment_0131 */ = {
 			isa = PBXGroup;
 			children = (
+				AC27C9E32B6A97D8002BDB0F /* APIManager.swift */,
+				AC27C9E52B6A9D56002BDB0F /* APIKey.swift */,
+				AC27C9E72B6AA35B002BDB0F /* TVDetailsModel.swift */,
+				AC27C9E92B6AA998002BDB0F /* TVCastingModel.swift */,
+				AC27C9EB2B6AABBB002BDB0F /* TVRecommendModel.swift */,
+				AC27C9DC2B6A8C13002BDB0F /* Custom */,
+				AC27C9D92B6A8B29002BDB0F /* Consts */,
 				AC27C9D62B6A6FA6002BDB0F /* View */,
 				AC27C9D52B6A6F98002BDB0F /* ViewController */,
 				AC27C9B02B6A6DE7002BDB0F /* AppDelegate.swift */,
@@ -95,9 +122,28 @@
 		AC27C9D62B6A6FA6002BDB0F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AC27C9D72B6A8A77002BDB0F /* BaseView.swift */,
 				AC27C9C62B6A6F0D002BDB0F /* MainView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AC27C9D92B6A8B29002BDB0F /* Consts */ = {
+			isa = PBXGroup;
+			children = (
+				AC27C9DA2B6A8B39002BDB0F /* Consts.swift */,
+			);
+			path = Consts;
+			sourceTree = "<group>";
+		};
+		AC27C9DC2B6A8C13002BDB0F /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				AC27C9DD2B6A8C38002BDB0F /* TitleLabel.swift */,
+				AC27C9DF2B6A8CFA002BDB0F /* HeadLabel.swift */,
+				AC27C9E12B6A8D36002BDB0F /* BasicLabel.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,11 +229,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC27C9E02B6A8CFA002BDB0F /* HeadLabel.swift in Sources */,
 				AC27C9D42B6A6F92002BDB0F /* BaseViewController.swift in Sources */,
 				AC27C9B52B6A6DE7002BDB0F /* MainViewController.swift in Sources */,
 				AC27C9C72B6A6F0D002BDB0F /* MainView.swift in Sources */,
+				AC27C9E42B6A97D8002BDB0F /* APIManager.swift in Sources */,
+				AC27C9EA2B6AA998002BDB0F /* TVCastingModel.swift in Sources */,
+				AC27C9D82B6A8A77002BDB0F /* BaseView.swift in Sources */,
+				AC27C9DE2B6A8C38002BDB0F /* TitleLabel.swift in Sources */,
+				AC27C9EC2B6AABBB002BDB0F /* TVRecommendModel.swift in Sources */,
+				AC27C9DB2B6A8B39002BDB0F /* Consts.swift in Sources */,
 				AC27C9B12B6A6DE7002BDB0F /* AppDelegate.swift in Sources */,
+				AC27C9E82B6AA35B002BDB0F /* TVDetailsModel.swift in Sources */,
 				AC27C9B32B6A6DE7002BDB0F /* SceneDelegate.swift in Sources */,
+				AC27C9E62B6A9D56002BDB0F /* APIKey.swift in Sources */,
+				AC27C9E22B6A8D36002BDB0F /* BasicLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
