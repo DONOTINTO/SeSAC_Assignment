@@ -15,10 +15,14 @@ class MainViewController: BaseViewController {
     var castingList: [CastingList] = []
     var recommendList: [Recommend] = []
     
+    override func loadView() {
+        super.loadView()
+        
+        self.view = MainView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.mainView = MainView()
         
         configureHierarchy()
         configureLayout()
@@ -51,13 +55,13 @@ class MainViewController: BaseViewController {
     }
     
     func getMainView() -> MainView {
-        guard let view = self.mainView as? MainView else { return MainView() }
+        guard let view = self.view as? MainView else { return MainView() }
         
         return view
     }
     
     func fetch() {
-        guard let view = self.mainView as? MainView else { return }
+        let view = getMainView()
         
         let dispatchGroup = DispatchGroup()
         
