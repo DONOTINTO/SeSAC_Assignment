@@ -38,8 +38,6 @@ extension ActorCollectionViewCell: ViewProtocol {
     }
     
     func configureLayout() {
-        let ratio: CGFloat = 2/3
-        
         self.posterImageView.snp.makeConstraints {
             $0.horizontalEdges.top.equalTo(self.contentView)
         }
