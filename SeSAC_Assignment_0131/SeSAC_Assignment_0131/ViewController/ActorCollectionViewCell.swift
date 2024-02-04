@@ -55,7 +55,7 @@ extension ActorCollectionViewCell: ViewProtocol {
         
         self.nameLabel.snp.makeConstraints {
             $0.top.equalTo(self.posterImageView.snp.bottom)
-            $0.horizontalEdges.equalTo(self.contentView).inset(10)
+            $0.horizontalEdges.equalTo(self.contentView)
             $0.bottom.equalTo(self.contentView)
         }
     }

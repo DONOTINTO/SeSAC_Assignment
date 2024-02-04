@@ -89,6 +89,7 @@ extension TryViewController: ViewProtocol {
         view().tryCollectionView.register(DetailsCollectionViewCell.self, forCellWithReuseIdentifier: DetailsCollectionViewCell.identifier)
         view().tryCollectionView.register(ActorCollectionViewCell.self, forCellWithReuseIdentifier: ActorCollectionViewCell.identifier)
         view().tryCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.identifier)
+        view().tryCollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
     }
     
     func configureLayout() {
@@ -141,6 +142,27 @@ extension TryViewController: UICollectionViewDelegate, UICollectionViewDataSourc
             cell.setData(data: recommend[indexPath.item])
             
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
+            
+            if let type = TVSeriesSections(rawValue: indexPath.section) {
+                switch type {
+                case .details: break
+                case .actors:
+                    header.titleLabel.text = "출연진"
+                case .recommend:
+                    header.titleLabel.text = "연관 추천 시리즈"
+                }
+            }
+            
+            return header
+        default:
+            return UICollectionReusableView()
         }
     }
 }

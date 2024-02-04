@@ -38,8 +38,10 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     
     func setData(data: TVDetailsModel) {
         titleLabel.text = data.name
-        rateLabel.text = "\(data.voteAverage)"
-        episodeLabel.text = "에피소드 \(data.numberOfEpisodes)개"
+        let rate = String(format: "%.1f", data.voteAverage)
+        rateLabel.text = "\(rate)점"
+        let attribute = self.attributeTextColor(data: data)
+        episodeLabel.attributedText = attribute
         overviewLabel.text = data.overview
     }
 }
@@ -76,6 +78,16 @@ extension DetailsCollectionViewCell: ViewProtocol {
     }
     
     func configureView() {
+        rateLabel.textColor = .systemGreen
+    }
+    
+    func attributeTextColor(data: TVDetailsModel) -> NSMutableAttributedString {
+        let attributeString = NSMutableAttributedString(string: "에피소드 \(data.numberOfEpisodes)개") // 텍스트 일부분 색상
         
+        attributeString.addAttribute(.foregroundColor, value: UIColor.systemYellow, range: ("에피소드 \(data.numberOfEpisodes)개" as NSString).range(of: "\(data.numberOfEpisodes)")) // 중간 포인트 부분 색상 포인트 컬러로 변경
+        attributeString.addAttribute(.foregroundColor, value: UIColor.white, range: ("에피소드 \(data.numberOfEpisodes)개" as NSString).range(of: "에피소드 ")) // 앞부분 부분 색상 흰색 변경
+        attributeString.addAttribute(.foregroundColor, value: UIColor.white, range: ("에피소드 \(data.numberOfEpisodes)개" as NSString).range(of: "개")) // 뒷부분 부분 색상 흰색 변경.
+        
+        return attributeString
     }
 }

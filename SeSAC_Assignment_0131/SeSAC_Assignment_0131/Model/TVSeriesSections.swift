@@ -60,15 +60,18 @@ enum TVSeriesSections: Int, CaseIterable {
             heightDimension: .fractionalWidth(1.0 / 4.0 / 3.0 * 5.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .estimated(20))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
         let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [sectionHeader]
         section.orthogonalScrollingBehavior = .continuous
-        // section.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0)
         
         return section
     }
     
     static func createRecommendSection() -> NSCollectionLayoutSection {
-        print(#function)
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0 / 3.0),
             heightDimension: .fractionalWidth(1.0 / 3.0 / 7.0 * 10.0))
@@ -80,8 +83,13 @@ enum TVSeriesSections: Int, CaseIterable {
             heightDimension: .fractionalWidth(1.0 / 3.0 / 7.0 * 10.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .estimated(20))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .none
+        section.boundarySupplementaryItems = [sectionHeader]
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
         
         return section

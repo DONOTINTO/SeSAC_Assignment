@@ -35,6 +35,7 @@
 		AC27C9F32B6AC261002BDB0F /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9F22B6AC261002BDB0F /* RecommendCollectionViewCell.swift */; };
 		AC3DEEF62B6CDD4B003407ED /* TVSeriesSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEEF52B6CDD4B003407ED /* TVSeriesSections.swift */; };
 		AC3DEEF82B6CE15D003407ED /* TMDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEEF72B6CE15D003407ED /* TMDBAPI.swift */; };
+		AC48FDFB2B7016680088638A /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48FDFA2B7016680088638A /* HeaderCollectionReusableView.swift */; };
 		ACB1DE762B6EA76C00137F4A /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE752B6EA76C00137F4A /* TryViewController.swift */; };
 		ACB1DE782B6EA78300137F4A /* TryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE772B6EA78300137F4A /* TryView.swift */; };
 		ACB1DE7B2B6FE85B00137F4A /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE7A2B6FE85B00137F4A /* DetailsCollectionViewCell.swift */; };
@@ -68,6 +69,7 @@
 		AC27C9F22B6AC261002BDB0F /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC3DEEF52B6CDD4B003407ED /* TVSeriesSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesSections.swift; sourceTree = "<group>"; };
 		AC3DEEF72B6CE15D003407ED /* TMDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI.swift; sourceTree = "<group>"; };
+		AC48FDFA2B7016680088638A /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		ACB1DE752B6EA76C00137F4A /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		ACB1DE772B6EA78300137F4A /* TryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryView.swift; sourceTree = "<group>"; };
 		ACB1DE7A2B6FE85B00137F4A /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				AC27C9D72B6A8A77002BDB0F /* BaseView.swift */,
 				AC27C9C62B6A6F0D002BDB0F /* MainView.swift */,
 				ACB1DE772B6EA78300137F4A /* TryView.swift */,
+				AC48FDFA2B7016680088638A /* HeaderCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				AC27C9E42B6A97D8002BDB0F /* APIManager.swift in Sources */,
 				AC27C9EA2B6AA998002BDB0F /* TVCastingModel.swift in Sources */,
 				ACB1DE762B6EA76C00137F4A /* TryViewController.swift in Sources */,
+				AC48FDFB2B7016680088638A /* HeaderCollectionReusableView.swift in Sources */,
 				AC27C9D82B6A8A77002BDB0F /* BaseView.swift in Sources */,
 				ACB1DE782B6EA78300137F4A /* TryView.swift in Sources */,
 				AC27C9F12B6AAEFA002BDB0F /* ViewProtocol.swift in Sources */,
