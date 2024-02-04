@@ -19,22 +19,18 @@ enum TMDBAPI: Int, CaseIterable {
         return TMDBAPI.allCases.count
     }
     
-    var scheme: String {
-        return "https"
+    var baseURL: String {
+        return "https://api.themoviedb.org/3"
     }
     
-    var host: String {
-        return "api.themoviedb.org"
-    }
-    
-    var path: String {
+    var endpoint: URL {
         switch self {
         case .details:
-            return "/3/tv/\(TMDBAPI.id)"
+            return URL(string: baseURL + "/tv/\(TMDBAPI.id)")!
         case .casting:
-            return "/3/tv/\(TMDBAPI.id)/aggregate_credits"
+            return URL(string: baseURL + "/tv/\(TMDBAPI.id)/aggregate_credits")!
         case .recommend:
-            return "/3/tv/\(TMDBAPI.id)/recommendations"
+            return URL(string: baseURL + "/tv/\(TMDBAPI.id)/recommendations")!
         }
     }
     
@@ -42,16 +38,16 @@ enum TMDBAPI: Int, CaseIterable {
         return .get
     }
     
-    var parameters: [URLQueryItem] {
+    var parameters: Parameters {
         switch self {
         case .details, .recommend:
-            return [URLQueryItem(name: "language", value: "ko-KR")]
+            return ["language": "ko-KR"]
         case .casting:
-            return []
+            return ["": ""]
         }
     }
     
     var header: HTTPHeaders {
-        return [APIKey.shared.key: APIKey.shared.auth]
+        return [APIKey.shared.auth: APIKey.shared.key]
     }
 }

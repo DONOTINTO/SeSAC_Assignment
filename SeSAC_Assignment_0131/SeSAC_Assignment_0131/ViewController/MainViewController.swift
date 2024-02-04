@@ -28,7 +28,7 @@ class MainViewController: BaseViewController {
         configureLayout()
         configureView()
         
-        fetch()
+        // fetch()
     }
     
     override func configureHierarchy() {
@@ -60,62 +60,62 @@ class MainViewController: BaseViewController {
         return view
     }
     
-    func fetch() {
-        let view = getMainView()
-        
-        let dispatchGroup = DispatchGroup()
-        
-        for idx in 0 ..< TMDBAPI.count {
-            guard let api = TMDBAPI(rawValue: idx) else { return }
-            
-            switch api {
-            case .details:
-                dispatchGroup.enter()
-                APIManager.shared.callAPI(scheme: api.scheme, host: api.host, path: api.path, query: api.parameters, headers: api.header, type: TVDetailsModel.self) { data in
-                    
-                    let urlStr = Consts.Image.baseImagURL + data.backdropPath
-                    let url = URL(string: urlStr)
-                    
-                    view.contentImageView.kf.setImage(with: url)
-                    view.titleLabel.text = data.name
-                    view.rateLabel.text = "\(data.voteAverage)점"
-                    view.episodeLabel.text = "에피소드 \(data.numberOfEpisodes)개"
-                    view.overviewLabel.text = data.overview
-                    
-                    dispatchGroup.leave()
-                }
-            case .casting:
-                dispatchGroup.enter()
-                APIManager.shared.callAPI(scheme: api.scheme, host: api.host, path: api.path, query: api.parameters, headers: api.header, type: TVCastingModel.self) { data in
-                    
-                    var max = 0
-                    
-                    data.cast.forEach {
-                        if $0.totalEpisodeCount > max { max = $0.totalEpisodeCount }
-                    }
-                    
-                    let mainCastingList = data.cast.filter { $0.totalEpisodeCount == max }
-                    
-                    self.castingList = mainCastingList
-                    
-                    dispatchGroup.leave()
-                }
-            case .recommend:
-                dispatchGroup.enter()
-                APIManager.shared.callAPI(scheme: api.scheme, host: api.host, path: api.path, query: api.parameters, headers: api.header, type: TVRecommendModel.self) { data in
-                    
-                    self.recommendList = data.results
-                    
-                    dispatchGroup.leave()
-                }
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            self.getMainView().actorCollectionView.reloadData()
-            self.getMainView().recommendCollectionView.reloadData()
-        }
-    }
+    // func fetch() {
+    //     let view = getMainView()
+    //     
+    //     let dispatchGroup = DispatchGroup()
+    //     
+    //     for idx in 0 ..< TMDBAPI.count {
+    //         guard let api = TMDBAPI(rawValue: idx) else { return }
+    //         
+    //         switch api {
+    //         case .details:
+    //             dispatchGroup.enter()
+    //             APIManager.shared.callAPI(scheme: api.scheme, host: api.host, path: api.path, query: api.parameters, headers: api.header, type: TVDetailsModel.self) { data in
+    //                 
+    //                 let urlStr = Consts.Image.baseImagURL + data.backdropPath
+    //                 let url = URL(string: urlStr)
+    //                 
+    //                 view.contentImageView.kf.setImage(with: url)
+    //                 view.titleLabel.text = data.name
+    //                 view.rateLabel.text = "\(data.voteAverage)점"
+    //                 view.episodeLabel.text = "에피소드 \(data.numberOfEpisodes)개"
+    //                 view.overviewLabel.text = data.overview
+    //                 
+    //                 dispatchGroup.leave()
+    //             }
+    //         case .casting:
+    //             dispatchGroup.enter()
+    //             APIManager.shared.callAPI(scheme: api.scheme, host: api.host, path: api.path, query: api.parameters, headers: api.header, type: TVCastingModel.self) { data in
+    //                 
+    //                 var max = 0
+    //                 
+    //                 data.cast.forEach {
+    //                     if $0.totalEpisodeCount > max { max = $0.totalEpisodeCount }
+    //                 }
+    //                 
+    //                 let mainCastingList = data.cast.filter { $0.totalEpisodeCount == max }
+    //                 
+    //                 self.castingList = mainCastingList
+    //                 
+    //                 dispatchGroup.leave()
+    //             }
+    //         case .recommend:
+    //             dispatchGroup.enter()
+    //             APIManager.shared.callAPI(scheme: api.scheme, host: api.host, path: api.path, query: api.parameters, headers: api.header, type: TVRecommendModel.self) { data in
+    //                 
+    //                 self.recommendList = data.results
+    //                 
+    //                 dispatchGroup.leave()
+    //             }
+    //         }
+    //     }
+    //     
+    //     dispatchGroup.notify(queue: .main) {
+    //         self.getMainView().actorCollectionView.reloadData()
+    //         self.getMainView().recommendCollectionView.reloadData()
+    //     }
+    // }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {

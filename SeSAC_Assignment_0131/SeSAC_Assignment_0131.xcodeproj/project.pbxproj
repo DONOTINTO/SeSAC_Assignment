@@ -33,10 +33,12 @@
 		AC27C9EE2B6AAE71002BDB0F /* ActorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9ED2B6AAE71002BDB0F /* ActorCollectionViewCell.swift */; };
 		AC27C9F12B6AAEFA002BDB0F /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9F02B6AAEFA002BDB0F /* ViewProtocol.swift */; };
 		AC27C9F32B6AC261002BDB0F /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27C9F22B6AC261002BDB0F /* RecommendCollectionViewCell.swift */; };
-		AC3DEEF22B6CDAF9003407ED /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEEF12B6CDAF9003407ED /* TestViewController.swift */; };
-		AC3DEEF42B6CDB06003407ED /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEEF32B6CDB06003407ED /* TestView.swift */; };
-		AC3DEEF62B6CDD4B003407ED /* TVSeriesCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEEF52B6CDD4B003407ED /* TVSeriesCellType.swift */; };
+		AC3DEEF62B6CDD4B003407ED /* TVSeriesSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEEF52B6CDD4B003407ED /* TVSeriesSections.swift */; };
 		AC3DEEF82B6CE15D003407ED /* TMDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3DEEF72B6CE15D003407ED /* TMDBAPI.swift */; };
+		ACB1DE762B6EA76C00137F4A /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE752B6EA76C00137F4A /* TryViewController.swift */; };
+		ACB1DE782B6EA78300137F4A /* TryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE772B6EA78300137F4A /* TryView.swift */; };
+		ACB1DE7B2B6FE85B00137F4A /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE7A2B6FE85B00137F4A /* DetailsCollectionViewCell.swift */; };
+		ACB1DE802B6FE8F400137F4A /* UIView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE7F2B6FE8F400137F4A /* UIView++.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,10 +66,12 @@
 		AC27C9ED2B6AAE71002BDB0F /* ActorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC27C9F02B6AAEFA002BDB0F /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		AC27C9F22B6AC261002BDB0F /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
-		AC3DEEF12B6CDAF9003407ED /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		AC3DEEF32B6CDB06003407ED /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		AC3DEEF52B6CDD4B003407ED /* TVSeriesCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesCellType.swift; sourceTree = "<group>"; };
+		AC3DEEF52B6CDD4B003407ED /* TVSeriesSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesSections.swift; sourceTree = "<group>"; };
 		AC3DEEF72B6CE15D003407ED /* TMDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI.swift; sourceTree = "<group>"; };
+		ACB1DE752B6EA76C00137F4A /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
+		ACB1DE772B6EA78300137F4A /* TryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryView.swift; sourceTree = "<group>"; };
+		ACB1DE7A2B6FE85B00137F4A /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACB1DE7F2B6FE8F400137F4A /* UIView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 		AC27C9AF2B6A6DE7002BDB0F /* SeSAC_Assignment_0131 */ = {
 			isa = PBXGroup;
 			children = (
+				ACB1DE7E2B6FE89200137F4A /* Extension */,
+				ACB1DE792B6F2BDB00137F4A /* Network */,
 				AC27C9DC2B6A8C13002BDB0F /* Custom */,
 				ACBF43062B6AD2A3007ED3A8 /* Model */,
 				AC27C9EF2B6AAEEF002BDB0F /* Protocol */,
@@ -125,10 +131,11 @@
 			isa = PBXGroup;
 			children = (
 				AC27C9D32B6A6F92002BDB0F /* BaseViewController.swift */,
-				AC3DEEF12B6CDAF9003407ED /* TestViewController.swift */,
 				AC27C9B42B6A6DE7002BDB0F /* MainViewController.swift */,
+				ACB1DE7A2B6FE85B00137F4A /* DetailsCollectionViewCell.swift */,
 				AC27C9ED2B6AAE71002BDB0F /* ActorCollectionViewCell.swift */,
 				AC27C9F22B6AC261002BDB0F /* RecommendCollectionViewCell.swift */,
+				ACB1DE752B6EA76C00137F4A /* TryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -138,7 +145,7 @@
 			children = (
 				AC27C9D72B6A8A77002BDB0F /* BaseView.swift */,
 				AC27C9C62B6A6F0D002BDB0F /* MainView.swift */,
-				AC3DEEF32B6CDB06003407ED /* TestView.swift */,
+				ACB1DE772B6EA78300137F4A /* TryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,16 +176,31 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		ACBF43062B6AD2A3007ED3A8 /* Model */ = {
+		ACB1DE792B6F2BDB00137F4A /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				AC27C9E52B6A9D56002BDB0F /* APIKey.swift */,
 				AC27C9E32B6A97D8002BDB0F /* APIManager.swift */,
 				AC3DEEF72B6CE15D003407ED /* TMDBAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		ACB1DE7E2B6FE89200137F4A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				ACB1DE7F2B6FE8F400137F4A /* UIView++.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		ACBF43062B6AD2A3007ED3A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				AC27C9E72B6AA35B002BDB0F /* TVDetailsModel.swift */,
 				AC27C9E92B6AA998002BDB0F /* TVCastingModel.swift */,
 				AC27C9EB2B6AABBB002BDB0F /* TVRecommendModel.swift */,
-				AC3DEEF52B6CDD4B003407ED /* TVSeriesCellType.swift */,
+				AC3DEEF52B6CDD4B003407ED /* TVSeriesSections.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,24 +289,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC27C9E02B6A8CFA002BDB0F /* HeadLabel.swift in Sources */,
-				AC3DEEF22B6CDAF9003407ED /* TestViewController.swift in Sources */,
 				AC27C9D42B6A6F92002BDB0F /* BaseViewController.swift in Sources */,
 				AC27C9B52B6A6DE7002BDB0F /* MainViewController.swift in Sources */,
+				ACB1DE802B6FE8F400137F4A /* UIView++.swift in Sources */,
 				AC27C9C72B6A6F0D002BDB0F /* MainView.swift in Sources */,
 				AC27C9E42B6A97D8002BDB0F /* APIManager.swift in Sources */,
 				AC27C9EA2B6AA998002BDB0F /* TVCastingModel.swift in Sources */,
+				ACB1DE762B6EA76C00137F4A /* TryViewController.swift in Sources */,
 				AC27C9D82B6A8A77002BDB0F /* BaseView.swift in Sources */,
+				ACB1DE782B6EA78300137F4A /* TryView.swift in Sources */,
 				AC27C9F12B6AAEFA002BDB0F /* ViewProtocol.swift in Sources */,
 				AC27C9DE2B6A8C38002BDB0F /* TitleLabel.swift in Sources */,
 				AC27C9EE2B6AAE71002BDB0F /* ActorCollectionViewCell.swift in Sources */,
 				AC27C9EC2B6AABBB002BDB0F /* TVRecommendModel.swift in Sources */,
 				AC27C9DB2B6A8B39002BDB0F /* Consts.swift in Sources */,
 				AC3DEEF82B6CE15D003407ED /* TMDBAPI.swift in Sources */,
-				AC3DEEF62B6CDD4B003407ED /* TVSeriesCellType.swift in Sources */,
+				AC3DEEF62B6CDD4B003407ED /* TVSeriesSections.swift in Sources */,
+				ACB1DE7B2B6FE85B00137F4A /* DetailsCollectionViewCell.swift in Sources */,
 				AC27C9B12B6A6DE7002BDB0F /* AppDelegate.swift in Sources */,
 				AC27C9E82B6AA35B002BDB0F /* TVDetailsModel.swift in Sources */,
 				AC27C9B32B6A6DE7002BDB0F /* SceneDelegate.swift in Sources */,
-				AC3DEEF42B6CDB06003407ED /* TestView.swift in Sources */,
 				AC27C9E62B6A9D56002BDB0F /* APIKey.swift in Sources */,
 				AC27C9E22B6A8D36002BDB0F /* BasicLabel.swift in Sources */,
 				AC27C9F32B6AC261002BDB0F /* RecommendCollectionViewCell.swift in Sources */,

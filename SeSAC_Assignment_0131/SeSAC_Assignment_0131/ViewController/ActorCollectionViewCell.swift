@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ActorCollectionViewCell: UICollectionViewCell {
     
@@ -26,8 +27,18 @@ class ActorCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         posterImageView.image = nil
         nameLabel.text = ""
+    }
+    
+    func setData(data: CastingList) {
+        let urlStr = Consts.Image.baseImagURL + data.profilePath
+        let url = URL(string: urlStr)
+        posterImageView.kf.setImage(with: url)
+        
+        nameLabel.text = data.name
     }
 }
 
@@ -50,7 +61,7 @@ extension ActorCollectionViewCell: ViewProtocol {
     }
     
     func configureView() {
-        posterImageView.contentMode = .scaleAspectFit
+        posterImageView.contentMode = .scaleAspectFill
         nameLabel.adjustsFontSizeToFitWidth = true
     }
 }

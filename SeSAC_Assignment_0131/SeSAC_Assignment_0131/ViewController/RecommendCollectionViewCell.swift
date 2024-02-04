@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class RecommendCollectionViewCell: UICollectionViewCell {
     
@@ -25,9 +26,16 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         posterImageView.image = nil
     }
     
+    func setData(data: Recommend) {
+        let urlStr = Consts.Image.baseImagURL + data.posterPath
+        let url = URL(string: urlStr)
+        posterImageView.kf.setImage(with: url)
+    }
 }
 
 extension RecommendCollectionViewCell: ViewProtocol {
@@ -36,11 +44,12 @@ extension RecommendCollectionViewCell: ViewProtocol {
     }
     
     func configureLayout() {
-        posterImageView.snp.makeConstraints {
-            $0.edges.equalTo(self.contentView.snp.edges)
+        self.posterImageView.snp.makeConstraints {
+            $0.edges.equalTo(self.contentView)
         }
     }
     
     func configureView() {
+        posterImageView.contentMode = .scaleAspectFill
     }
 }

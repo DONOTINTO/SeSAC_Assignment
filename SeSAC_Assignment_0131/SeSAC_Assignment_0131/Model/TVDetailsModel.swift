@@ -12,7 +12,7 @@ struct TVDetailsModel: Decodable {
     let name: String
     let numberOfEpisodes: Int
     let overview: String
-    let voteAverage: Float
+    let voteAverage: Double
     
     enum CodingKeys: String, CodingKey {
         case name, overview
