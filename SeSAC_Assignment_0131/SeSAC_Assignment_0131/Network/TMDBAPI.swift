@@ -38,12 +38,22 @@ enum TMDBAPI: Int, CaseIterable {
         return .get
     }
     
+    // Alamofire 전용
     var parameters: Parameters {
         switch self {
         case .details, .recommend:
             return ["language": "ko-KR"]
         case .casting:
             return ["": ""]
+        }
+    }
+    
+    var params: URLQueryItem {
+        switch self {
+        case .details, .recommend:
+            return URLQueryItem(name: "language", value: "ko-KR")
+        case .casting:
+            return URLQueryItem(name: "", value: "")
         }
     }
     

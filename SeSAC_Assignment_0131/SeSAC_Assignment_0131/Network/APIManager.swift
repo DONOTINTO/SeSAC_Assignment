@@ -15,13 +15,40 @@ class APIManager {
     
     func callAPI<T: Decodable>(type: T.Type, api: TMDBAPI , completion: @escaping (T) -> Void) {
         
-        AF.request(api.endpoint, method: api.method, parameters: api.parameters, encoding: URLEncoding(destination: .queryString), headers: api.header).responseDecodable(of: type) { response in
-            switch response.result {
-            case .success(let success):
-                completion(success)
-            case .failure(let failure):
-                print(type, failure.errorDescription)
+        var urlComponent = URLComponents(string: "\(api.endpoint)")
+        urlComponent?.queryItems = [api.params]
+        
+        guard let url = urlComponent?.url else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.addValue(APIKey.shared.key, forHTTPHeaderField: APIKey.shared.auth)
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            DispatchQueue.main.async {
+                guard error == nil else { return }
+                guard let response = response as? HTTPURLResponse else { return }
+                
+                if response.statusCode == 200 {
+                    print("통신 성공")
+                }
+                
+                guard let data else { return }
+                
+                do {
+                    let result = try JSONDecoder().decode(type.self, from: data)
+                    completion(result)
+                } catch let error {
+                    print(error)
+                }
             }
-        }
+        }.resume()
+        
+        // AF.request(api.endpoint, method: api.method, parameters: api.parameters, encoding: URLEncoding(destination: .queryString), headers: api.header).responseDecodable(of: type) { response in
+        //     switch response.result {
+        //     case .success(let success):
+        //         completion(success)
+        //     case .failure(let failure):
+        //         print(type, failure.errorDescription)
+        //     }
+        // }
     }
 }
