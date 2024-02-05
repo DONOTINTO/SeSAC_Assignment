@@ -34,9 +34,13 @@ class ActorCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(data: CastingList) {
-        let urlStr = Consts.Image.baseImagURL + data.profilePath
-        let url = URL(string: urlStr)
-        posterImageView.kf.setImage(with: url)
+        if let path = data.profilePath {
+            let urlStr = Consts.Image.baseImagURL + path
+            let url = URL(string: urlStr)
+            posterImageView.kf.setImage(with: url)
+        } else {
+            posterImageView.image = UIImage(systemName: "person.fill")
+        }
         
         nameLabel.text = data.name
     }

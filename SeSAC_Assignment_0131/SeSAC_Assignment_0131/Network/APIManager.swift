@@ -13,14 +13,15 @@ class APIManager {
     
     private init() { }
     
-    func callAPI<T: Decodable>(type: T.Type, api: TMDBAPI , completion: @escaping (T) -> Void) {
+    func callAPI<T: Decodable>(type: T.Type, api: TMDBAPI , completion: @escaping (T?, Error?) -> Void) {
         
         var urlComponent = URLComponents(string: "\(api.endpoint)")
-        urlComponent?.queryItems = [api.params]
+        urlComponent?.queryItems = api.params
         
         guard let url = urlComponent?.url else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.addValue(APIKey.shared.key, forHTTPHeaderField: APIKey.shared.auth)
+        print(urlRequest.url)
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             DispatchQueue.main.async {
@@ -35,9 +36,10 @@ class APIManager {
                 
                 do {
                     let result = try JSONDecoder().decode(type.self, from: data)
-                    completion(result)
+                    completion(result, nil)
                 } catch let error {
-                    print(error)
+                    completion(nil, error)
+                    print(type, error.localizedDescription)
                 }
             }
         }.resume()

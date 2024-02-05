@@ -13,7 +13,14 @@ class MainViewController: UIViewController {
     var details: TVDetailsModel = TVDetailsModel(backdropPath: "", name: "", numberOfEpisodes: 0, overview: "", voteAverage: 0)
     var casting: [CastingList] = []
     var recommend: [Recommend] = []
-
+    var idList: [TVID] = [] {
+        didSet {
+            configureHierarchy()
+            configureLayout()
+            configureView()
+        }
+    }
+    
     override func loadView() {
         super.loadView()
         
@@ -35,55 +42,88 @@ class MainViewController: UIViewController {
     }
     
     func fetch() {
+        APIManager.shared.callAPI(type: IDListModel.self, api: TMDBAPI.idList) { data, _ in
+            guard let data else { return }
+            self.idList = data.results
+            
+            if let firstID = self.idList.first {
+                TMDBAPI.id = "\(firstID.id)"
+            }
+            
+            self.fetchTVInfo()
+        }
+    }
+    
+    func fetchTVInfo() {
         let dispatchGroup = DispatchGroup()
         
-        for idx in 0 ..< TMDBAPI.count {
-            guard let api = TMDBAPI(rawValue: idx) else { return }
-            
-            switch api {
-            case .details:
-                dispatchGroup.enter()
-                APIManager.shared.callAPI(type: TVDetailsModel.self, api: api) { data in
-                    self.details = data
-                    
-                    dispatchGroup.leave()
-                }
-            case .casting:
-                dispatchGroup.enter()
-                APIManager.shared.callAPI(type: TVCastingModel.self, api: api) { data in
-                    var max = 0
-                    
-                    data.cast.forEach {
-                        if $0.totalEpisodeCount > max { max = $0.totalEpisodeCount }
-                    }
-                    
-                    let mainCastingList = data.cast.filter { $0.totalEpisodeCount == max }
-                    
-                    self.casting = mainCastingList
-                    
-                    dispatchGroup.leave()
-                }
-            case .recommend:
-                dispatchGroup.enter()
-                APIManager.shared.callAPI(type: TVRecommendModel.self, api: api) { data in
-                    self.recommend = data.results
-                    
-                    dispatchGroup.leave()
-                }
+        dispatchGroup.enter()
+        APIManager.shared.callAPI(type: TVDetailsModel.self, api: TMDBAPI.details) { data, _ in
+            guard let data else {
+                dispatchGroup.leave()
+                return
             }
+            self.details = data
+            
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        APIManager.shared.callAPI(type: TVCastingModel.self, api: TMDBAPI.casting) { data, _ in
+            guard let data else {
+                dispatchGroup.leave()
+                return
+            }
+            
+            var max = 0
+            
+            data.cast.forEach {
+                if $0.totalEpisodeCount > max { max = $0.totalEpisodeCount }
+            }
+            
+            let mainCastingList = data.cast.filter { $0.totalEpisodeCount == max }
+            
+            self.casting = mainCastingList
+            
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        APIManager.shared.callAPI(type: TVRecommendModel.self, api: TMDBAPI.recommend) { data, _ in
+            guard let data else {
+                dispatchGroup.leave()
+                return
+            }
+            self.recommend = data.results
+            
+            dispatchGroup.leave()
         }
         
         dispatchGroup.notify(queue: .main) {
-            let urlStr = Consts.Image.baseImagURL + self.details.backdropPath
-            let url = URL(string: urlStr)
-            self.view().mainPosterImageView.kf.setImage(with: url)
             self.view().mainCollectionView.reloadData()
         }
+    }
+    
+    func startVC() -> PageContentViewController {
+        let vc = PageContentViewController()
+        if let firstInfo = self.idList.first {
+            let urlStr = Consts.Image.baseImagURL + firstInfo.backdropPath!
+            let url = URL(string: urlStr)
+            vc.mainPosterImageView.kf.setImage(with: url)
+        }
+        return vc
     }
 }
 
 extension MainViewController: ViewProtocol {
     func configureHierarchy() {
+        let startVC = startVC()
+        let viewControllers = NSArray(object: startVC)
+        view().mainPosterPageViewController.delegate = self
+        view().mainPosterPageViewController.dataSource = self
+        view().mainPosterPageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .forward, animated: true)
+        self.addChild(view().mainPosterPageViewController)
+        
         view().mainCollectionView.dataSource = self
         view().mainCollectionView.delegate = self
         view().mainCollectionView.register(DetailsCollectionViewCell.self, forCellWithReuseIdentifier: DetailsCollectionViewCell.identifier)
@@ -165,4 +205,16 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionReusableView()
         }
     }
+}
+
+extension MainViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        return UIViewController()
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        return UIViewController()
+    }
+    
+    
 }

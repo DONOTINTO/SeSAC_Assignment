@@ -13,7 +13,7 @@ struct TVCastingModel: Decodable {
 
 struct CastingList: Decodable {
     let name: String
-    let profilePath: String
+    let profilePath: String?
     let totalEpisodeCount: Int
     
     enum CodingKeys: String, CodingKey {

@@ -8,16 +8,13 @@
 import UIKit
 import Alamofire
 
-enum TMDBAPI: Int, CaseIterable {
+enum TMDBAPI: Int {
+    case idList
     case details
     case casting
     case recommend
     
     static var id = "96102"
-    
-    static var count: Int {
-        return TMDBAPI.allCases.count
-    }
     
     var baseURL: String {
         return "https://api.themoviedb.org/3"
@@ -25,6 +22,8 @@ enum TMDBAPI: Int, CaseIterable {
     
     var endpoint: URL {
         switch self {
+        case .idList:
+            return URL(string: baseURL + "/tv/airing_today")!
         case .details:
             return URL(string: baseURL + "/tv/\(TMDBAPI.id)")!
         case .casting:
@@ -41,19 +40,23 @@ enum TMDBAPI: Int, CaseIterable {
     // Alamofire 전용
     var parameters: Parameters {
         switch self {
-        case .details, .recommend:
-            return ["language": "ko-KR"]
-        case .casting:
+        case .idList:
+            return ["language": "ko-KR", "page": "1"]
+        // case .details, .recommend:
+        //     return ["language": "ko-KR"]
+        case .details, .recommend, .casting:
             return ["": ""]
         }
     }
     
-    var params: URLQueryItem {
+    var params: [URLQueryItem] {
         switch self {
-        case .details, .recommend:
-            return URLQueryItem(name: "language", value: "ko-KR")
-        case .casting:
-            return URLQueryItem(name: "", value: "")
+        case.idList:
+            return [URLQueryItem(name: "language", value: "ko-KR"), URLQueryItem(name: "page", value: "1")]
+        // case .details, .recommend:
+        //     return [URLQueryItem(name: "language", value: "ko-KR")]
+        case .details, .recommend, .casting:
+            return [URLQueryItem(name: "", value: "")]
         }
     }
     

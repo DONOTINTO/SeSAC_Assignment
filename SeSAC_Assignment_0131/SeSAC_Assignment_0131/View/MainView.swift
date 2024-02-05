@@ -10,7 +10,7 @@ import SnapKit
 
 class MainView: UIView {
     
-    let mainPosterImageView = UIImageView()
+    let mainPosterPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     let mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: TVSeriesSections.create())
     
     override init(frame: CGRect) {
@@ -29,19 +29,19 @@ class MainView: UIView {
 
 extension MainView: ViewProtocol {
     func configureHierarchy() {
-        self.addSubview(mainPosterImageView)
+        self.addSubview(mainPosterPageViewController.view)
         self.addSubview(mainCollectionView)
     }
     
     func configureLayout() {
         let ratio: Float = 4/7
-        mainPosterImageView.snp.makeConstraints {
+        mainPosterPageViewController.view.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            $0.height.equalTo(mainPosterImageView.snp.width).multipliedBy(ratio)
+            $0.height.equalTo(mainPosterPageViewController.view.snp.width).multipliedBy(ratio)
         }
         
         mainCollectionView.snp.makeConstraints {
-            $0.top.equalTo(mainPosterImageView.snp.bottom)
+            $0.top.equalTo(mainPosterPageViewController.view.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
