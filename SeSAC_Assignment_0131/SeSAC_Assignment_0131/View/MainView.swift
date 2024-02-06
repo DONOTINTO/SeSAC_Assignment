@@ -64,6 +64,10 @@ extension MainView: ViewProtocol {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
         
+        // section.visibleItemsInvalidationHandler = { [weak self] items, locaation, environment in
+        //     
+        // }
+        
         return UICollectionViewCompositionalLayout(section: section)
     }
 }

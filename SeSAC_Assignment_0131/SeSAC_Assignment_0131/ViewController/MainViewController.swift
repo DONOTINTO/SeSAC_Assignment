@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
             self.idList = data.results
             
             if let firstID = self.idList.first { TMDBAPI.id = "\(firstID.id)" }
+            self.view().mainPosterCollectionView.reloadData()
             
             self.fetchTVInfo()
         }
@@ -98,7 +99,6 @@ class MainViewController: UIViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
-            self.view().mainPosterCollectionView.reloadData()
             self.view().mainCollectionView.reloadData()
         }
     }
@@ -109,6 +109,7 @@ extension MainViewController: ViewProtocol {
         view().mainPosterCollectionView.dataSource = self
         view().mainPosterCollectionView.delegate = self
         view().mainPosterCollectionView.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
+        view().mainPosterCollectionView.setCollectionViewLayout(createPosterLayout(), animated: true)
         
         view().mainCollectionView.dataSource = self
         view().mainCollectionView.delegate = self
@@ -124,6 +125,32 @@ extension MainViewController: ViewProtocol {
     
     func configureView() {
         self.view.backgroundColor = .clear
+    }
+    
+    func createPosterLayout() -> UICollectionViewCompositionalLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .paging
+        
+        section.visibleItemsInvalidationHandler = {  visibleItems, location, environment in
+            // collectionView의 width와 collectionView의 현재 x값을 통해 절반 이상 페이지가 넘어갔을때만 정보 불러오기
+            let pageWidth = environment.container.contentSize.width
+            let curPage = Int(round(location.x / pageWidth))
+            
+            TMDBAPI.id =  "\(self.idList[curPage].id)"
+            self.fetchTVInfo()
+        }
+        
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }
 

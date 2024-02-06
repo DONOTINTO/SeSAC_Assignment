@@ -12,6 +12,7 @@ import Kingfisher
 class PosterCollectionViewCell: UICollectionViewCell {
     
     let posterImageView = UIImageView()
+    var data: TVID?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +27,8 @@ class PosterCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(data: TVID) {
+        self.data = data
+        
         guard let path = data.backdropPath else {
             posterImageView.image = UIImage(systemName: "person.fill")
             return
