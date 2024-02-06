@@ -10,7 +10,7 @@ import SnapKit
 
 class MainView: UIView {
     
-    let mainPosterPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    let mainPosterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createPosterLayout())
     let mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: TVSeriesSections.create())
     
     override init(frame: CGRect) {
@@ -29,24 +29,41 @@ class MainView: UIView {
 
 extension MainView: ViewProtocol {
     func configureHierarchy() {
-        self.addSubview(mainPosterPageViewController.view)
+        self.addSubview(mainPosterCollectionView)
         self.addSubview(mainCollectionView)
     }
     
     func configureLayout() {
         let ratio: Float = 4/7
-        mainPosterPageViewController.view.snp.makeConstraints {
+        mainPosterCollectionView.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            $0.height.equalTo(mainPosterPageViewController.view.snp.width).multipliedBy(ratio)
+            $0.height.equalTo(mainPosterCollectionView.snp.width).multipliedBy(ratio)
         }
         
         mainCollectionView.snp.makeConstraints {
-            $0.top.equalTo(mainPosterPageViewController.view.snp.bottom)
+            $0.top.equalTo(mainPosterCollectionView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
     
     func configureView() {
         mainCollectionView.backgroundColor = .clear
+    }
+    
+    static func createPosterLayout() -> UICollectionViewCompositionalLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .paging
+        
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }

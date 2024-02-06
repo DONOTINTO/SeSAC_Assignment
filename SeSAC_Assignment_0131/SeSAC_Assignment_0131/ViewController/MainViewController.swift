@@ -46,9 +46,7 @@ class MainViewController: UIViewController {
             guard let data else { return }
             self.idList = data.results
             
-            if let firstID = self.idList.first {
-                TMDBAPI.id = "\(firstID.id)"
-            }
+            if let firstID = self.idList.first { TMDBAPI.id = "\(firstID.id)" }
             
             self.fetchTVInfo()
         }
@@ -100,29 +98,17 @@ class MainViewController: UIViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
+            self.view().mainPosterCollectionView.reloadData()
             self.view().mainCollectionView.reloadData()
         }
-    }
-    
-    func startVC() -> PageContentViewController {
-        let vc = PageContentViewController()
-        if let firstInfo = self.idList.first {
-            let urlStr = Consts.Image.baseImagURL + firstInfo.backdropPath!
-            let url = URL(string: urlStr)
-            vc.mainPosterImageView.kf.setImage(with: url)
-        }
-        return vc
     }
 }
 
 extension MainViewController: ViewProtocol {
     func configureHierarchy() {
-        let startVC = startVC()
-        let viewControllers = NSArray(object: startVC)
-        view().mainPosterPageViewController.delegate = self
-        view().mainPosterPageViewController.dataSource = self
-        view().mainPosterPageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .forward, animated: true)
-        self.addChild(view().mainPosterPageViewController)
+        view().mainPosterCollectionView.dataSource = self
+        view().mainPosterCollectionView.delegate = self
+        view().mainPosterCollectionView.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
         
         view().mainCollectionView.dataSource = self
         view().mainCollectionView.delegate = self
@@ -143,45 +129,74 @@ extension MainViewController: ViewProtocol {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return TVSeriesSections.count
+        if collectionView == view().mainPosterCollectionView {
+            
+            return 1
+            
+        } else {
+            
+            return TVSeriesSections.count
+            
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sectionType = TVSeriesSections(rawValue: section) else { return 0 }
-        switch sectionType {
-        case .details:
-            return 1
-        case .actors:
-            return casting.count
-        case .recommend:
-            return recommend.count
+        
+        if collectionView == view().mainPosterCollectionView {
+            
+            return idList.count
+            
+        } else {
+            
+            guard let sectionType = TVSeriesSections(rawValue: section) else { return 0 }
+            switch sectionType {
+            case .details:
+                return 1
+            case .actors:
+                return casting.count
+            case .recommend:
+                return recommend.count
+            }
+            
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let sectionType = TVSeriesSections(rawValue: indexPath.section) else { return UICollectionViewCell() }
         
-        switch sectionType {
-        case .details:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.identifier, for: indexPath) as? DetailsCollectionViewCell else { return UICollectionViewCell() }
+        if collectionView == view().mainPosterCollectionView {
             
-            cell.setData(data: details)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as? PosterCollectionViewCell else { return UICollectionViewCell() }
             
-            return cell
-            
-        case .actors:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActorCollectionViewCell.identifier, for: indexPath) as? ActorCollectionViewCell else { return UICollectionViewCell() }
-            
-            cell.setData(data: casting[indexPath.item])
+            cell.setData(data: idList[indexPath.item])
             
             return cell
             
-        case .recommend:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as? RecommendCollectionViewCell else { return UICollectionViewCell() }
+        } else {
             
-            cell.setData(data: recommend[indexPath.item])
+            guard let sectionType = TVSeriesSections(rawValue: indexPath.section) else { return UICollectionViewCell() }
             
-            return cell
+            switch sectionType {
+            case .details:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.identifier, for: indexPath) as? DetailsCollectionViewCell else { return UICollectionViewCell() }
+                
+                cell.setData(data: details)
+                
+                return cell
+                
+            case .actors:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActorCollectionViewCell.identifier, for: indexPath) as? ActorCollectionViewCell else { return UICollectionViewCell() }
+                
+                cell.setData(data: casting[indexPath.item])
+                
+                return cell
+                
+            case .recommend:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as? RecommendCollectionViewCell else { return UICollectionViewCell() }
+                
+                cell.setData(data: recommend[indexPath.item])
+                
+                return cell
+            }
         }
     }
     
@@ -205,16 +220,4 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionReusableView()
         }
     }
-}
-
-extension MainViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return UIViewController()
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return UIViewController()
-    }
-    
-    
 }
