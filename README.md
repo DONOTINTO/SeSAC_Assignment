@@ -234,3 +234,66 @@ MapKit을 이용하여 지도를 보여주었고 Alert를 통해 원하는 영�
 - Enum
 - CaseIterable
 - 연산 프로퍼티(Computed Property)
+
+---
+## `❗ SeSAC Assignment 0124`
+
+> **기간**
+
+24.01.24
+위치 권한을 요청하여 현재 위치를 맵에 보여준다.
+
+> **UIKit**
+- MapKit
+- CoreLocation
+
+> **키워드**
+- 권한 설정
+- Privacy - Location When In Use Usage Description
+- CLLocationManagerDelegate
+
+---
+## `❗ SeSAC Assignment 0130`
+TMDB API를 활용하여 하나의 CollectionView에 3개의 Cell을 생성하여 각 셀에 서로다른 API 호출을 통한 데이터를 뿌려주는 뷰를 만듦
+
+다양한 API 호출 및 CollectionView에 서로 다른 Cell들을 적용해볼 수 있었음.
+
+> **기간**
+
+24.01.30
+
+> **UIKit**
+- UICollectionView
+- API 호출
+
+> **키워드**
+- completionHandler @escaping
+- URLComponents
+- CodingKeys / CodingKey
+- SnapKit
+- KingFisher
+
+---
+## `❗ SeSAC Assignment 0131`
+1월 30일 과제를 조금 더 다듬어 CollectionView에 동적 높이를 할당해주었다. 이를 위해 Compositional Layout을 만들었고, GroupDispatch를 통해 여러 API의 모든 응답을 받은 후 데이터를 보여주었다.
+
+상단 포스터는 orthogonalScrollingBehavior에 paging을 적용하여 스크롤 방식에서 페이징 방식으로 변경하였다. 다음 포스터로 넘어갔을 때 다음 포스터의 데이터들을 새로 호출하여 cell을 모두 reload했다.
+
+> **기간**
+
+24.01.31
+
+> **UIKit**
+- UICollectionViewCompositionalLayout
+- HeaderCollectionReusableView
+- DispatchGroup (enter / leave)
+- Meta Type
+- orthogonalScrollingBehavior
+
+> **키워드**
+- completionHandler @escaping
+- URLComponents
+- CodingKeys / CodingKey
+- SnapKit
+- KingFisher
+- CollectionView 동적 높이 설정
