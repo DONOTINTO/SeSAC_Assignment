@@ -32,8 +32,15 @@ class MainViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureView()
+        createProfileItem()
         
         fetch()
+    }
+    
+    @objc func profileButtonClicked(_ sender: UIBarButtonItem) {
+        let nextVC = ProfileViewController()
+    
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func view() -> MainView {
@@ -119,9 +126,7 @@ extension MainViewController: ViewProtocol {
         view().mainCollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
     }
     
-    func configureLayout() {
-        
-    }
+    func configureLayout() { }
     
     func configureView() {
         self.view.backgroundColor = .clear
@@ -151,6 +156,26 @@ extension MainViewController: ViewProtocol {
         }
         
         return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    func createProfileItem() {
+        let customButtonView = UIButton()
+        
+        let imageConfig = UIImage.SymbolConfiguration(scale: .large)
+        let profileImage = UIImage(systemName: "person.fill", withConfiguration: imageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        
+        customButtonView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButtonView.layer.cornerRadius = customButtonView.frame.width / 2
+        customButtonView.clipsToBounds = true
+        
+        customButtonView.backgroundColor = .systemGray
+        customButtonView.setImage(profileImage, for: .normal)
+        
+        customButtonView.addTarget(self, action: #selector(profileButtonClicked(_:)), for: .touchUpInside)
+        
+        let barButton = UIBarButtonItem(customView: customButtonView)
+        
+        self.navigationItem.rightBarButtonItem = barButton
     }
 }
 
