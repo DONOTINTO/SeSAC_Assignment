@@ -10,8 +10,8 @@ import SnapKit
 
 final class InfoTableViewCell: UITableViewCell {
 
-    private let titleLabel = UILabel()
-    private let mainLabel = UILabel()
+    let titleLabel = UILabel()
+    let mainLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,6 +34,11 @@ final class InfoTableViewCell: UITableViewCell {
         titleLabel.text = title
         mainLabel.text = placeHolder
     }
+    
+    func setTitle(title: String) {
+        mainLabel.text = title
+        mainLabel.textColor = .white
+    }
 }
 
 extension InfoTableViewCell: ViewProtocol {
@@ -45,10 +50,10 @@ extension InfoTableViewCell: ViewProtocol {
     
     func configureLayout() {
         titleLabel.snp.makeConstraints {
-            $0.leading.equalTo(self.contentView).inset(5)
-            $0.verticalEdges.equalTo(self.contentView).inset(15)
+            $0.leading.equalTo(self.contentView).offset(5)
+            $0.verticalEdges.greaterThanOrEqualTo(self.contentView).inset(15)
             $0.width.equalTo(self.contentView).dividedBy(4)
-            $0.height.equalTo(22)
+            $0.height.greaterThanOrEqualTo(22)
         }
         
         mainLabel.snp.makeConstraints {
@@ -66,7 +71,7 @@ extension InfoTableViewCell: ViewProtocol {
         titleLabel.textColor = .white
         
         mainLabel.font = .systemFont(ofSize: 13, weight: .regular)
-        mainLabel.textColor = .lightGray
+        mainLabel.textColor = .white
         mainLabel.textAlignment = .left
     }
 }

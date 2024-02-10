@@ -42,7 +42,7 @@ extension SettingTableViewCell: ViewProtocol {
     
     func configureLayout() {
         button.snp.makeConstraints {
-            $0.edges.equalTo(self.contentView).inset(5)
+            $0.edges.greaterThanOrEqualTo(self.contentView).inset(5)
             $0.height.equalTo(22)
         }
     }
@@ -53,5 +53,6 @@ extension SettingTableViewCell: ViewProtocol {
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13, weight: .regular)
         button.contentHorizontalAlignment = .left
+        print(button.contentHorizontalAlignment.rawValue)
     }
 }

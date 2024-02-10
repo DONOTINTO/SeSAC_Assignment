@@ -53,4 +53,37 @@ class APIManager {
         //     }
         // }
     }
+    
+    func callNaverAPI<T: Decodable>(type: T.Type, api: NaverAPI , completion: @escaping (T?, Error?) -> Void) {
+        
+        var urlComponent = URLComponents(string: "\(api.endpoint)")
+        urlComponent?.queryItems = api.params
+        urlComponent.s
+        
+        guard let url = urlComponent?.url else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.addValue(APIKey.shared.key, forHTTPHeaderField: APIKey.shared.auth)
+        print(urlRequest.url)
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            DispatchQueue.main.async {
+                guard error == nil else { return }
+                guard let response = response as? HTTPURLResponse else { return }
+                
+                if response.statusCode == 200 {
+                    print("통신 성공")
+                }
+                
+                guard let data else { return }
+                
+                do {
+                    let result = try JSONDecoder().decode(type.self, from: data)
+                    completion(result, nil)
+                } catch let error {
+                    completion(nil, error)
+                    print(type, error.localizedDescription)
+                }
+            }
+        }.resume()
+    }
 }

@@ -44,14 +44,29 @@ enum ProfileSections: Int, CaseIterable {
         var placeHolder: String {
             switch self {
             case .name:
+                if UserDefaultsManager.shared.name != "" {
+                    return UserDefaultsManager.shared.name
+                }
                 return "이름"
             case .userName:
+                if UserDefaultsManager.shared.userName != "" {
+                    return UserDefaultsManager.shared.userName
+                }
                 return "사용자 이름"
             case .introduction:
+                if UserDefaultsManager.shared.introduction != "" {
+                    return UserDefaultsManager.shared.introduction
+                }
                 return "소개"
             case .link:
-                return "링크 추가"
+                if UserDefaultsManager.shared.link != "" {
+                    return UserDefaultsManager.shared.link
+                }
+                return "링크"
             case .gender:
+                if UserDefaultsManager.shared.gender != "" {
+                    return UserDefaultsManager.shared.gender
+                }
                 return "성별"
             }
         }

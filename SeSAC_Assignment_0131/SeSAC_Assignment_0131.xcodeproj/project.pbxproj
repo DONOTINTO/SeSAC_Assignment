@@ -45,6 +45,8 @@
 		ACB1DE7B2B6FE85B00137F4A /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE7A2B6FE85B00137F4A /* DetailsCollectionViewCell.swift */; };
 		ACB1DE802B6FE8F400137F4A /* UIView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1DE7F2B6FE8F400137F4A /* UIView++.swift */; };
 		ACB70A872B76314300C7F9CE /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A862B76314300C7F9CE /* ProfileSettingViewController.swift */; };
+		ACB70A8D2B7639F700C7F9CE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A8C2B7639F700C7F9CE /* UserDefaultsManager.swift */; };
+		ACB70A8F2B7751D900C7F9CE /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A8E2B7751D900C7F9CE /* NaverAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		ACB1DE7A2B6FE85B00137F4A /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACB1DE7F2B6FE8F400137F4A /* UIView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++.swift"; sourceTree = "<group>"; };
 		ACB70A862B76314300C7F9CE /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		ACB70A8C2B7639F700C7F9CE /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		ACB70A8E2B7751D900C7F9CE /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		AC27C9AF2B6A6DE7002BDB0F /* SeSAC_Assignment_0131 */ = {
 			isa = PBXGroup;
 			children = (
+				ACB70A8B2B7639DE00C7F9CE /* Storage */,
 				ACB1DE7E2B6FE89200137F4A /* Extension */,
 				ACB1DE792B6F2BDB00137F4A /* Network */,
 				AC27C9DC2B6A8C13002BDB0F /* Custom */,
@@ -207,6 +212,7 @@
 				AC27C9E52B6A9D56002BDB0F /* APIKey.swift */,
 				AC27C9E32B6A97D8002BDB0F /* APIManager.swift */,
 				AC3DEEF72B6CE15D003407ED /* TMDBAPI.swift */,
+				ACB70A8E2B7751D900C7F9CE /* NaverAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -217,6 +223,14 @@
 				ACB1DE7F2B6FE8F400137F4A /* UIView++.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		ACB70A8B2B7639DE00C7F9CE /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				ACB70A8C2B7639F700C7F9CE /* UserDefaultsManager.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		ACBF43062B6AD2A3007ED3A8 /* Model */ = {
@@ -317,7 +331,9 @@
 				AC27C9E02B6A8CFA002BDB0F /* HeadLabel.swift in Sources */,
 				AC19A6F02B75FAA900A0C752 /* ProfileView.swift in Sources */,
 				AC27C9D42B6A6F92002BDB0F /* BaseViewController.swift in Sources */,
+				ACB70A8F2B7751D900C7F9CE /* NaverAPI.swift in Sources */,
 				ACB1DE802B6FE8F400137F4A /* UIView++.swift in Sources */,
+				ACB70A8D2B7639F700C7F9CE /* UserDefaultsManager.swift in Sources */,
 				AC27C9E42B6A97D8002BDB0F /* APIManager.swift in Sources */,
 				AC27C9EA2B6AA998002BDB0F /* TVCastingModel.swift in Sources */,
 				AC19A6F62B761DDE00A0C752 /* SettingTableViewCell.swift in Sources */,

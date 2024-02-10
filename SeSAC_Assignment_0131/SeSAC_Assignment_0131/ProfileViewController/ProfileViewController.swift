@@ -30,7 +30,31 @@ final class ProfileViewController: UIViewController {
     }
     
     @objc private func completeButtonClicked(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+        let section = ProfileSections.info.rawValue
+        let itemCount = ProfileSections.Info.count
+        
+        // 저장
+        for row in 0 ..< itemCount {
+            let indexPath = IndexPath(row: row, section: section)
+            guard let cell = view().profileTableView.cellForRow(at: indexPath) as? InfoTableViewCell else { return }
+            guard let data = cell.mainLabel.text else { return }
+            
+            guard let cellType = ProfileSections.Info(rawValue: row) else { return }
+            switch cellType {
+            case .name:
+                UserDefaultsManager.shared.name = data
+            case .userName:
+                UserDefaultsManager.shared.userName = data
+            case .introduction:
+                UserDefaultsManager.shared.introduction = data
+            case .link:
+                UserDefaultsManager.shared.link = data
+            case .gender:
+                UserDefaultsManager.shared.gender = data
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     private func setNavigationView() {
@@ -85,6 +109,10 @@ extension ProfileViewController: ViewProtocol {
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return ProfileSections.count
     }
@@ -111,6 +139,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if let info = ProfileSections.Info(rawValue: indexPath.row) {
                 cell.configure(title: info.title, placeHolder: info.placeHolder)
             }
+            
             cell.selectionStyle = .none
             
             return cell
@@ -135,11 +164,20 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         if sectionType == .info {
             guard let type = ProfileSections.Info(rawValue: indexPath.row) else { return }
+            guard let cell = tableView.cellForRow(at: indexPath) as? InfoTableViewCell else { return }
+            guard let title = cell.mainLabel.text else { return }
             
-            let title = type.title
+            nextVC.navigationTitle(title: type.title)
             
-            nextVC.navigationTitle(title: title)
-            nextVC.configure(placeHolder: title)
+            if title == type.title {
+                nextVC.configure(placeHolder: type.title)
+            } else {
+                nextVC.configure(data: title)
+            }
+            
+            nextVC.completionTitle = { title in
+                cell.setTitle(title: title)
+            }
             
             self.navigationController?.pushViewController(nextVC, animated: true)
         }

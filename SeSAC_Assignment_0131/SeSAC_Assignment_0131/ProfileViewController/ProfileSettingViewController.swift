@@ -11,6 +11,7 @@ import SnapKit
 class ProfileSettingViewController: UIViewController {
     
     private let titleTextField = UITextField()
+    var completionTitle: ((String) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +22,18 @@ class ProfileSettingViewController: UIViewController {
     }
     
     @objc private func doneButtonClicked(_ sender: UIBarButtonItem) {
+        completionTitle?(titleTextField.text ?? "")
         
+        self.navigationController?.popViewController(animated: true)
     }
     
     func configure(placeHolder: String) {
         titleTextField.placeholder = placeHolder
         titleTextField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [.foregroundColor: UIColor.lightGray])
+    }
+    
+    func configure(data: String) {
+        titleTextField.text = data
     }
     
     func navigationTitle(title: String) {
