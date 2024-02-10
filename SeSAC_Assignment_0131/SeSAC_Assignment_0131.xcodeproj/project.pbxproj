@@ -47,6 +47,7 @@
 		ACB70A872B76314300C7F9CE /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A862B76314300C7F9CE /* ProfileSettingViewController.swift */; };
 		ACB70A8D2B7639F700C7F9CE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A8C2B7639F700C7F9CE /* UserDefaultsManager.swift */; };
 		ACB70A8F2B7751D900C7F9CE /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A8E2B7751D900C7F9CE /* NaverAPI.swift */; };
+		ACB70A912B77C53E00C7F9CE /* NaverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A902B77C53E00C7F9CE /* NaverImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		ACB70A862B76314300C7F9CE /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		ACB70A8C2B7639F700C7F9CE /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		ACB70A8E2B7751D900C7F9CE /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
+		ACB70A902B77C53E00C7F9CE /* NaverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				AC27C9EB2B6AABBB002BDB0F /* TVRecommendModel.swift */,
 				AC3DEEF52B6CDD4B003407ED /* TVSeriesSections.swift */,
 				AC19A6F12B76147D00A0C752 /* Profile.swift */,
+				ACB70A902B77C53E00C7F9CE /* NaverImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB70A912B77C53E00C7F9CE /* NaverImage.swift in Sources */,
 				AC27C9E02B6A8CFA002BDB0F /* HeadLabel.swift in Sources */,
 				AC19A6F02B75FAA900A0C752 /* ProfileView.swift in Sources */,
 				AC27C9D42B6A6F92002BDB0F /* BaseViewController.swift in Sources */,

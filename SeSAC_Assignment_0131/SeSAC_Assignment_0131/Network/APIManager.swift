@@ -54,16 +54,20 @@ class APIManager {
         // }
     }
     
-    func callNaverAPI<T: Decodable>(type: T.Type, api: NaverAPI , completion: @escaping (T?, Error?) -> Void) {
+    func callNaverAPI<T: Decodable>(type: T.Type, queryItem: String , api: NaverAPI , completion: @escaping (T?, Error?) -> Void) {
         
-        var urlComponent = URLComponents(string: "\(api.endpoint)")
-        urlComponent?.queryItems = api.params
-        urlComponent.s
+        var urlComponent = URLComponents()
+        urlComponent.scheme = api.scheme
+        urlComponent.host = api.host
+        urlComponent.path = api.path
         
-        guard let url = urlComponent?.url else { return }
+        urlComponent.queryItems = [URLQueryItem(name: "query", value: queryItem)]
+        
+        guard let url = urlComponent.url else { return }
+        print(url)
         var urlRequest = URLRequest(url: url)
-        urlRequest.addValue(APIKey.shared.key, forHTTPHeaderField: APIKey.shared.auth)
-        print(urlRequest.url)
+        urlRequest.addValue("X-Naver-Client-Id", forHTTPHeaderField: api.headerIDKey)
+        urlRequest.addValue("X-Naver-Client-Secret", forHTTPHeaderField: api.headerSecretKey)
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             DispatchQueue.main.async {

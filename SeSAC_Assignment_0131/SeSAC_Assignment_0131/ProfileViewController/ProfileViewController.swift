@@ -19,6 +19,9 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        APIManager.shared.callNaverAPI(type: NaverImage.self, queryItem: "naver", api: NaverAPI.image) { data, error in
+            dump(data)
+        }
         configureHierarchy()
         configureLayout()
         configureView()
