@@ -64,10 +64,11 @@ class APIManager {
         urlComponent.queryItems = [URLQueryItem(name: "query", value: queryItem)]
         
         guard let url = urlComponent.url else { return }
-        print(url)
+        
         var urlRequest = URLRequest(url: url)
-        urlRequest.addValue("X-Naver-Client-Id", forHTTPHeaderField: api.headerIDKey)
-        urlRequest.addValue("X-Naver-Client-Secret", forHTTPHeaderField: api.headerSecretKey)
+        
+        urlRequest.addValue(APIKey.shared.naverID, forHTTPHeaderField: "X-Naver-Client-Id")
+        urlRequest.addValue(APIKey.shared.secret, forHTTPHeaderField: "X-Naver-Client-Secret")
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             DispatchQueue.main.async {
@@ -75,7 +76,7 @@ class APIManager {
                 guard let response = response as? HTTPURLResponse else { return }
                 
                 if response.statusCode == 200 {
-                    print("통신 성공")
+                    print("Naver 통신 성공")
                 }
                 
                 guard let data else { return }

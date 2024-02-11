@@ -162,14 +162,24 @@ extension MainViewController: ViewProtocol {
         let customButtonView = UIButton()
         
         let imageConfig = UIImage.SymbolConfiguration(scale: .large)
-        let profileImage = UIImage(systemName: "person.fill", withConfiguration: imageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        
+        if UserDefaultsManager.shared.image.isEmpty {
+            let profileImage = UIImage(systemName: "person.fill", withConfiguration: imageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            
+            customButtonView.setImage(profileImage, for: .normal)
+        } else {
+            let profileImage = UserDefaultsManager.shared.image
+            let imageURL = URL(string: profileImage)
+            customButtonView.kf.setImage(with: imageURL, for: .normal)
+        }
+        
         
         customButtonView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         customButtonView.layer.cornerRadius = customButtonView.frame.width / 2
         customButtonView.clipsToBounds = true
         
         customButtonView.backgroundColor = .systemGray
-        customButtonView.setImage(profileImage, for: .normal)
+        
         
         customButtonView.addTarget(self, action: #selector(profileButtonClicked(_:)), for: .touchUpInside)
         

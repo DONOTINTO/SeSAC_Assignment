@@ -19,9 +19,6 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        APIManager.shared.callNaverAPI(type: NaverImage.self, queryItem: "naver", api: NaverAPI.image) { data, error in
-            dump(data)
-        }
         configureHierarchy()
         configureLayout()
         configureView()
@@ -58,6 +55,13 @@ final class ProfileViewController: UIViewController {
             
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @objc private func imageEditButtonClicked(_ sender: UITapGestureRecognizer) {
+        // 이미지 선택 창으로 이동
+        let nextVC = ProfileEditViewController()
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     private func setNavigationView() {
@@ -106,6 +110,9 @@ extension ProfileViewController: ViewProtocol {
     }
     
     func configureView() {        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageEditButtonClicked(_:)))
+        view().profileEditLabel.isUserInteractionEnabled = true
+        view().profileEditLabel.addGestureRecognizer(tapGesture)
         view().profileTableView.backgroundColor = .black
         view().backgroundColor = .black
     }

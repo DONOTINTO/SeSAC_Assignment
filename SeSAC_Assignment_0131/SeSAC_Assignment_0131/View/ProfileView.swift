@@ -58,9 +58,18 @@ extension ProfileView: ViewProtocol {
     func configureView() {
         
         DispatchQueue.main.async{
-            self.profileImageView.backgroundColor = .blue
+            self.profileImageView.backgroundColor = .lightGray
             self.profileImageView.layer.cornerRadius = self.profileImageView.frame.width / 2
             self.profileImageView.clipsToBounds = true
+        }
+        
+        if UserDefaultsManager.shared.image.isEmpty {
+            let profileImage = UIImage(systemName: "person.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            self.profileImageView.image = profileImage
+        } else {
+            let profileImage = UserDefaultsManager.shared.image
+            let imageURL = URL(string: profileImage)
+            profileImageView.kf.setImage(with: imageURL)
         }
         
         profileEditLabel.text = "사진 수정"

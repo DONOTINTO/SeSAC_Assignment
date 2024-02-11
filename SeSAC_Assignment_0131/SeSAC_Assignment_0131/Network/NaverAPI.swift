@@ -11,6 +11,7 @@ import Alamofire
 enum NaverAPI: Int {
     case image
     
+    //https://openapi.naver.com/v1/search/image?query=naver
     var scheme: String {
         return "https"
     }
@@ -21,13 +22,5 @@ enum NaverAPI: Int {
     
     var path: String {
         return "/v1/search/image"
-    }
-    
-    var headerIDKey: String {
-        return "kDC3BQHOOJCK_ppUILYT"
-    }
-    
-    var headerSecretKey: String {
-        return "QTWp7njZxC"
     }
 }

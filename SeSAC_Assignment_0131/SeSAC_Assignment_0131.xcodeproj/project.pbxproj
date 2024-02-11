@@ -48,6 +48,9 @@
 		ACB70A8D2B7639F700C7F9CE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A8C2B7639F700C7F9CE /* UserDefaultsManager.swift */; };
 		ACB70A8F2B7751D900C7F9CE /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A8E2B7751D900C7F9CE /* NaverAPI.swift */; };
 		ACB70A912B77C53E00C7F9CE /* NaverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A902B77C53E00C7F9CE /* NaverImage.swift */; };
+		ACB70A932B788DB000C7F9CE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A922B788DB000C7F9CE /* ProfileEditViewController.swift */; };
+		ACB70A952B788E1000C7F9CE /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A942B788E1000C7F9CE /* ProfileEditView.swift */; };
+		ACB70A972B78935E00C7F9CE /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB70A962B78935E00C7F9CE /* ProfileImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +94,9 @@
 		ACB70A8C2B7639F700C7F9CE /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		ACB70A8E2B7751D900C7F9CE /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
 		ACB70A902B77C53E00C7F9CE /* NaverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverImage.swift; sourceTree = "<group>"; };
+		ACB70A922B788DB000C7F9CE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		ACB70A942B788E1000C7F9CE /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		ACB70A962B78935E00C7F9CE /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +118,10 @@
 			children = (
 				AC19A6ED2B75FA9200A0C752 /* ProfileViewController.swift */,
 				ACB70A862B76314300C7F9CE /* ProfileSettingViewController.swift */,
+				ACB70A922B788DB000C7F9CE /* ProfileEditViewController.swift */,
 				AC19A6F32B761DD400A0C752 /* InfoTableViewCell.swift */,
 				AC19A6F52B761DDE00A0C752 /* SettingTableViewCell.swift */,
+				ACB70A962B78935E00C7F9CE /* ProfileImageCollectionViewCell.swift */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -178,6 +186,7 @@
 				ACB1DE772B6EA78300137F4A /* MainView.swift */,
 				AC48FDFA2B7016680088638A /* HeaderCollectionReusableView.swift */,
 				AC19A6EF2B75FAA900A0C752 /* ProfileView.swift */,
+				ACB70A942B788E1000C7F9CE /* ProfileEditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +350,7 @@
 				AC27C9E42B6A97D8002BDB0F /* APIManager.swift in Sources */,
 				AC27C9EA2B6AA998002BDB0F /* TVCastingModel.swift in Sources */,
 				AC19A6F62B761DDE00A0C752 /* SettingTableViewCell.swift in Sources */,
+				ACB70A952B788E1000C7F9CE /* ProfileEditView.swift in Sources */,
 				ACB1DE762B6EA76C00137F4A /* MainViewController.swift in Sources */,
 				AC48FDFB2B7016680088638A /* HeaderCollectionReusableView.swift in Sources */,
 				AC27C9D82B6A8A77002BDB0F /* BaseView.swift in Sources */,
@@ -360,8 +370,10 @@
 				ACB1DE7B2B6FE85B00137F4A /* DetailsCollectionViewCell.swift in Sources */,
 				AC27C9B12B6A6DE7002BDB0F /* AppDelegate.swift in Sources */,
 				AC27C9E82B6AA35B002BDB0F /* TVDetailsModel.swift in Sources */,
+				ACB70A972B78935E00C7F9CE /* ProfileImageCollectionViewCell.swift in Sources */,
 				AC27C9B32B6A6DE7002BDB0F /* SceneDelegate.swift in Sources */,
 				AC27C9E62B6A9D56002BDB0F /* APIKey.swift in Sources */,
+				ACB70A932B788DB000C7F9CE /* ProfileEditViewController.swift in Sources */,
 				AC19A6452B7123E600A0C752 /* IDListModel.swift in Sources */,
 				AC27C9E22B6A8D36002BDB0F /* BasicLabel.swift in Sources */,
 				AC27C9F32B6AC261002BDB0F /* RecommendCollectionViewCell.swift in Sources */,
