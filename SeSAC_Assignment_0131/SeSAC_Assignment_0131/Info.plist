@@ -4,6 +4,13 @@
 <dict>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>media.istockphoto.com</key>
+			<string>media.istockphoto.com</string>
+			<key>imagescdn.gettyimagesbank.com</key>
+			<string>imagescdn.gettyimagesbank.com</string>
+		</dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<string>YES</string>
 	</dict>

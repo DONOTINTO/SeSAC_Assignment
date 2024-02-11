@@ -12,6 +12,7 @@ import Kingfisher
 class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     let imageView = UIImageView()
+    var link: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +28,7 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     func setImage(link: String) {
         let url = URL(string: link)
+        self.link = link
         imageView.kf.setImage(with: url)
     }
 }

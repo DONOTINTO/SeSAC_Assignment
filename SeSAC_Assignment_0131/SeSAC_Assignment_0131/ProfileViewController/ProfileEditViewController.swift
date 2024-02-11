@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileEditViewController: UIViewController {
     
@@ -14,6 +15,8 @@ class ProfileEditViewController: UIViewController {
             view().profileCollectionView.reloadData()
         }
     }
+    var link: String?
+    var complete: ((String) -> Void)?
     
     override func loadView() {
         self.view = ProfileEditView()
@@ -34,6 +37,18 @@ class ProfileEditViewController: UIViewController {
         }
     }
     
+    @objc func saveButtonClicked(_ sender: UIBarButtonItem) {
+        
+        if let link {
+            if let complete {
+                complete(link)
+            }
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
     func view() -> ProfileEditView {
         guard let view = self.view as? ProfileEditView else { return ProfileEditView() }
         return view
@@ -47,7 +62,9 @@ extension ProfileEditViewController: ViewProtocol {
     }
     
     func configureLayout() {
+        let saveBarButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonClicked(_:)))
         
+        self.navigationItem.rightBarButtonItem = saveBarButton
     }
     
     func configureView() {
@@ -72,5 +89,13 @@ extension ProfileEditViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let myIndexPath = IndexPath(row: indexPath.row, section: indexPath.section)
+        guard let item = collectionView.cellForItem(at: myIndexPath) as? ProfileImageCollectionViewCell else { return }
+        
+        guard let link = item.link else { return }
+        self.link = link
+        let url = URL(string: link)
+        view().profileImageView.kf.setImage(with: url)
+    }
 }

@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 final class ProfileViewController: UIViewController {
+    
+    var link: String?
 
     override func loadView() {
         super.loadView()
@@ -53,6 +55,11 @@ final class ProfileViewController: UIViewController {
                 UserDefaultsManager.shared.gender = data
             }
             
+            if let link {
+                print(link)
+                UserDefaultsManager.shared.image = link
+            }
+            
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -60,6 +67,12 @@ final class ProfileViewController: UIViewController {
     @objc private func imageEditButtonClicked(_ sender: UITapGestureRecognizer) {
         // 이미지 선택 창으로 이동
         let nextVC = ProfileEditViewController()
+        
+        nextVC.complete = { data in
+            let url = URL(string: data)
+            self.link = data
+            self.view().profileImageView.kf.setImage(with: url)
+        }
         
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
