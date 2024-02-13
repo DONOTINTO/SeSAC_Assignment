@@ -11,6 +11,7 @@ import SnapKit
 final class ProfileViewController: UIViewController {
     
     var link: String?
+    var completion: ((String) -> Void)?
 
     override func loadView() {
         super.loadView()
@@ -56,8 +57,11 @@ final class ProfileViewController: UIViewController {
             }
             
             if let link {
-                print(link)
                 UserDefaultsManager.shared.image = link
+                
+                if let completion {
+                    completion(link)
+                }
             }
             
             self.navigationController?.popViewController(animated: true)

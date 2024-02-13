@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 
 enum TMDBAPI: Int {
+    case youtube
     case idList
     case details
     case casting
@@ -22,6 +23,8 @@ enum TMDBAPI: Int {
     
     var endpoint: URL {
         switch self {
+        case .youtube:
+            return URL(string: baseURL + "/tv/\(TMDBAPI.id)/videos")!
         case .idList:
             return URL(string: baseURL + "/tv/airing_today")!
         case .details:
@@ -42,9 +45,7 @@ enum TMDBAPI: Int {
         switch self {
         case .idList:
             return ["language": "ko-KR", "page": "1"]
-        // case .details, .recommend:
-        //     return ["language": "ko-KR"]
-        case .details, .recommend, .casting:
+        case .youtube, .details, .recommend, .casting:
             return ["": ""]
         }
     }
@@ -55,7 +56,7 @@ enum TMDBAPI: Int {
             return [URLQueryItem(name: "language", value: "ko-KR"), URLQueryItem(name: "page", value: "1")]
         // case .details, .recommend:
         //     return [URLQueryItem(name: "language", value: "ko-KR")]
-        case .details, .recommend, .casting:
+        case .youtube, .details, .recommend, .casting:
             return [URLQueryItem(name: "", value: "")]
         }
     }

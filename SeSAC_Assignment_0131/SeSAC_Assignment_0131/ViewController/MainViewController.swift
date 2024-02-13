@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
             configureView()
         }
     }
+    var youtubeKey: String = ""
     
     override func loadView() {
         super.loadView()
@@ -39,7 +40,22 @@ class MainViewController: UIViewController {
     
     @objc func profileButtonClicked(_ sender: UIBarButtonItem) {
         let nextVC = ProfileViewController()
+        
+        nextVC.completion = { link in
+            let imageURL = URL(string: link)
+            guard let item = self.navigationItem.rightBarButtonItem else { return }
+            guard let button = item.customView as? UIButton else { return }
+            button.kf.setImage(with: imageURL, for: .normal)
+        }
     
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func playButtonClicked(_ sender: UIButton) {
+        let nextVC = YoutubeViewController()
+        
+        nextVC.configure(youtubeKey)
+        
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -105,6 +121,16 @@ class MainViewController: UIViewController {
             dispatchGroup.leave()
         }
         
+        dispatchGroup.enter()
+        APIManager.shared.callAPI(type: YoutubeModel.self, api: TMDBAPI.youtube) { data, _ in
+            
+            if let youtubeData = data?.results.first {
+                self.youtubeKey = youtubeData.key
+            }
+                
+            dispatchGroup.leave()
+        }
+        
         dispatchGroup.notify(queue: .main) {
             self.view().mainCollectionView.reloadData()
         }
@@ -160,11 +186,13 @@ extension MainViewController: ViewProtocol {
     
     func createProfileItem() {
         let customButtonView = UIButton()
-        
-        let imageConfig = UIImage.SymbolConfiguration(scale: .large)
+        customButtonView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        customButtonView.layer.cornerRadius = customButtonView.frame.width / 2
+        customButtonView.clipsToBounds = true
+        customButtonView.contentMode = .center
         
         if UserDefaultsManager.shared.image.isEmpty {
-            let profileImage = UIImage(systemName: "person.fill", withConfiguration: imageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            let profileImage = UIImage(systemName: "person.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
             
             customButtonView.setImage(profileImage, for: .normal)
         } else {
@@ -173,19 +201,13 @@ extension MainViewController: ViewProtocol {
             customButtonView.kf.setImage(with: imageURL, for: .normal)
         }
         
-        
-        customButtonView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        customButtonView.layer.cornerRadius = customButtonView.frame.width / 2
-        customButtonView.clipsToBounds = true
-        
         customButtonView.backgroundColor = .systemGray
-        
         
         customButtonView.addTarget(self, action: #selector(profileButtonClicked(_:)), for: .touchUpInside)
         
         let barButton = UIBarButtonItem(customView: customButtonView)
         
-        self.navigationItem.rightBarButtonItem = barButton
+        self.navigationItem.setRightBarButton(barButton, animated: true)
     }
 }
 
@@ -230,6 +252,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as? PosterCollectionViewCell else { return UICollectionViewCell() }
             
             cell.setData(data: idList[indexPath.item])
+            cell.playButton.addTarget(self, action: #selector(playButtonClicked(_:)), for: .touchUpInside)
             
             return cell
             
